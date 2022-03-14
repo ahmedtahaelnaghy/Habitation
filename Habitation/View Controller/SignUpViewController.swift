@@ -27,7 +27,7 @@ class SignUpViewController: UIViewController {
         editItems(curveRadius: 1, borderColor: UIColor.systemGray.cgColor, borderWidth: 20)
         
         addImageToTextField(textField: emailTextField, image: UIImage(named: "email")!)
-        addImageToTextField(textField: cityTextField, image: UIImage(named: "email")!)
+        addImageToTextField(textField: cityTextField, image: UIImage(named: "cityTwo")!)
         addImageToTextField(textField: passwordTextField, image: UIImage(named: "password")!)
         addImageToTextField(textField: verifyPasswordTextField, image: UIImage(named: "password")!)
         

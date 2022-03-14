@@ -17,7 +17,6 @@
 		FCEE872727DDFEF2005B5B70 /* HabitationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE872627DDFEF2005B5B70 /* HabitationUITests.swift */; };
 		FCEE872927DDFEF2005B5B70 /* HabitationUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE872827DDFEF2005B5B70 /* HabitationUITestsLaunchTests.swift */; };
 		FCEE873E27DE0818005B5B70 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE873D27DE0818005B5B70 /* HomePageViewController.swift */; };
-		FCEE874027DE10F5005B5B70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE873F27DE10F5005B5B70 /* ViewController.swift */; };
 		FCEE874227DE2228005B5B70 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE874127DE2228005B5B70 /* LoginViewController.swift */; };
 		FCEE874427DE5CC9005B5B70 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE874327DE5CC9005B5B70 /* SignUpViewController.swift */; };
 		FCEE874627DE6DCF005B5B70 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE874527DE6DCF005B5B70 /* ForgotPasswordViewController.swift */; };
@@ -55,7 +54,6 @@
 		FCEE872627DDFEF2005B5B70 /* HabitationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitationUITests.swift; sourceTree = "<group>"; };
 		FCEE872827DDFEF2005B5B70 /* HabitationUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitationUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FCEE873D27DE0818005B5B70 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
-		FCEE873F27DE10F5005B5B70 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FCEE874127DE2228005B5B70 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FCEE874327DE5CC9005B5B70 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FCEE874527DE6DCF005B5B70 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				FCEE873827DDFF3D005B5B70 /* Protocols */,
-				FCEE873927DDFF55005B5B70 /* Database Manager */,
 				FCEE873727DDFF12005B5B70 /* Model */,
 				FCEE873627DDFF08005B5B70 /* View Controller */,
 				FCEE873527DDFF01005B5B70 /* View */,
@@ -156,7 +153,6 @@
 				FCEE874327DE5CC9005B5B70 /* SignUpViewController.swift */,
 				FCEE874127DE2228005B5B70 /* LoginViewController.swift */,
 				FCEE874527DE6DCF005B5B70 /* ForgotPasswordViewController.swift */,
-				FCEE873F27DE10F5005B5B70 /* ViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -188,6 +184,7 @@
 		FCEE873A27DDFF72005B5B70 /* Pojo */ = {
 			isa = PBXGroup;
 			children = (
+				FCEE873927DDFF55005B5B70 /* Database Manager */,
 			);
 			path = Pojo;
 			sourceTree = "<group>";
@@ -340,7 +337,6 @@
 				FCEE874627DE6DCF005B5B70 /* ForgotPasswordViewController.swift in Sources */,
 				FCEE874227DE2228005B5B70 /* LoginViewController.swift in Sources */,
 				FCEE874427DE5CC9005B5B70 /* SignUpViewController.swift in Sources */,
-				FCEE874027DE10F5005B5B70 /* ViewController.swift in Sources */,
 				FCEE873E27DE0818005B5B70 /* HomePageViewController.swift in Sources */,
 				FCEE870327DDFEF0005B5B70 /* AppDelegate.swift in Sources */,
 				FCEE870D27DDFEF0005B5B70 /* Habitation.xcdatamodeld in Sources */,
