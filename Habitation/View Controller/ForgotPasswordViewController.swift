@@ -23,14 +23,17 @@ class ForgotPasswordViewController: UIViewController {
     
     func editItems(borderColor: CGColor, borderWidth: CGFloat, curveRadius: CGFloat) {
         
-        emailTextField.layer.borderColor = borderColor
-        emailTextField.layer.borderWidth = borderWidth
-        emailTextField.layer.cornerRadius = curveRadius
+        let itemsArray = [emailTextField, getNewPassword]
         
-        getNewPassword.layer.borderColor = borderColor
-        getNewPassword.layer.borderWidth = borderWidth
-        getNewPassword.layer.cornerRadius = curveRadius
-        
+        _ = itemsArray.map {
+            
+            
+            $0!.layer.borderColor = borderColor
+            $0!.layer.borderWidth = borderWidth
+            $0!.layer.cornerRadius = curveRadius
+            
+        }
+                
     }  
     
     func addImageToTextField(textField: UITextField, image: UIImage) {

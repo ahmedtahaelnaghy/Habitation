@@ -15,6 +15,9 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var login: UIButton!
     
+    @IBOutlet weak var rememberMe: UIButton!
+    
+    var isActive = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,24 +28,20 @@ class LoginViewController: UIViewController {
         addImageToTextField(textField: passwordTextField, image: UIImage(named: "password")!)
         
     }
-    
+        
     func editItems(borderColor: CGColor, borderWidth: CGFloat, curveRadius: CGFloat) {
         
-        emailTextField.layer.borderColor = borderColor
-        emailTextField.layer.borderWidth = borderWidth
-        emailTextField.layer.cornerRadius = curveRadius
+        let itemsArray = [emailTextField, passwordTextField, login]
+        
+        _ = itemsArray.map {
+            
+            $0!.layer.borderColor = borderColor
+            $0!.layer.borderWidth = borderWidth
+            $0!.layer.cornerRadius = curveRadius
 
-        passwordTextField.layer.borderColor = borderColor
-        passwordTextField.layer.borderWidth = borderWidth
-        passwordTextField.layer.cornerRadius = curveRadius
+        }
         
-        
-        login.layer.borderColor = borderColor
-        login.layer.borderWidth = borderWidth
-        login.layer.cornerRadius = curveRadius
-        
-        
-    }  
+    }
     
     // Method to add image in text field
     func addImageToTextField(textField: UITextField, image: UIImage) {
@@ -66,16 +65,27 @@ class LoginViewController: UIViewController {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "ForgotPasswordVC") as? ForgotPasswordViewController {
             
             
-            
-            
-            
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
         
     }
     
-    
+    @IBAction func rememberMeBtn(_ sender: Any) {
+        
+        if isActive {
+            
+                rememberMe.setImage(UIImage(named: "emptySquare"), for: .normal)
+            
+        } else {
+            
+            rememberMe.setImage(UIImage(named: "true"), for: .normal)
+            
+        }
+        
+        isActive.toggle()
+        
+    }
     
     @IBAction func loginBtn(_ sender: Any) {
         
@@ -84,7 +94,6 @@ class LoginViewController: UIViewController {
         
         
     }
-    
     
     
 }
