@@ -19,7 +19,6 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var signUp: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,7 +46,6 @@ class SignUpViewController: UIViewController {
         
     }
         
-    
     func editItems(borderColor: CGColor, borderWidth: CGFloat, curveRadius: CGFloat) {
         
         let itemsArray = [emailTextField, cityTextField, passwordTextField, verifyPasswordTextField, signUp]

@@ -11,7 +11,10 @@
 		FC06D0DC27E5255E00E65142 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06D0DB27E5255E00E65142 /* CategoriesViewController.swift */; };
 		FC06D0DE27E5259000E65142 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06D0DD27E5259000E65142 /* FavoritesViewController.swift */; };
 		FC06D0E027E525A800E65142 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06D0DF27E525A800E65142 /* SettingsViewController.swift */; };
+		FC44EB8928224E2700019723 /* FavoriteHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC44EB8828224E2700019723 /* FavoriteHomeCollectionViewCell.swift */; };
+		FCA51832281183100045A28C /* SingleHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA51831281183100045A28C /* SingleHomeCollectionViewCell.swift */; };
 		FCB1AD6727F481A600EBCABC /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB1AD6627F481A600EBCABC /* HomeCollectionViewCell.swift */; };
+		FCEA6DE12818C59900BD1E77 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEA6DE02818C59900BD1E77 /* UIView+Extensions.swift */; };
 		FCEE870327DDFEF0005B5B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE870227DDFEF0005B5B70 /* AppDelegate.swift */; };
 		FCEE870527DDFEF0005B5B70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE870427DDFEF0005B5B70 /* SceneDelegate.swift */; };
 		FCEE870A27DDFEF0005B5B70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCEE870827DDFEF0005B5B70 /* Main.storyboard */; };
@@ -51,7 +54,10 @@
 		FC06D0DB27E5255E00E65142 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		FC06D0DD27E5259000E65142 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		FC06D0DF27E525A800E65142 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		FC44EB8828224E2700019723 /* FavoriteHomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		FCA51831281183100045A28C /* SingleHomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleHomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		FCB1AD6627F481A600EBCABC /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		FCEA6DE02818C59900BD1E77 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		FCEE86FF27DDFEF0005B5B70 /* Habitation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habitation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCEE870227DDFEF0005B5B70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCEE870427DDFEF0005B5B70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,11 +104,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC29BAC9282226770017425C /* SettingsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FC06D0DF27E525A800E65142 /* SettingsViewController.swift */,
+			);
+			path = SettingsScreen;
+			sourceTree = "<group>";
+		};
+		FC44EB87282246E100019723 /* FavoritesScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FC06D0DD27E5259000E65142 /* FavoritesViewController.swift */,
+				FC44EB8828224E2700019723 /* FavoriteHomeCollectionViewCell.swift */,
+			);
+			path = FavoritesScreen;
+			sourceTree = "<group>";
+		};
 		FCB1AD6527F4816A00EBCABC /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
 				FC06D0D927E5251500E65142 /* HomeViewController.swift */,
 				FCB1AD6627F481A600EBCABC /* HomeCollectionViewCell.swift */,
+				FCA51831281183100045A28C /* SingleHomeCollectionViewCell.swift */,
 			);
 			path = HomeScreen;
 			sourceTree = "<group>";
@@ -176,10 +200,10 @@
 				FCEE874327DE5CC9005B5B70 /* SignUpViewController.swift */,
 				FCEE874127DE2228005B5B70 /* LoginViewController.swift */,
 				FCEE874527DE6DCF005B5B70 /* ForgotPasswordViewController.swift */,
-				FC06D0DD27E5259000E65142 /* FavoritesViewController.swift */,
-				FC06D0DF27E525A800E65142 /* SettingsViewController.swift */,
 				FCB1AD6527F4816A00EBCABC /* HomeScreen */,
 				FCF9D4E127F2738000CCE0B9 /* CategoriesScreen */,
+				FC44EB87282246E100019723 /* FavoritesScreen */,
+				FC29BAC9282226770017425C /* SettingsScreen */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -196,6 +220,7 @@
 		FCEE873827DDFF3D005B5B70 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				FCEA6DE02818C59900BD1E77 /* UIView+Extensions.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -377,7 +402,10 @@
 				FC06D0DC27E5255E00E65142 /* CategoriesViewController.swift in Sources */,
 				FCF9D4E527F2743B00CCE0B9 /* CategoryCollectionViewCell.swift in Sources */,
 				FCEE874427DE5CC9005B5B70 /* SignUpViewController.swift in Sources */,
+				FC44EB8928224E2700019723 /* FavoriteHomeCollectionViewCell.swift in Sources */,
+				FCEA6DE12818C59900BD1E77 /* UIView+Extensions.swift in Sources */,
 				FC06D0DA27E5251500E65142 /* HomeViewController.swift in Sources */,
+				FCA51832281183100045A28C /* SingleHomeCollectionViewCell.swift in Sources */,
 				FCB1AD6727F481A600EBCABC /* HomeCollectionViewCell.swift in Sources */,
 				FCEE873E27DE0818005B5B70 /* HomePageViewController.swift in Sources */,
 				FCEE870327DDFEF0005B5B70 /* AppDelegate.swift in Sources */,

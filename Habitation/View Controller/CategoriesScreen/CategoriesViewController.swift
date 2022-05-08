@@ -9,7 +9,6 @@ import UIKit
 
 class CategoriesViewController: UIViewController {
 
-    
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     
     var categoriesArray:[Categories] = [Categories(image: "homeIcon", name: "Home"),
@@ -20,16 +19,12 @@ class CategoriesViewController: UIViewController {
                                         Categories(image: "palace", name: "Palace")
                                         ]
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         setupUi()
         
-        
     }
-    
     
 }
 
@@ -48,10 +43,17 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
         
         cell.categoryImg.image = UIImage(named: "\(categoriesArray[indexPath.row].image)")
         cell.categoryName.text = categoriesArray[indexPath.row].name
-        cell.layer.cornerRadius = 20
-        cell.layer.borderWidth = 0.75
-        cell.layer.borderColor = UIColor.lightGray.cgColor
         
+        cell.layer.cornerRadius = 15
+        cell.layer.borderWidth = 0.5
+        cell.layer.borderColor = UIColor.lightGray.cgColor
+        cell.layer.shadowOffset = CGSize(width: 1.2, height: 1.2)
+        cell.layer.shadowColor = UIColor.lightGray.cgColor
+        cell.layer.shadowOpacity = 0.5
+        cell.layer.shadowRadius = 1
+        
+        cell.layer.masksToBounds = false
+
         return cell
         
     }
@@ -71,14 +73,6 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
         categoriesCollectionView.collectionViewLayout = layout
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
     
 }
 
