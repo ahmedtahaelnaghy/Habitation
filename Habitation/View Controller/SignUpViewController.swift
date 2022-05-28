@@ -37,11 +37,9 @@ class SignUpViewController: UIViewController {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: image.size.height))
         
         view.addSubview(imageView)
-        
         imageView.image = image
         
         textField.leftView = view
-        
         textField.leftViewMode = .always
         
     }

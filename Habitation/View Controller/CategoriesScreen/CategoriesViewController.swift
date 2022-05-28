@@ -75,6 +75,3 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
 }
-
-
-

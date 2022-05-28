@@ -13,7 +13,6 @@ class FavoritesViewController: UIViewController {
     
     @IBOutlet weak var FavoritesCollectionView: UICollectionView!
     
-    
     var favArray = ["", "", "", ""]
     
     override func viewDidLoad() {
@@ -23,8 +22,10 @@ class FavoritesViewController: UIViewController {
         FavoritesCollectionView.dataSource = self
         
         addImgToSearchTextField(textField: searchTextField, image: UIImage(named: "search")!)
+        
         editItems()
         
+        setupUiForCategoriesCollectionView()
     }
     
     func editItems() {
@@ -64,38 +65,43 @@ class FavoritesViewController: UIViewController {
 extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return favArray.count
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavCell", for: indexPath) as! FavoriteHomeCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! FavoriteHomeCollectionViewCell
         
-        cell.image.image = UIImage(named: "logo")
+        cell.image.backgroundColor = .brown
+        cell.layer.borderColor = UIColor.lightGray.cgColor
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 27
+        cell.layer.shadowColor = UIColor.lightGray.cgColor
+        cell.layer.shadowOpacity = 0.5
+        cell.layer.shadowRadius = 1
+        cell.layer.shadowOffset = CGSize(width: 1.2, height: 1.2)
+        cell.layer.masksToBounds = false
             
-            
-        
         return cell
         
     }
     
     func setupUiForCategoriesCollectionView() {
-        
+
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-        
-        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20)
-        
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.5)), subitem: item, count: 1)
-        
+
+        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 50, bottom: 10, trailing: 50)
+
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.6)), subitem: item, count: 1)
+
         let section = NSCollectionLayoutSection(group: group)
-                
+
         let layout = UICollectionViewCompositionalLayout(section: section)
-        
+
         FavoritesCollectionView.collectionViewLayout = layout
-           
+
     }
+
     
     
 }
