@@ -64,7 +64,6 @@ class LoginViewController: UIViewController {
        
         if let vc = storyboard?.instantiateViewController(withIdentifier: "ForgotPasswordVC") as? ForgotPasswordViewController {
             
-            
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
@@ -74,13 +73,10 @@ class LoginViewController: UIViewController {
     @IBAction func rememberMeBtn(_ sender: Any) {
         
         if isActive {
-            
                 rememberMe.setImage(UIImage(named: "emptySquare"), for: .normal)
-            
-        } else {
-            
+        }
+        else {
             rememberMe.setImage(UIImage(named: "true"), for: .normal)
-            
         }
         
         isActive.toggle()

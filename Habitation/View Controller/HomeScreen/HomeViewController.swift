@@ -10,9 +10,7 @@ import UIKit
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
-   
     @IBOutlet weak var homeCollectionView: UICollectionView!
-    
     @IBOutlet weak var searchTextField: UITextField!
     
     var categoriesArray: [Categories] = [Categories(image: "homeIcon", name: "Home"),
@@ -37,10 +35,21 @@ class HomeViewController: UIViewController {
     }
     
     func editeSearchTextFieldShape() {
+
+        let itemsArray = [searchTextField]
         
-        searchTextField.layer.borderWidth = 1
-        searchTextField.layer.borderColor = UIColor.systemGray.cgColor
-        searchTextField.layer.cornerRadius = 33
+        _ = itemsArray.map {
+            
+            $0!.layer.borderColor = UIColor.systemGray.cgColor
+            $0!.layer.borderWidth = 1
+            $0!.layer.cornerRadius = 33
+            $0!.layer.shadowColor = UIColor.lightGray.cgColor
+            $0!.layer.shadowOpacity = 0.3
+            $0!.layer.shadowRadius = 1
+            $0!.layer.shadowOffset = CGSize(width: 1, height: 1)
+            $0!.layer.masksToBounds = false
+
+        }
         
     }
     
@@ -57,11 +66,11 @@ class HomeViewController: UIViewController {
     
     @IBAction func categorySeeMoreBtn(_ sender: Any) {
         
-        UIView.animate(withDuration: 0.25) {
-            self.categoriesCollectionView.layoutIfNeeded()
+//        UIView.animate(withDuration: 0.25) {
+//            self.categoriesCollectionView.layoutIfNeeded()
             self.tabBarController?.selectedIndex = 1
             
-        }
+//        }
         
     }
 
@@ -72,13 +81,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if collectionView == categoriesCollectionView {
-            
             return categoriesArray.count
-            
-        }else {
-            
+        }
+        else {
             return homeArray.count
-            
         }
         
     }
@@ -158,8 +164,5 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         homeCollectionView.collectionViewLayout = layout
            
     }
-    
-    
-    
     
 }

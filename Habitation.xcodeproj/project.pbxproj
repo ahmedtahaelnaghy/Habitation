@@ -12,6 +12,7 @@
 		FC06D0DE27E5259000E65142 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06D0DD27E5259000E65142 /* FavoritesViewController.swift */; };
 		FC06D0E027E525A800E65142 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06D0DF27E525A800E65142 /* SettingsViewController.swift */; };
 		FC44EB8928224E2700019723 /* FavoriteHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC44EB8828224E2700019723 /* FavoriteHomeCollectionViewCell.swift */; };
+		FC610F382844402F00A0BD95 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC610F372844402F00A0BD95 /* TabBarViewController.swift */; };
 		FCA51832281183100045A28C /* SingleHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA51831281183100045A28C /* SingleHomeCollectionViewCell.swift */; };
 		FCB1AD6727F481A600EBCABC /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB1AD6627F481A600EBCABC /* HomeCollectionViewCell.swift */; };
 		FCEA6DE12818C59900BD1E77 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEA6DE02818C59900BD1E77 /* UIView+Extensions.swift */; };
@@ -55,6 +56,7 @@
 		FC06D0DD27E5259000E65142 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		FC06D0DF27E525A800E65142 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		FC44EB8828224E2700019723 /* FavoriteHomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC610F372844402F00A0BD95 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		FCA51831281183100045A28C /* SingleHomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleHomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		FCB1AD6627F481A600EBCABC /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		FCEA6DE02818C59900BD1E77 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -119,6 +121,25 @@
 				FC44EB8828224E2700019723 /* FavoriteHomeCollectionViewCell.swift */,
 			);
 			path = FavoritesScreen;
+			sourceTree = "<group>";
+		};
+		FC610F362844400D00A0BD95 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				FC610F372844402F00A0BD95 /* TabBarViewController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		FC610F392844411300A0BD95 /* PrimaryScreens */ = {
+			isa = PBXGroup;
+			children = (
+				FCEE873D27DE0818005B5B70 /* HomePageViewController.swift */,
+				FCEE874327DE5CC9005B5B70 /* SignUpViewController.swift */,
+				FCEE874127DE2228005B5B70 /* LoginViewController.swift */,
+				FCEE874527DE6DCF005B5B70 /* ForgotPasswordViewController.swift */,
+			);
+			path = PrimaryScreens;
 			sourceTree = "<group>";
 		};
 		FCB1AD6527F4816A00EBCABC /* HomeScreen */ = {
@@ -196,10 +217,8 @@
 		FCEE873627DDFF08005B5B70 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FCEE873D27DE0818005B5B70 /* HomePageViewController.swift */,
-				FCEE874327DE5CC9005B5B70 /* SignUpViewController.swift */,
-				FCEE874127DE2228005B5B70 /* LoginViewController.swift */,
-				FCEE874527DE6DCF005B5B70 /* ForgotPasswordViewController.swift */,
+				FC610F392844411300A0BD95 /* PrimaryScreens */,
+				FC610F362844400D00A0BD95 /* TabBar */,
 				FCB1AD6527F4816A00EBCABC /* HomeScreen */,
 				FCF9D4E127F2738000CCE0B9 /* CategoriesScreen */,
 				FC44EB87282246E100019723 /* FavoritesScreen */,
@@ -400,6 +419,7 @@
 				FCEE874227DE2228005B5B70 /* LoginViewController.swift in Sources */,
 				FC06D0E027E525A800E65142 /* SettingsViewController.swift in Sources */,
 				FC06D0DC27E5255E00E65142 /* CategoriesViewController.swift in Sources */,
+				FC610F382844402F00A0BD95 /* TabBarViewController.swift in Sources */,
 				FCF9D4E527F2743B00CCE0B9 /* CategoryCollectionViewCell.swift in Sources */,
 				FCEE874427DE5CC9005B5B70 /* SignUpViewController.swift in Sources */,
 				FC44EB8928224E2700019723 /* FavoriteHomeCollectionViewCell.swift in Sources */,

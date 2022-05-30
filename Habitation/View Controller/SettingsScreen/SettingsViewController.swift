@@ -10,23 +10,16 @@ import UIKit
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var UserDetailsView: UIView!
-    
     @IBOutlet weak var RentedPropertiesView: UIView!
-    
     @IBOutlet weak var MyCardsView: UIView!
-    
     @IBOutlet weak var DarkModeView: UIView!
-    
     @IBOutlet weak var LogOutView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         editItems()
-        
-        
-        
+             
     }
     
     func editItems() {
@@ -46,11 +39,5 @@ class SettingsViewController: UIViewController {
 
         }
     }
-    
-    
-    
-    
-    
-    
 
 }
