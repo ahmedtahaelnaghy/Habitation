@@ -73,6 +73,19 @@ class HomeViewController: UIViewController {
 //        }
         
     }
+    
+    
+    @IBAction func addBtn(_ sender: Any) {
+        
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "AddNewHomeVC") as? AddNewHomeViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
+        
+        
+    }
+    
 
 }
 
@@ -105,7 +118,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.layer.shadowColor = UIColor.lightGray.cgColor
             cell.layer.shadowOpacity = 0.5
             cell.layer.shadowRadius = 1
-            cell.layer.masksToBounds = false
+            cell.layer.masksToBounds = true
             
             return cell
             
@@ -121,7 +134,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             homeCell.layer.shadowColor = UIColor.lightGray.cgColor
             homeCell.layer.shadowOpacity = 0.5
             homeCell.layer.shadowRadius = 1
-            homeCell.layer.masksToBounds = false
+            homeCell.layer.masksToBounds = true
             
             return homeCell
             

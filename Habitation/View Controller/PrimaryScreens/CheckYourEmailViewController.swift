@@ -8,22 +8,44 @@
 import UIKit
 
 class CheckYourEmailViewController: UIViewController {
-
+    
+    @IBOutlet weak var loginBtnEditing: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
+        editItems(borderColor: UIColor.systemGray.cgColor, borderWidth: 1, curveRadius: 20)
+        
     }
     
+    func editItems(borderColor: CGColor, borderWidth: CGFloat, curveRadius: CGFloat) {
+        
+        let itemsArray = [loginBtnEditing]
+        
+        _ = itemsArray.map {
+            
+            $0!.layer.borderColor = borderColor
+            $0!.layer.borderWidth = borderWidth
+            $0!.layer.cornerRadius = curveRadius
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        }
+        
     }
-    */
+    
+    
+    
+    
+    
+    @IBAction func loginBtn(_ sender: Any) {
+        
+        
+        
+        
+        
+    }
+    
+    
 
 }

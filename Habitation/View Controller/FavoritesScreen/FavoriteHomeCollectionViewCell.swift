@@ -13,6 +13,6 @@ class FavoriteHomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var image: UIImageView!
     
     
-    
+
     
 }

@@ -53,10 +53,12 @@ class ForgotPasswordViewController: UIViewController {
     
     @IBAction func getNewPasswordBtn(_ sender: Any) {
         
-        
-        
-        
-        
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "CheckVC") as? CheckYourEmailViewController {
+            
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
         
     }
     

@@ -32,7 +32,7 @@ class HomePageViewController: UIViewController {
             $0!.layer.shadowOpacity = 0.5
             $0!.layer.shadowRadius = 1
             $0!.layer.shadowOffset = CGSize(width: 1.2, height: 1.2)
-            $0!.layer.masksToBounds = false
+            $0!.layer.masksToBounds = true
 
         }
     }

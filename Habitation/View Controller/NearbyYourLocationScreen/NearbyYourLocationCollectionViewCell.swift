@@ -9,4 +9,10 @@ import UIKit
 
 class NearbyYourLocationCollectionViewCell: UICollectionViewCell {
     
+    
+    
+    
+    
+    
+    
 }

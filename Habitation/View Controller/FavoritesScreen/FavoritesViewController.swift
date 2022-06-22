@@ -80,7 +80,7 @@ extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.layer.shadowOpacity = 0.5
         cell.layer.shadowRadius = 1
         cell.layer.shadowOffset = CGSize(width: 1.2, height: 1.2)
-        cell.layer.masksToBounds = false
+        cell.layer.masksToBounds = true
             
         return cell
         

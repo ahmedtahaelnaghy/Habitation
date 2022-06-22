@@ -34,7 +34,6 @@ class TabBarViewController: UITabBarController {
         }
         
         propertyAnimator.addAnimations({ barItemView.transform = .identity }, delayFactor: CGFloat(timeInterval))
-        
         propertyAnimator.startAnimation()
         
     }
