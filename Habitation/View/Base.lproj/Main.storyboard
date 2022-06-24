@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Xre-go-iGW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K9H-h9-CgB">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -93,6 +93,9 @@
                                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="20"/>
                                                     <color key="baseForegroundColor" red="0.0" green="0.072165068779999994" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="loginBtn:" destination="JbY-tw-9O6" eventType="touchUpInside" id="VY5-pi-Yo3"/>
+                                                </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="Xfb-mr-yTE">
                                                 <rect key="frame" x="278" y="654" width="150" height="150"/>
@@ -201,8 +204,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0nA-Ws-gdt">
-                                                <rect key="frame" x="45" y="182" width="48.333333333333343" height="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0nA-Ws-gdt">
+                                                <rect key="frame" x="45.000000000000007" y="182" width="83.666666666666686" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -219,13 +222,13 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your city" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZG3-6b-8ix">
-                                                <rect key="frame" x="44.999999999999993" y="272" width="66.333333333333314" height="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZG3-6b-8ix">
+                                                <rect key="frame" x="45" y="272" width="48.333333333333343" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j0w-1K-ROu">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Your Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j0w-1K-ROu">
                                                 <rect key="frame" x="45" y="212" width="338" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="BYF-Db-9bK"/>
@@ -241,7 +244,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your city" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J86-1p-OK7">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J86-1p-OK7">
                                                 <rect key="frame" x="45" y="302" width="338" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="I5s-l5-rgI"/>
@@ -345,8 +348,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="v7M-Sd-Mmf"/>
                     <connections>
-                        <outlet property="cityTextField" destination="J86-1p-OK7" id="1y4-En-4Vl"/>
-                        <outlet property="emailTextField" destination="j0w-1K-ROu" id="xsi-bD-tsC"/>
+                        <outlet property="emailTextField" destination="J86-1p-OK7" id="NRK-W7-WIU"/>
+                        <outlet property="nameTextField" destination="j0w-1K-ROu" id="RF9-cL-w9k"/>
                         <outlet property="passwordTextField" destination="J4M-6M-qU6" id="GWd-Hl-6g8"/>
                         <outlet property="signUp" destination="xPT-Hd-xme" id="IwA-sk-pch"/>
                         <outlet property="verifyPasswordTextField" destination="kQI-RU-Sa7" id="hTd-Ok-wD9"/>
@@ -579,6 +582,7 @@
                     <navigationItem key="navigationItem" id="bfq-By-FMv"/>
                     <connections>
                         <outlet property="loginBtnEditing" destination="b3U-Sb-YKh" id="tzu-Nc-7kV"/>
+                        <outlet property="sendingToEmailLbl" destination="bBv-Nb-4Aa" id="toj-j0-MPv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dl7-Fd-MWx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -737,7 +741,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I33-AO-DX0">
-                                                                    <rect key="frame" x="329" y="10" width="44" height="34"/>
+                                                                    <rect key="frame" x="307" y="10" width="66" height="56"/>
                                                                     <state key="normal" title="Button"/>
                                                                     <buttonConfiguration key="configuration" style="plain" image="heart_like"/>
                                                                 </button>
@@ -875,6 +879,7 @@
                         <outlet property="categoriesCollectionView" destination="NxY-8m-btE" id="8Zh-7B-77o"/>
                         <outlet property="homeCollectionView" destination="4Ju-GG-1cm" id="TgI-tk-LMF"/>
                         <outlet property="searchTextField" destination="wy5-8y-ITJ" id="fLX-Ai-v8h"/>
+                        <outlet property="welcomeLbl" destination="scE-eu-eLP" id="Kos-Tu-zuv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="85l-gA-VPR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1006,7 +1011,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2k-Ec-hZj">
-                                                    <rect key="frame" x="327" y="10" width="44" height="34"/>
+                                                    <rect key="frame" x="305" y="10" width="66" height="56"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="heart_like"/>
                                                 </button>
@@ -1527,7 +1532,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="T1o-CV-mk8">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Zls-N1-yfT" customClass="TabBarViewController" customModule="Habitation" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarC" automaticallyAdjustsScrollViewInsets="NO" id="Zls-N1-yfT" customClass="TabBarViewController" customModule="Habitation" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ePd-W2-ad0">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -1815,7 +1820,7 @@
                                                                                         <rect key="frame" x="0.0" y="0.0" width="301" height="197"/>
                                                                                     </imageView>
                                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="it4-IF-ZZZ">
-                                                                                        <rect key="frame" x="247" y="20" width="44" height="34"/>
+                                                                                        <rect key="frame" x="225" y="20" width="66" height="56"/>
                                                                                         <state key="normal" title="Button"/>
                                                                                         <buttonConfiguration key="configuration" style="plain" image="heart_like"/>
                                                                                     </button>
@@ -2484,7 +2489,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcT-KS-i8W">
-                                                    <rect key="frame" x="327" y="10" width="44" height="34"/>
+                                                    <rect key="frame" x="305" y="10" width="66" height="56"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="heart_like"/>
                                                 </button>
@@ -2720,7 +2725,7 @@
         <image name="Home-1" width="30" height="42"/>
         <image name="Settings" width="41" height="42"/>
         <image name="emptySquare" width="14" height="14"/>
-        <image name="heart_like" width="20" height="20"/>
+        <image name="heart_like" width="42" height="42"/>
         <image name="home" width="446" height="434.33334350585938"/>
         <image name="home_bathroom" width="18" height="19"/>
         <image name="home_rooms" width="18" height="20"/>

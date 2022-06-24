@@ -19,24 +19,6 @@ class HomePageViewController: UIViewController {
         
     }
     
-    func editItems() {
-        
-        let itemsArray = [login, signUp]
-        
-        _ = itemsArray.map {
-            
-            $0!.layer.borderColor = UIColor.systemGray.cgColor
-            $0!.layer.borderWidth = 1
-            $0!.layer.cornerRadius = 26
-            $0!.layer.shadowColor = UIColor.lightGray.cgColor
-            $0!.layer.shadowOpacity = 0.5
-            $0!.layer.shadowRadius = 1
-            $0!.layer.shadowOffset = CGSize(width: 1.2, height: 1.2)
-            $0!.layer.masksToBounds = true
-
-        }
-    }
-    
     @IBAction func loginBtn(_ sender: Any) {
         
         if let vc = storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginViewController {
@@ -52,6 +34,29 @@ class HomePageViewController: UIViewController {
                  
             self.navigationController?.pushViewController(vc, animated: true)
             
+        }
+    }
+    
+}
+
+// Code for buttons shape
+extension HomePageViewController {
+    
+    func editItems() {
+        
+        let itemsArray = [login, signUp]
+        
+        _ = itemsArray.map {
+            
+            $0!.layer.borderColor = UIColor.systemGray.cgColor
+            $0!.layer.borderWidth = 1
+            $0!.layer.cornerRadius = 26
+            $0!.layer.shadowColor = UIColor.lightGray.cgColor
+            $0!.layer.shadowOpacity = 0.5
+            $0!.layer.shadowRadius = 1
+            $0!.layer.shadowOffset = CGSize(width: 1.2, height: 1.2)
+            $0!.layer.masksToBounds = true
+
         }
     }
     

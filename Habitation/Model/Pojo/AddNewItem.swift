@@ -21,6 +21,6 @@ struct AddNewItem {
     var noOfBedrooms: String
     var location: String
     
-    var image: Date
+    var image: Data
     
 }

@@ -12,6 +12,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     @IBOutlet weak var homeCollectionView: UICollectionView!
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var welcomeLbl: UILabel!
     
     var categoriesArray: [Categories] = [Categories(image: "homeIcon", name: "Home"),
                                          Categories(image: "apartment", name: "Apartment"),
@@ -24,6 +25,12 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.hidesBackButton = true
+        
+        
+        
+        
+        
         homeCollectionView.delegate = self
         homeCollectionView.dataSource = self
         
@@ -31,6 +38,18 @@ class HomeViewController: UIViewController {
         addImgToSearchTextField(textField: searchTextField, image: UIImage(named: "search")!)
         setupUiForCategoriesCollectionView()
         setupUiForHomeCollectionView()
+        
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        let userDefaults = UserDefaults.standard
+        guard let userName = userDefaults.string(forKey: "name") else {return}
+        
+        welcomeLbl.text = "Good Evening '\(userName)'"
+        
+        print(userName)
         
     }
     

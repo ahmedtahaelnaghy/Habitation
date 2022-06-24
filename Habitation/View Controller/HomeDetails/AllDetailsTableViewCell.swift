@@ -71,7 +71,7 @@ extension AllDetailsTableViewCell: UICollectionViewDelegate, UICollectionViewDat
 
         else {
 
-            return imagesArray.count + 1
+            return imagesArray.count
 
         }
 
@@ -116,7 +116,7 @@ extension AllDetailsTableViewCell: UICollectionViewDelegate, UICollectionViewDat
 
         item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)), subitem: item, count: 3)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.3), heightDimension: .fractionalHeight(1)), subitem: item, count: 1)
 
         let section = NSCollectionLayoutSection(group: group)
 

@@ -6,15 +6,13 @@
 //
 
 import UIKit
+import Alamofire
 
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
-    
     @IBOutlet weak var passwordTextField: UITextField!
-    
     @IBOutlet weak var login: UIButton!
-    
     @IBOutlet weak var rememberMe: UIButton!
     
     var isActive = false
@@ -23,12 +21,94 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         editItems(borderColor: UIColor.systemGray.cgColor, borderWidth: 1, curveRadius: 20)
-        
         addImageToTextField(textField: emailTextField, image: UIImage(named: "email")!)
         addImageToTextField(textField: passwordTextField, image: UIImage(named: "password")!)
         
     }
+    
+    @IBAction func forgotPasswordBtn(_ sender: Any) {
+       
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "ForgotPasswordVC") as? ForgotPasswordViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
         
+    }
+    
+    @IBAction func rememberMeBtn(_ sender: Any) {
+        
+        rememberMeBtnStatus()
+        
+    }
+    
+    func rememberMeBtnStatus() {
+        
+        if isActive {
+                rememberMe.setImage(UIImage(named: "emptySquare"), for: .normal)
+        }
+        else {
+            rememberMe.setImage(UIImage(named: "true"), for: .normal)
+        }
+        
+        isActive.toggle()
+        
+    }
+    
+    @IBAction func loginBtn(_ sender: Any) {
+        
+        oldUserRegister()
+        
+    }
+    
+    func oldUserRegister() {
+        
+        guard let email = emailTextField.text else {return}
+        guard let password = passwordTextField.text else {return}
+        
+        if email.isEmpty || password.isEmpty {
+            
+            showAlert(message: "All fields are required")
+            
+        }
+        else {
+            
+            AuthServiceManager().fetchAuthDataFromAlamofire(email: email, password: password) { result in
+                
+                switch result {
+                    
+                case .success(let model):
+                    
+                    let userDefaults = UserDefaults.standard
+                    userDefaults.set(model.auth_token, forKey: "token")
+                    
+                    
+                    
+                    if let vc = self.storyboard?.instantiateViewController(withIdentifier: "tabBarC") as? TabBarViewController {
+                        
+                        
+                        
+                        
+                        self.navigationController?.pushViewController(vc, animated: true)
+                        
+                    }
+                    
+                case .failure(_):
+                    
+                    self.showAlert(message: "Your email or password is wrong")
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+     
+}
+
+// Code for textFields and buttons shape
+extension LoginViewController {
+    
     func editItems(borderColor: CGColor, borderWidth: CGFloat, curveRadius: CGFloat) {
         
         let itemsArray = [emailTextField, passwordTextField, login]
@@ -59,37 +139,19 @@ class LoginViewController: UIViewController {
         
     }
     
+}
+
+// Showing Alert functions
+extension LoginViewController {
     
-    @IBAction func forgotPasswordBtn(_ sender: Any) {
-       
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "ForgotPasswordVC") as? ForgotPasswordViewController {
-            
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+    func showAlert(message: String) {
         
+        let alertController = UIAlertController(title: "Alert!", message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+
+        alertController.addAction(alertAction)
+        present(alertController, animated: true, completion: nil)
         
     }
-    
-    @IBAction func rememberMeBtn(_ sender: Any) {
-        
-        if isActive {
-                rememberMe.setImage(UIImage(named: "emptySquare"), for: .normal)
-        }
-        else {
-            rememberMe.setImage(UIImage(named: "true"), for: .normal)
-        }
-        
-        isActive.toggle()
-        
-    }
-    
-    @IBAction func loginBtn(_ sender: Any) {
-        
-        
-        
-        
-        
-    }
-    
     
 }

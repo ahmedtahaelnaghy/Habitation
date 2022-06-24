@@ -10,9 +10,8 @@ import UIKit
 class ForgotPasswordViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
-    
     @IBOutlet weak var getNewPassword: UIButton!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,6 +19,50 @@ class ForgotPasswordViewController: UIViewController {
         addImageToTextField(textField: emailTextField, image: UIImage(named: "email")!)
         
     }
+    
+    @IBAction func getNewPasswordBtn(_ sender: Any) {
+        
+        getPasswordProcess()
+        
+    }
+    
+    func getPasswordProcess() {
+        
+        guard let email = emailTextField.text else {return}
+                
+        if email.isEmpty {
+
+            showAlert()
+
+        }
+        else {
+            
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "CheckVC") as? CheckYourEmailViewController {
+                
+                vc.comingEmail = "We've sent an email to \(email) . Click the link in the email to reset your password."
+                
+                self.navigationController?.pushViewController(vc, animated: true)
+                
+            }
+            
+        }
+        
+    }
+    
+    func showAlert() {
+        
+        let alertController = UIAlertController(title: "Alert!", message: "All fields are required", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+
+        alertController.addAction(alertAction)
+        present(alertController, animated: true, completion: nil)
+        
+    }
+    
+}
+
+// Code for textFields and buttons shape
+extension ForgotPasswordViewController {
     
     func editItems(borderColor: CGColor, borderWidth: CGFloat, curveRadius: CGFloat) {
         
@@ -34,7 +77,7 @@ class ForgotPasswordViewController: UIViewController {
             
         }
                 
-    }  
+    }
     
     func addImageToTextField(textField: UITextField, image: UIImage) {
         
@@ -47,20 +90,6 @@ class ForgotPasswordViewController: UIViewController {
         textField.leftView = view
         textField.leftViewMode = .always
         
-        
     }
-    
-    
-    @IBAction func getNewPasswordBtn(_ sender: Any) {
-        
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "CheckVC") as? CheckYourEmailViewController {
-            
-            
-            self.navigationController?.pushViewController(vc, animated: true)
-            
-        }
-        
-    }
-    
     
 }
