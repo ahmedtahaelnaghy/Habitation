@@ -49,13 +49,7 @@ class SignUpViewController: UIViewController {
             AuthServiceManager().addNewAcountInAlamofire(name: name, email: email, password: password, verifyPassword: verifyPassword) { result in
                 switch result {
                         
-                case .success(let signUpInfo):
-                    
-                    let userDefaults = UserDefaults.standard
-                    userDefaults.set(signUpInfo.id, forKey: "id")
-                    userDefaults.set(signUpInfo.name, forKey: "name")
-                    
-                    print(userDefaults.string(forKey: "name"))
+                case .success(_):
                     
                     if let vc = self.storyboard?.instantiateViewController(withIdentifier: "tabBarC") as? TabBarViewController {
 

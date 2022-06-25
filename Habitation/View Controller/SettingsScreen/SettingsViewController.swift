@@ -10,24 +10,41 @@ import UIKit
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var UserDetailsView: UIView!
-    @IBOutlet weak var RentedPropertiesView: UIView!
-    @IBOutlet weak var MyCardsView: UIView!
-    @IBOutlet weak var DarkModeView: UIView!
-    @IBOutlet weak var LogOutView: UIView!
     
+    @IBOutlet weak var logOutBtnShape: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         editItems()
+                
              
     }
     
+    @IBAction func logOutBtn(_ sender: Any) {
+        
+        let userDefaults = UserDefaults.standard
+        userDefaults.set("", forKey: "name")
+        
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "rootVC") as? HomePageViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
+        
+    }
+    
+
+
+}
+
+extension SettingsViewController {
+    
     func editItems() {
         
-        let itemsArray = [UserDetailsView, RentedPropertiesView, MyCardsView, DarkModeView, LogOutView]
-        
+        let itemsArray = [UserDetailsView, logOutBtnShape]
+
         _ = itemsArray.map {
-            
+
             $0!.layer.borderColor = UIColor.lightGray.cgColor
             $0!.layer.borderWidth = 1
             $0!.layer.cornerRadius = 30
@@ -39,5 +56,5 @@ class SettingsViewController: UIViewController {
 
         }
     }
-
+    
 }

@@ -7,20 +7,35 @@
 
 import Foundation
 
-struct AddNewItem {
+struct AddNewItem: Codable {
     
-    var unitName: String
+    var name: String
     var description: String
     
-    var unitPrice: String
-    var cashPercentageDiscount: String
+    var price: String
+    var cash_discount: String
     
     var type: String
     var area: String
-    var noOfBathrooms: String
-    var noOfBedrooms: String
-    var location: String
+    var baths_no: Int
+    var bed_rooms_no: Int
+    var direction: String
     
-    var image: Data
+    var images: String
+    
+    
+    func isDictionary() -> [String:Any] {
+
+        if let jsonDecodedObj = try? JSONEncoder().encode(self) {
+
+            return try! JSONSerialization.jsonObject(with: jsonDecodedObj) as? [String:Any] ?? [:]
+            
+        }
+
+        return [:]
+        
+    }
+
+    
     
 }

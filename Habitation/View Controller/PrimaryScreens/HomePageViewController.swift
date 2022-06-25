@@ -15,6 +15,9 @@ class HomePageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.hidesBackButton = true
+        tabBarController?.tabBar.isHidden = true
+        
         editItems()
         
     }

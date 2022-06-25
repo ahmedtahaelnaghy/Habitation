@@ -29,6 +29,7 @@
 		FCB1AD6727F481A600EBCABC /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB1AD6627F481A600EBCABC /* HomeCollectionViewCell.swift */; };
 		FCB7B09728630C55009BA034 /* AuthServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB7B09628630C55009BA034 /* AuthServiceManager.swift */; };
 		FCB7B0992863158C009BA034 /* LoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB7B0982863158C009BA034 /* LoginInfo.swift */; };
+		FCBB06392867105D004C6A45 /* ComingHomeDataServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBB06382867105D004C6A45 /* ComingHomeDataServiceManager.swift */; };
 		FCEA6DE12818C59900BD1E77 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEA6DE02818C59900BD1E77 /* UIView+Extensions.swift */; };
 		FCEE870327DDFEF0005B5B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE870227DDFEF0005B5B70 /* AppDelegate.swift */; };
 		FCEE870527DDFEF0005B5B70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE870427DDFEF0005B5B70 /* SceneDelegate.swift */; };
@@ -89,6 +90,7 @@
 		FCB1AD6627F481A600EBCABC /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		FCB7B09628630C55009BA034 /* AuthServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceManager.swift; sourceTree = "<group>"; };
 		FCB7B0982863158C009BA034 /* LoginInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInfo.swift; sourceTree = "<group>"; };
+		FCBB06382867105D004C6A45 /* ComingHomeDataServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingHomeDataServiceManager.swift; sourceTree = "<group>"; };
 		FCEA6DE02818C59900BD1E77 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		FCEE86FF27DDFEF0005B5B70 /* Habitation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habitation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCEE870227DDFEF0005B5B70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				FCB7B09628630C55009BA034 /* AuthServiceManager.swift */,
+				FCBB06382867105D004C6A45 /* ComingHomeDataServiceManager.swift */,
 			);
 			path = LocalDatabase;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 				FCEE874427DE5CC9005B5B70 /* SignUpViewController.swift in Sources */,
 				FC44EB8928224E2700019723 /* FavoriteHomeCollectionViewCell.swift in Sources */,
 				FCEA6DE12818C59900BD1E77 /* UIView+Extensions.swift in Sources */,
+				FCBB06392867105D004C6A45 /* ComingHomeDataServiceManager.swift in Sources */,
 				FC18F7D22861B499001B85C5 /* HomeDetailsViewController.swift in Sources */,
 				FC06D0DA27E5251500E65142 /* HomeViewController.swift in Sources */,
 				FCA51832281183100045A28C /* SingleHomeCollectionViewCell.swift in Sources */,

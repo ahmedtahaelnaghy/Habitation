@@ -9,14 +9,8 @@ import Foundation
 
 struct SignUpInfo: Codable {
     
-//    var email: String
-//    var city: String
-//    var password: String
-//    var verifyPassword: String
-//
-    
     var name: String
     var email: String
     var id: Int
-    
+        
 }

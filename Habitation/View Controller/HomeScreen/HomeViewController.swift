@@ -21,15 +21,11 @@ class HomeViewController: UIViewController {
                                          ]
     
     var homeArray = ["", "" , "", "", "" ,""]
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.hidesBackButton = true
-        
-        
-        
-        
         
         homeCollectionView.delegate = self
         homeCollectionView.dataSource = self
@@ -41,16 +37,13 @@ class HomeViewController: UIViewController {
         
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         
         let userDefaults = UserDefaults.standard
         guard let userName = userDefaults.string(forKey: "name") else {return}
-        
-        welcomeLbl.text = "Good Evening '\(userName)'"
-        
-        print(userName)
-        
+                
+        welcomeLbl.text = "Welcom '\(userName)'"
+                        
     }
     
     func editeSearchTextFieldShape() {
@@ -102,10 +95,8 @@ class HomeViewController: UIViewController {
             
         }
         
-        
     }
     
-
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {

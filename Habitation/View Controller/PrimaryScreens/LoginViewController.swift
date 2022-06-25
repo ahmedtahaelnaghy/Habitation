@@ -76,20 +76,22 @@ class LoginViewController: UIViewController {
                 
                 switch result {
                     
-                case .success(let model):
+                case .success(_):
                     
-                    let userDefaults = UserDefaults.standard
-                    userDefaults.set(model.auth_token, forKey: "token")
-                    
-                    
-                    
-                    if let vc = self.storyboard?.instantiateViewController(withIdentifier: "tabBarC") as? TabBarViewController {
-                        
-                        
-                        
-                        
-                        self.navigationController?.pushViewController(vc, animated: true)
-                        
+                    AuthServiceManager().tokenData { result in
+                        switch result {
+                            
+                        case .success(_):
+                            
+                            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "tabBarC") as? TabBarViewController {
+                                
+                                self.navigationController?.pushViewController(vc, animated: true)
+                                
+                            }
+                            
+                        case .failure(let error):
+                            print(error.localizedDescription)
+                        }
                     }
                     
                 case .failure(_):

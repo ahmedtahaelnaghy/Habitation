@@ -7,15 +7,22 @@
 
 import Foundation
 import Alamofire
+import CloudKit
 
 class AuthServiceManager {
     
     // function that post login
     func fetchAuthDataFromAlamofire(email: String, password: String, completion: @escaping(Result<Model, Error>) -> (Void)) {
         
+        let parameters = [
+                          "email": email,
+                          "password": password
+                          ]
+        
+        
         guard let url = URL(string: "http://13.93.33.202:8000/auth/token/login/") else {return}
         
-        let request = AF.request(url, method: .post, parameters: ["email": email, "password": password] , encoding: JSONEncoding.default)
+        let request = AF.request(url, method: .post, parameters: parameters , encoding: JSONEncoding.default)
         
         request.response { dataResponse in
             
@@ -32,6 +39,9 @@ class AuthServiceManager {
                 
                 guard let model = try? JSONDecoder().decode(Model.self, from: data!) else {return}
                 
+                let userDefaults = UserDefaults.standard
+                userDefaults.set(model.auth_token, forKey: "token")
+                
                 completion(.success(model))
                 
             case .failure(let error):
@@ -46,9 +56,16 @@ class AuthServiceManager {
     // function that post SignUp
     func addNewAcountInAlamofire(name: String, email: String, password: String, verifyPassword: String, completion: @escaping (Result<SignUpInfo, Error>) -> (Void)) {
         
+        let parameters = [
+                          "name": name,
+                          "email": email,
+                          "password": password,
+                          "re_password": verifyPassword
+                          ]
+        
         guard let url = URL(string: "http://13.93.33.202:8000/auth/users/") else {return}
         
-        let request = AF.request(url, method: .post, parameters: ["name": name, "email": email, "password": password, "re_password": verifyPassword], encoding: JSONEncoding.default)
+        let request = AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
         
         request.response { (dataResponse) in
             
@@ -65,7 +82,9 @@ class AuthServiceManager {
                 
                 guard let signUpModel = try? JSONDecoder().decode(SignUpInfo.self, from: data!) else {return}
                 
-                print(signUpModel.self)
+                let userDefaults = UserDefaults.standard
+                
+                userDefaults.set(signUpModel.name, forKey: "name")
                 
                 completion(.success(signUpModel))
                 
@@ -78,27 +97,38 @@ class AuthServiceManager {
          
     }
     
-    
-    
-    
-    
-    
-    
+    // function that get token and save name in userDefaults
+    func tokenData(completion: @escaping (Result<SignUpInfo, Error>) -> (Void)) {
+        
+        let userDefaults = UserDefaults.standard
+        
+        guard let comingToken = userDefaults.string(forKey: "token") else {return}
+        
+        guard let url = URL(string: "http://13.93.33.202:8000/auth/users/me/") else {return}
+        
+        let request = AF.request(url, method: .get, headers: [HTTPHeader(name: "Authorization", value: "token \(comingToken)")])
+                
+        request.response { dataResponse in
+
+            switch dataResponse.result {
+
+            case .success(let data):
+
+                guard let comingData = try? JSONDecoder().decode(SignUpInfo.self, from: data!) else {return}
+                                                
+                userDefaults.set(comingData.name, forKey: "name")
+                
+                completion(.success(comingData))
+
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            
+        }
+        
+    }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 protocol OurErrorProtocol: LocalizedError {
 
