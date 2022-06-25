@@ -53,7 +53,7 @@ class AuthServiceManager {
         
     }
     
-    // function that post SignUp
+    // function that post SignUp and save name in userDefaults
     func addNewAcountInAlamofire(name: String, email: String, password: String, verifyPassword: String, completion: @escaping (Result<SignUpInfo, Error>) -> (Void)) {
         
         let parameters = [

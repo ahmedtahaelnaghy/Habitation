@@ -14,11 +14,11 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var welcomeLbl: UILabel!
     
-    var categoriesArray: [Categories] = [Categories(image: "homeIcon", name: "Home"),
+    var categoriesArray: [Categories] = [
+                                         Categories(image: "homeIcon", name: "Home"),
                                          Categories(image: "apartment", name: "Apartment"),
                                          Categories(image: "office", name: "Office")
-     
-                                         ]
+                                        ]
     
     var homeArray = ["", "" , "", "", "" ,""]
         
@@ -39,53 +39,50 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        let userDefaults = UserDefaults.standard
-        guard let userName = userDefaults.string(forKey: "name") else {return}
-                
-        welcomeLbl.text = "Welcom '\(userName)'"
+        editWelcomeLabel()
                         
     }
     
-    func editeSearchTextFieldShape() {
-
-        let itemsArray = [searchTextField]
+    func editWelcomeLabel() {
         
-        _ = itemsArray.map {
-            
-            $0!.layer.borderColor = UIColor.systemGray.cgColor
-            $0!.layer.borderWidth = 1
-            $0!.layer.cornerRadius = 33
-            $0!.layer.shadowColor = UIColor.lightGray.cgColor
-            $0!.layer.shadowOpacity = 0.3
-            $0!.layer.shadowRadius = 1
-            $0!.layer.shadowOffset = CGSize(width: 1, height: 1)
-            $0!.layer.masksToBounds = false
-
-        }
+        let userDefaults = UserDefaults.standard
+        guard let userName = userDefaults.string(forKey: "name") else {return}
+        
+        welcomeLbl.text = getGreeting(userName: userName)
         
     }
     
-    func addImgToSearchTextField(textField: UITextField, image: UIImage) {
+    private func getGreeting(userName: String) -> String {
         
-        let imageView = UIImageView(frame: CGRect(x: 40, y: 0, width: image.size.width, height: image.size.height))
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 70, height: image.size.height))
-        view.addSubview(imageView)
-        imageView.image = image
-        textField.leftView = view
-        textField.leftViewMode = .always
+        let hour = Calendar.current.component(.hour, from: Date())
+
+        switch hour {
+            
+        case 0..<4:
+            return "Hello, \(userName)"
+            
+        case 4..<12:
+            return "Good Morning, \(userName)"
+            
+        case 12..<18:
+            return "Good Afternoon, \(userName)"
+            
+        case 18..<24:
+            return "Good Evening, \(userName)"
+            
+        default:
+            break
+            
+        }
         
+        return "Hello"
     }
     
     @IBAction func categorySeeMoreBtn(_ sender: Any) {
         
-//        UIView.animate(withDuration: 0.25) {
-//            self.categoriesCollectionView.layoutIfNeeded()
             self.tabBarController?.selectedIndex = 1
-            
-//        }
         
     }
-    
     
     @IBAction func addBtn(_ sender: Any) {
         
@@ -99,6 +96,7 @@ class HomeViewController: UIViewController {
     
 }
 
+// collectionView
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -186,6 +184,40 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         homeCollectionView.collectionViewLayout = layout
            
+    }
+    
+}
+// Search textField shape
+extension HomeViewController {
+    
+    func editeSearchTextFieldShape() {
+
+        let itemsArray = [searchTextField]
+        
+        _ = itemsArray.map {
+            
+            $0!.layer.borderColor = UIColor.systemGray.cgColor
+            $0!.layer.borderWidth = 1
+            $0!.layer.cornerRadius = 33
+            $0!.layer.shadowColor = UIColor.lightGray.cgColor
+            $0!.layer.shadowOpacity = 0.3
+            $0!.layer.shadowRadius = 1
+            $0!.layer.shadowOffset = CGSize(width: 1, height: 1)
+            $0!.layer.masksToBounds = false
+
+        }
+        
+    }
+    
+    func addImgToSearchTextField(textField: UITextField, image: UIImage) {
+        
+        let imageView = UIImageView(frame: CGRect(x: 40, y: 0, width: image.size.width, height: image.size.height))
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 70, height: image.size.height))
+        view.addSubview(imageView)
+        imageView.image = image
+        textField.leftView = view
+        textField.leftViewMode = .always
+        
     }
     
 }
