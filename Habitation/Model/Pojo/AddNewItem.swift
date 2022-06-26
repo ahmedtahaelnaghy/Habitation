@@ -12,17 +12,19 @@ struct AddNewItem: Codable {
     var name: String
     var description: String
     
-    var price: String
-    var cash_discount: String
+    var price: Int
+    var cash_discount: Double
     
     var type: String
-    var area: String
+    var area: Int
     var baths_no: Int
     var bed_rooms_no: Int
+    var location: String
+    
+    var images: [String]
+    
+    var available: Bool
     var direction: String
-    
-    var images: String
-    
     
     func isDictionary() -> [String:Any] {
 

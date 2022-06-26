@@ -46,6 +46,48 @@ class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBAction func saveBtn(_ sender: Any) {
         
+        guard let unitName = unitNameTextField.text else {return}
+        guard let description = descriptionTextField.text else {return}
+        guard let unitPrice = Int(unitPriceTextField.text) else {return}
+        guard let cashPercentageDiscount = Double(cashPercentageDiscountTextField.text) else {return}
+        guard let type = typeTextField.text else {return}
+        guard let area = Int(areaTextField.text) else {return}
+        guard let numberOfBathrooms = Int(numberOfBathroomsTextField.text) else {return}
+        guard let numberOfBedrooms = Int(numberOfBedroomsTextField.text) else {return}
+        guard let location = locationTextField.text else {return}
+        
+        let avaiable: Bool = true
+        let direction: String = "North"
+        let images = UIImage().convertImageToPngString(image: UIImage(named: "logo")!)
+        let img = [images, images]
+        
+        ComingHomeDataServiceManager().homeData(unitName: unitName, description: description, unitPrice: unitPrice, cashPercentageDiscount: cashPercentageDiscount, type: type, area: area, location: location, numberOfBathrooms: numberOfBathrooms, numberOfBedrooms: numberOfBedrooms, images: img, available: avaiable, direction: direction) { result in
+            
+            
+            switch result {
+            
+            case .success(_):
+                print("Sucess")
+            case .failure(_):
+                print("Fail")
+            }
+            
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         

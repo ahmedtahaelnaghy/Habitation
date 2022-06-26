@@ -8,17 +8,46 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-
-    @IBOutlet weak var UserDetailsView: UIView!
     
+    
+    @IBOutlet weak var userProfileView: UIView!
     @IBOutlet weak var logOutBtnShape: UIButton!
+    
+    @IBOutlet weak var userImg: UIImageView!
+    
+    @IBOutlet weak var userDetails: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         editItems()
-                
-             
+        
+        setUserDetailsOnLabel()
+        
+        
     }
+        
+    func setUserDetailsOnLabel() {
+        
+        let userDfaults = UserDefaults.standard
+        userDetails.text = userDfaults.string(forKey: "name")
+        
+    }
+    
+    @IBAction func userProfileBtn(_ sender: Any) {
+        
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "ProfileVC") as? ProfileViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        
+        
+        }
+        
+    }
+    
+    
+    
+    
     
     @IBAction func logOutBtn(_ sender: Any) {
         
@@ -41,7 +70,7 @@ extension SettingsViewController {
     
     func editItems() {
         
-        let itemsArray = [UserDetailsView, logOutBtnShape]
+        let itemsArray = [userProfileView, logOutBtnShape]
 
         _ = itemsArray.map {
 

@@ -19,6 +19,7 @@
 		FC45E8D3286445CD0016F668 /* SignUpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC45E8D2286445CD0016F668 /* SignUpInfo.swift */; };
 		FC4618D3285E195700703FCB /* AddNewHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4618D2285E195700703FCB /* AddNewHomeViewController.swift */; };
 		FC610F382844402F00A0BD95 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC610F372844402F00A0BD95 /* TabBarViewController.swift */; };
+		FC8380DC2867C7C60028E5C6 /* ConvertImageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8380DB2867C7C60028E5C6 /* ConvertImageType.swift */; };
 		FC87530C285E054400AF4197 /* CheckYourEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC87530B285E054400AF4197 /* CheckYourEmailViewController.swift */; };
 		FC908C6228653D3200939C3E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC908C6128653D3200939C3E /* Model.swift */; };
 		FCA51832281183100045A28C /* SingleHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA51831281183100045A28C /* SingleHomeCollectionViewCell.swift */; };
@@ -80,6 +81,7 @@
 		FC45E8D2286445CD0016F668 /* SignUpInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfo.swift; sourceTree = "<group>"; };
 		FC4618D2285E195700703FCB /* AddNewHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHomeViewController.swift; sourceTree = "<group>"; };
 		FC610F372844402F00A0BD95 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		FC8380DB2867C7C60028E5C6 /* ConvertImageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertImageType.swift; sourceTree = "<group>"; };
 		FC87530B285E054400AF4197 /* CheckYourEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckYourEmailViewController.swift; sourceTree = "<group>"; };
 		FC908C6128653D3200939C3E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		FCA51831281183100045A28C /* SingleHomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleHomeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -309,12 +311,12 @@
 				FC610F392844411300A0BD95 /* PrimaryScreens */,
 				FCB1AD6527F4816A00EBCABC /* HomeScreen */,
 				FC18F7D02861B482001B85C5 /* HomeDetails */,
-				FCA74580285F37B30006D499 /* ProfileScreen */,
 				FC4618D1285E191C00703FCB /* AddNewHomeScreen */,
 				FCA892C3285B900D004A4E6D /* NearbyYourLocationScreen */,
 				FCF9D4E127F2738000CCE0B9 /* CategoriesScreen */,
 				FC44EB87282246E100019723 /* FavoritesScreen */,
 				FC29BAC9282226770017425C /* SettingsScreen */,
+				FCA74580285F37B30006D499 /* ProfileScreen */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -332,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				FCEA6DE02818C59900BD1E77 /* UIView+Extensions.swift */,
+				FC8380DB2867C7C60028E5C6 /* ConvertImageType.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				FCEE874427DE5CC9005B5B70 /* SignUpViewController.swift in Sources */,
 				FC44EB8928224E2700019723 /* FavoriteHomeCollectionViewCell.swift in Sources */,
 				FCEA6DE12818C59900BD1E77 /* UIView+Extensions.swift in Sources */,
+				FC8380DC2867C7C60028E5C6 /* ConvertImageType.swift in Sources */,
 				FCBB06392867105D004C6A45 /* ComingHomeDataServiceManager.swift in Sources */,
 				FC18F7D22861B499001B85C5 /* HomeDetailsViewController.swift in Sources */,
 				FC06D0DA27E5251500E65142 /* HomeViewController.swift in Sources */,

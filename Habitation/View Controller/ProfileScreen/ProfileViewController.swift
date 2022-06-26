@@ -7,24 +7,79 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var userImg: UIImageView!
-    @IBOutlet weak var nameTextFieldShape: UITextField!
-    @IBOutlet weak var cityTextFieldShape: UITextField!
-    @IBOutlet weak var numberTextFieldShape: UITextField!
-    @IBOutlet weak var emailTextFieldShape: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var cityTextField: UITextField!
+    @IBOutlet weak var numberTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var updateProfileBtnShape: UIButton!
     
+    
+    var imagePicker: UIImagePickerController!
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-
+                
+        navigationItem.hidesBackButton = true
+        
         editImageShape(image: userImg)
         editBtnShape(button: updateProfileBtnShape)
         editItems()
         
+        setDataInFields()
+
     }
-   
+    
+    
+    func setDataInFields() {
+        
+        let userDefaults = UserDefaults.standard
+        
+        nameTextField.text = userDefaults.string(forKey: "name")
+        emailTextField.text = userDefaults.string(forKey: "email")
+        
+    }
+    
+    
+    @IBAction func openGalleryBtn(_ sender: Any) {
+        
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let galleryImage = info[.originalImage] as? UIImage {
+            userImg.image = galleryImage
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func updateProfileBtn(_ sender: Any) {
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
+     
+}
+
+
+extension ProfileViewController {
+    
     func editImageShape(image: UIImageView) {
         
         image.layer.borderColor = UIColor.systemGray.cgColor
@@ -36,7 +91,7 @@ class ProfileViewController: UIViewController {
     
     func editItems() {
         
-        let itemsArray = [nameTextFieldShape, cityTextFieldShape, numberTextFieldShape, emailTextFieldShape]
+        let itemsArray = [nameTextField, cityTextField, numberTextField, emailTextField]
         
         _ = itemsArray.map {
             
@@ -49,6 +104,15 @@ class ProfileViewController: UIViewController {
             $0!.layer.shadowOffset = CGSize(width: 1.2, height: 1.2)
             $0!.layer.masksToBounds = true
 
+        }
+        
+        _ = itemsArray.map {
+            
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 0))
+
+            $0!.leftView = view
+            $0!.leftViewMode = .always
+                
         }
         
     }
@@ -64,9 +128,6 @@ class ProfileViewController: UIViewController {
         button.layer.shadowOffset = CGSize(width: 1.2, height: 1.2)
         button.layer.masksToBounds = true
         
-        
-        
     }
-    
     
 }

@@ -85,6 +85,7 @@ class AuthServiceManager {
                 let userDefaults = UserDefaults.standard
                 
                 userDefaults.set(signUpModel.name, forKey: "name")
+                userDefaults.set(signUpModel.email, forKey: "email")
                 
                 completion(.success(signUpModel))
                 
@@ -117,6 +118,7 @@ class AuthServiceManager {
                 guard let comingData = try? JSONDecoder().decode(SignUpInfo.self, from: data!) else {return}
                                                 
                 userDefaults.set(comingData.name, forKey: "name")
+                userDefaults.set(comingData.email, forKey: "email")
                 
                 completion(.success(comingData))
 
