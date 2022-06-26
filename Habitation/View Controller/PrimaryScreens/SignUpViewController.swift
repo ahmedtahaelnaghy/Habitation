@@ -18,8 +18,6 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        navigationItem.backBarButtonItem?.tintColor = UIColor.white
-
         
         editItems(borderColor: UIColor.systemGray.cgColor, borderWidth: 1, curveRadius: 20)
         addImageToTextField(textField: emailTextField, image: UIImage(named: "email")!)

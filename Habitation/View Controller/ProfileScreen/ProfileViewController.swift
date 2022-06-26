@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ProfileViewController: UIViewController {
 
     @IBOutlet weak var userImg: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
@@ -16,9 +16,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var updateProfileBtnShape: UIButton!
     
+    var delegate: AddUserImg?
     
-    var imagePicker: UIImagePickerController!
-        
     override func viewDidLoad() {
         super.viewDidLoad()
                 
@@ -32,11 +31,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
 
     }
     
-    
     func setDataInFields() {
         
         let userDefaults = UserDefaults.standard
-        
         nameTextField.text = userDefaults.string(forKey: "name")
         emailTextField.text = userDefaults.string(forKey: "email")
         
@@ -44,8 +41,26 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     
     @IBAction func openGalleryBtn(_ sender: Any) {
+        getImgFromGallery()
+    }
+    
+    @IBAction func updateProfileBtn(_ sender: Any) {
         
-        imagePicker = UIImagePickerController()
+
+        self.navigationController?.popViewController(animated: true)
+        
+        
+        
+    }
+       
+}
+
+// Openning gallery and select user image
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func getImgFromGallery() {
+        
+        let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
@@ -55,29 +70,17 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let galleryImage = info[.originalImage] as? UIImage {
+            
             userImg.image = galleryImage
+            
         }
         dismiss(animated: true, completion: nil)
     }
     
-    
-    @IBAction func updateProfileBtn(_ sender: Any) {
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    }
-     
 }
 
 
+// Code for textFields and image shape
 extension ProfileViewController {
     
     func editImageShape(image: UIImageView) {

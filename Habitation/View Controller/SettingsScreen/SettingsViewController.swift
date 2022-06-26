@@ -16,6 +16,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var userImg: UIImageView!
     
     @IBOutlet weak var userDetails: UILabel!
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,12 @@ class SettingsViewController: UIViewController {
         
         let userDefaults = UserDefaults.standard
         userDefaults.set("", forKey: "name")
+        userDefaults.set("", forKey: "email")
+        
+        print(userDefaults.set("", forKey: "name"))
+        print(userDefaults.set("", forKey: "email"))
+        
+        
         
         if let vc = storyboard?.instantiateViewController(withIdentifier: "rootVC") as? HomePageViewController {
             
@@ -66,6 +73,7 @@ class SettingsViewController: UIViewController {
 
 }
 
+// Code for view and button shape
 extension SettingsViewController {
     
     func editItems() {

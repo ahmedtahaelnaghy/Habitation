@@ -10,7 +10,7 @@ import Alamofire
 
 class ComingHomeDataServiceManager {
     
-    func homeData(unitName: String, description: String, unitPrice: Int, cashPercentageDiscount:Double, type: String, area: Int, location: String, numberOfBathrooms: Int, numberOfBedrooms: Int, images: [String], available: Bool, direction: String, completion: @escaping (Result<AddNewItem, Error>) -> (Void)) {
+    func homeData(unitName: String, description: String, unitPrice: Double, cashPercentageDiscount:Double, type: String, area: Int, location: [Double], numberOfBathrooms: Int, numberOfBedrooms: Int, images: [String], available: Bool, direction: String, completion: @escaping (Result<AddNewItem, Error>) -> (Void)) {
         
         let parameters = AddNewItem(name: unitName, description: description, price: unitPrice, cash_discount: cashPercentageDiscount, type: type, area: area, baths_no: numberOfBathrooms, bed_rooms_no: numberOfBedrooms, location: location, images: images, available: available, direction: direction)
         

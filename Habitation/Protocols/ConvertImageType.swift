@@ -12,8 +12,8 @@ extension UIImage {
     
     func convertImageToPngString(image: UIImage) -> String {
         
-        let data = self.pngData()
-        return data!.base64EncodedString(options: .endLineWithLineFeed)
+        guard let data = self.pngData() else {return ""}
+        return data.base64EncodedString(options: .endLineWithLineFeed)
         
     }
   

@@ -28,6 +28,55 @@ class FavoritesViewController: UIViewController {
         setupUiForCategoriesCollectionView()
     }
     
+
+    
+}
+
+extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return favArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! FavoriteHomeCollectionViewCell
+        
+        cell.image.image = UIImage(named: "unit5")
+        cell.layer.borderColor = UIColor.lightGray.cgColor
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 27
+        cell.layer.shadowColor = UIColor.lightGray.cgColor
+        cell.layer.shadowOpacity = 0.5
+        cell.layer.shadowRadius = 1
+        cell.layer.shadowOffset = CGSize(width: 1.2, height: 1.2)
+        cell.layer.masksToBounds = true
+            
+        return cell
+        
+    }
+    
+    func setupUiForCategoriesCollectionView() {
+
+        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
+
+        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 50, bottom: 10, trailing: 50)
+
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.6)), subitem: item, count: 1)
+
+        let section = NSCollectionLayoutSection(group: group)
+
+        let layout = UICollectionViewCompositionalLayout(section: section)
+
+        FavoritesCollectionView.collectionViewLayout = layout
+
+    }
+
+}
+
+// Code for textFields shape
+extension FavoritesViewController {
+    
     func editItems() {
         
         let itemsArray = [searchTextField]
@@ -59,49 +108,5 @@ class FavoritesViewController: UIViewController {
         textField.leftViewMode = .always
         
     }
-    
-}
-
-extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return favArray.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! FavoriteHomeCollectionViewCell
-        
-        cell.image.backgroundColor = .brown
-        cell.layer.borderColor = UIColor.lightGray.cgColor
-        cell.layer.borderWidth = 1
-        cell.layer.cornerRadius = 27
-        cell.layer.shadowColor = UIColor.lightGray.cgColor
-        cell.layer.shadowOpacity = 0.5
-        cell.layer.shadowRadius = 1
-        cell.layer.shadowOffset = CGSize(width: 1.2, height: 1.2)
-        cell.layer.masksToBounds = true
-            
-        return cell
-        
-    }
-    
-    func setupUiForCategoriesCollectionView() {
-
-        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-
-        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 50, bottom: 10, trailing: 50)
-
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.6)), subitem: item, count: 1)
-
-        let section = NSCollectionLayoutSection(group: group)
-
-        let layout = UICollectionViewCompositionalLayout(section: section)
-
-        FavoritesCollectionView.collectionViewLayout = layout
-
-    }
-
-    
     
 }

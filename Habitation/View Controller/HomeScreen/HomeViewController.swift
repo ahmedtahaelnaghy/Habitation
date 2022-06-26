@@ -38,16 +38,13 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         editWelcomeLabel()
-                        
     }
     
     func editWelcomeLabel() {
         
         let userDefaults = UserDefaults.standard
         guard let userName = userDefaults.string(forKey: "name") else {return}
-        
         welcomeLbl.text = getGreeting(userName: userName)
         
     }
@@ -79,9 +76,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func categorySeeMoreBtn(_ sender: Any) {
-        
             self.tabBarController?.selectedIndex = 1
-        
     }
     
     @IBAction func addBtn(_ sender: Any) {
@@ -119,13 +114,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.categoryImg.image = UIImage(named: "\(categoriesArray[indexPath.row].image)")
             cell.categoryName.text = categoriesArray[indexPath.row].name
             
-            cell.layer.cornerRadius = 15
-            cell.layer.borderWidth = 0.5
             cell.layer.borderColor = UIColor.lightGray.cgColor
-            cell.layer.shadowOffset = CGSize(width: 1.6, height: 1)
-            cell.layer.shadowColor = UIColor.lightGray.cgColor
-            cell.layer.shadowOpacity = 0.5
-            cell.layer.shadowRadius = 1
+            cell.layer.borderWidth = 0.6
+            cell.layer.cornerRadius = 17
+            cell.layer.shadowColor = UIColor.black.cgColor
+            cell.layer.shadowRadius = 4
+            cell.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+            cell.layer.shadowOpacity = 0.1
             cell.layer.masksToBounds = true
             
             return cell
@@ -134,14 +129,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             let homeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeCell", for: indexPath) as! SingleHomeCollectionViewCell
     
-            homeCell.homeImg.image = UIImage(named: "logo")
-            homeCell.layer.cornerRadius = 15
-            homeCell.layer.borderWidth = 0.5
+            homeCell.homeImg.image = UIImage(named: "unit5")
             homeCell.layer.borderColor = UIColor.lightGray.cgColor
-            homeCell.layer.shadowOffset = CGSize(width: 2, height: 1)
-            homeCell.layer.shadowColor = UIColor.lightGray.cgColor
-            homeCell.layer.shadowOpacity = 0.5
-            homeCell.layer.shadowRadius = 1
+            homeCell.layer.borderWidth = 0.6
+            homeCell.layer.cornerRadius = 17
+            homeCell.layer.shadowColor = UIColor.black.cgColor
+            homeCell.layer.shadowRadius = 4
+            homeCell.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+            homeCell.layer.shadowOpacity = 0.1
             homeCell.layer.masksToBounds = true
             
             return homeCell
@@ -196,13 +191,13 @@ extension HomeViewController {
         
         _ = itemsArray.map {
             
-            $0!.layer.borderColor = UIColor.systemGray.cgColor
-            $0!.layer.borderWidth = 1
-            $0!.layer.cornerRadius = 33
-            $0!.layer.shadowColor = UIColor.lightGray.cgColor
-            $0!.layer.shadowOpacity = 0.3
-            $0!.layer.shadowRadius = 1
-            $0!.layer.shadowOffset = CGSize(width: 1, height: 1)
+            $0!.layer.borderColor = UIColor.lightGray.cgColor
+            $0!.layer.borderWidth = 0.6
+            $0!.layer.cornerRadius = 17
+            $0!.layer.shadowColor = UIColor.black.cgColor
+            $0!.layer.shadowRadius = 4
+            $0!.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+            $0!.layer.shadowOpacity = 0.1
             $0!.layer.masksToBounds = false
 
         }
@@ -211,7 +206,7 @@ extension HomeViewController {
     
     func addImgToSearchTextField(textField: UITextField, image: UIImage) {
         
-        let imageView = UIImageView(frame: CGRect(x: 40, y: 0, width: image.size.width, height: image.size.height))
+        let imageView = UIImageView(frame: CGRect(x: 35, y: 0, width: image.size.width, height: image.size.height))
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 70, height: image.size.height))
         view.addSubview(imageView)
         imageView.image = image

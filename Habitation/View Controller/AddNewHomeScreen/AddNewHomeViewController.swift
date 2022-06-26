@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import PhotosUI
 
-class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AddNewHomeViewController: UIViewController, PHPickerViewControllerDelegate {
     
     @IBOutlet weak var unitNameTextField: UITextView!
     @IBOutlet weak var descriptionTextField: UITextView!
@@ -22,16 +23,11 @@ class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var cancelBtnShape: UIButton!
     @IBOutlet weak var openGalleryShape: UIButton!
     
-    var imagePicker: UIImagePickerController!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.hidesBackButton = true
         
-        imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
         
         editItems()
         textFieldShape()
@@ -39,30 +35,27 @@ class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func openGalleryBtn(_ sender: Any) {
-        
-        present(imagePicker, animated: true, completion: nil)
-        
+        getImagesFromGallery()
     }
     
     @IBAction func saveBtn(_ sender: Any) {
         
         guard let unitName = unitNameTextField.text else {return}
         guard let description = descriptionTextField.text else {return}
-        guard let unitPrice = Int(unitPriceTextField.text) else {return}
+        guard let unitPrice = Double(unitPriceTextField.text) else {return}
         guard let cashPercentageDiscount = Double(cashPercentageDiscountTextField.text) else {return}
         guard let type = typeTextField.text else {return}
         guard let area = Int(areaTextField.text) else {return}
         guard let numberOfBathrooms = Int(numberOfBathroomsTextField.text) else {return}
         guard let numberOfBedrooms = Int(numberOfBedroomsTextField.text) else {return}
-        guard let location = locationTextField.text else {return}
+        guard let location = Double(locationTextField.text) else {return}
         
         let avaiable: Bool = true
         let direction: String = "North"
         let images = UIImage().convertImageToPngString(image: UIImage(named: "logo")!)
         let img = [images, images]
         
-        ComingHomeDataServiceManager().homeData(unitName: unitName, description: description, unitPrice: unitPrice, cashPercentageDiscount: cashPercentageDiscount, type: type, area: area, location: location, numberOfBathrooms: numberOfBathrooms, numberOfBedrooms: numberOfBedrooms, images: img, available: avaiable, direction: direction) { result in
-            
+        ComingHomeDataServiceManager().homeData(unitName: unitName, description: description, unitPrice: unitPrice, cashPercentageDiscount: cashPercentageDiscount, type: type, area: area, location: [location], numberOfBathrooms: numberOfBathrooms, numberOfBedrooms: numberOfBedrooms, images: img, available: avaiable, direction: direction) { result in
             
             switch result {
             
@@ -100,6 +93,55 @@ class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
 }
+
+
+extension AddNewHomeViewController {
+    
+    func getImagesFromGallery() {
+        
+        var config = PHPickerConfiguration()
+        
+        config.selectionLimit = 10
+        
+        let phPickerVC = PHPickerViewController(configuration: config)
+        
+        phPickerVC.delegate = self
+        
+        present(phPickerVC, animated: true, completion: nil)
+        
+    }
+    
+    
+    
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        
+        for result in results {
+            
+            result.itemProvider.loadObject(ofClass: UIImage.self) { obj, error in
+                
+                if let image = obj as? UIImage {
+                    
+                    DispatchQueue.main.async {
+                        
+//                        self.newFriendImage.image = image
+                        
+                    }
+                    
+                }
+  
+            }
+            
+        }
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    
+}
+
+
 
 extension AddNewHomeViewController {
     
