@@ -9,7 +9,7 @@ import UIKit
 
 class CategoriesViewController: UIViewController {
 
-    @IBOutlet weak var categoriesCollectionView: UICollectionView!
+    @IBOutlet weak var allCategoriesCollectionView: UICollectionView!
     
     var categoriesArray:[Categories] = [Categories(image: "homeIcon", name: "Home"),
                                         Categories(image: "hotel", name: "Hotel"),
@@ -23,6 +23,9 @@ class CategoriesViewController: UIViewController {
         super.viewDidLoad()
         
         setupUi()
+        
+        
+        
         
     }
     
@@ -58,6 +61,20 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+        if collectionView == allCategoriesCollectionView {
+
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "CategoryDetailsVC") as? CategoryDetailsViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+            }
+        }
+        
+    }
+    
     func setupUi() {
         
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
@@ -70,7 +87,7 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
         
         let layout = UICollectionViewCompositionalLayout(section: section)
         
-        categoriesCollectionView.collectionViewLayout = layout
+        allCategoriesCollectionView.collectionViewLayout = layout
         
     }
     

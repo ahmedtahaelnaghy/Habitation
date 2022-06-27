@@ -1,48 +1,46 @@
 //
-//  FavoritesViewController.swift
+//  CategoryDetailsViewController.swift
 //  Habitation
 //
-//  Created by Ahmed Taha on 18/03/2022.
+//  Created by Ahmed Taha on 27/06/2022.
 //
 
 import UIKit
 
-class FavoritesViewController: UIViewController {
+class CategoryDetailsViewController: UIViewController {
+
+    @IBOutlet weak var categoryDetailsCollectionView: UICollectionView!
     
     @IBOutlet weak var searchTextField: UITextField!
     
-    @IBOutlet weak var FavoritesCollectionView: UICollectionView!
-    
-    var favArray = ["", "", "", ""]
+    var homeArray = ["", "", "", ""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        FavoritesCollectionView.delegate = self
-        FavoritesCollectionView.dataSource = self
+        
+        categoryDetailsCollectionView.delegate = self
+        categoryDetailsCollectionView.dataSource = self
         
         addImgToSearchTextField(textField: searchTextField, image: UIImage(named: "search")!)
-        
         editItems()
+        setupUiForCategoryDetailsCollectionView()
         
-        setupUiForCategoriesCollectionView()
     }
-    
 
-    
 }
 
-extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+
+extension CategoryDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return favArray.count
+        return homeArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! FavoriteHomeCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CategoryDetailsCollectionViewCell
         
-        cell.image.image = UIImage(named: "unit5")
+        cell.homeImg.image = UIImage(named: "unit5")
         cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.layer.borderWidth = 0.8
         cell.layer.cornerRadius = 20
@@ -56,7 +54,7 @@ extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDat
         
     }
     
-    func setupUiForCategoriesCollectionView() {
+    func setupUiForCategoryDetailsCollectionView() {
 
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
 
@@ -68,14 +66,14 @@ extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDat
 
         let layout = UICollectionViewCompositionalLayout(section: section)
 
-        FavoritesCollectionView.collectionViewLayout = layout
+        categoryDetailsCollectionView.collectionViewLayout = layout
 
     }
-
+    
 }
 
-// Code for textFields shape
-extension FavoritesViewController {
+
+extension CategoryDetailsViewController {
     
     func editItems() {
         

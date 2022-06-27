@@ -23,6 +23,9 @@ class AddNewHomeViewController: UIViewController, PHPickerViewControllerDelegate
     @IBOutlet weak var cancelBtnShape: UIButton!
     @IBOutlet weak var openGalleryShape: UIButton!
     
+    var imagesArray: [String] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,14 +51,19 @@ class AddNewHomeViewController: UIViewController, PHPickerViewControllerDelegate
         guard let area = Int(areaTextField.text) else {return}
         guard let numberOfBathrooms = Int(numberOfBathroomsTextField.text) else {return}
         guard let numberOfBedrooms = Int(numberOfBedroomsTextField.text) else {return}
-        guard let location = Double(locationTextField.text) else {return}
+//        guard let location = Double(locationTextField.text) else {return}
         
         let avaiable: Bool = true
         let direction: String = "North"
+        let location = [500.5, 800.1]
         let images = UIImage().convertImageToPngString(image: UIImage(named: "logo")!)
-        let img = [images, images]
+        let img = [images]
         
-        ComingHomeDataServiceManager().homeData(unitName: unitName, description: description, unitPrice: unitPrice, cashPercentageDiscount: cashPercentageDiscount, type: type, area: area, location: [location], numberOfBathrooms: numberOfBathrooms, numberOfBedrooms: numberOfBedrooms, images: img, available: avaiable, direction: direction) { result in
+//        let images = UIImage(named: "unit5")
+//        let img = [images]
+        
+        
+        ComingHomeDataServiceManager().homeData(unitName: unitName, description: description, unitPrice: unitPrice, cashPercentageDiscount: cashPercentageDiscount, type: type, area: area, location: location, numberOfBathrooms: numberOfBathrooms, numberOfBedrooms: numberOfBedrooms, images: img, available: avaiable, direction: direction) { result in
             
             switch result {
             
@@ -111,7 +119,7 @@ extension AddNewHomeViewController {
         
     }
     
-    
+
     
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
@@ -122,11 +130,30 @@ extension AddNewHomeViewController {
                 
                 if let image = obj as? UIImage {
                     
-                    DispatchQueue.main.async {
-                        
-//                        self.newFriendImage.image = image
-                        
-                    }
+                    
+                    
+//                    let fm = FileManager.default
+//                    let path = Bundle.main.resourcePath!
+//                    let items = try! fm.contentsOfDirectory(atPath: path)
+//
+//                    for item in items {
+//                        if item.hasPrefix("nssl") {
+//
+//                            imagesArray.append(contentsOf: item)
+//
+//                        }
+//                    }
+                    
+                    
+                    
+                    
+                    
+                    
+//                    DispatchQueue.main.async {
+//
+////                        self.newFriendImage.image = image
+//
+//                    }
                     
                 }
   

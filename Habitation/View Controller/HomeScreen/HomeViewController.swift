@@ -79,6 +79,18 @@ class HomeViewController: UIViewController {
             self.tabBarController?.selectedIndex = 1
     }
     
+    @IBAction func nearbyYourLocationSeeMoreBtn(_ sender: Any) {
+        
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "NearbyVC") as? NearbyYourLocationViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
+        
+        
+    }
+    
+    
     @IBAction func addBtn(_ sender: Any) {
         
         if let vc = storyboard?.instantiateViewController(withIdentifier: "AddNewHomeVC") as? AddNewHomeViewController {
@@ -142,6 +154,32 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return homeCell
             
         }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+        if collectionView == categoriesCollectionView {
+            
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "CategoryDetailsVC") as? CategoryDetailsViewController {
+                
+                self.navigationController?.pushViewController(vc, animated: true)
+                
+            }
+        
+        }else {
+            
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "HDVC") as? HomeDetailsViewController {
+                
+                self.navigationController?.pushViewController(vc, animated: true)
+                
+            }
+
+            
+            
+        }
+        
         
     }
     

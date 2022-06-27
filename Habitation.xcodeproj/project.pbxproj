@@ -19,6 +19,8 @@
 		FC45E8D3286445CD0016F668 /* SignUpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC45E8D2286445CD0016F668 /* SignUpInfo.swift */; };
 		FC4618D3285E195700703FCB /* AddNewHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4618D2285E195700703FCB /* AddNewHomeViewController.swift */; };
 		FC610F382844402F00A0BD95 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC610F372844402F00A0BD95 /* TabBarViewController.swift */; };
+		FC6A895E28698DDD007CABC3 /* CategoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6A895D28698DDD007CABC3 /* CategoryDetailsViewController.swift */; };
+		FC6A896028698E7A007CABC3 /* CategoryDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6A895F28698E7A007CABC3 /* CategoryDetailsCollectionViewCell.swift */; };
 		FC8380DC2867C7C60028E5C6 /* ConvertImageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8380DB2867C7C60028E5C6 /* ConvertImageType.swift */; };
 		FC87530C285E054400AF4197 /* CheckYourEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC87530B285E054400AF4197 /* CheckYourEmailViewController.swift */; };
 		FC908C6228653D3200939C3E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC908C6128653D3200939C3E /* Model.swift */; };
@@ -83,6 +85,8 @@
 		FC45E8D2286445CD0016F668 /* SignUpInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfo.swift; sourceTree = "<group>"; };
 		FC4618D2285E195700703FCB /* AddNewHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHomeViewController.swift; sourceTree = "<group>"; };
 		FC610F372844402F00A0BD95 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		FC6A895D28698DDD007CABC3 /* CategoryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailsViewController.swift; sourceTree = "<group>"; };
+		FC6A895F28698E7A007CABC3 /* CategoryDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		FC8380DB2867C7C60028E5C6 /* ConvertImageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertImageType.swift; sourceTree = "<group>"; };
 		FC87530B285E054400AF4197 /* CheckYourEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckYourEmailViewController.swift; sourceTree = "<group>"; };
 		FC908C6128653D3200939C3E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -217,6 +221,15 @@
 			path = PrimaryScreens;
 			sourceTree = "<group>";
 		};
+		FC6A895C28698D9C007CABC3 /* CategoryDetails */ = {
+			isa = PBXGroup;
+			children = (
+				FC6A895D28698DDD007CABC3 /* CategoryDetailsViewController.swift */,
+				FC6A895F28698E7A007CABC3 /* CategoryDetailsCollectionViewCell.swift */,
+			);
+			path = CategoryDetails;
+			sourceTree = "<group>";
+		};
 		FCA74580285F37B30006D499 /* ProfileScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,6 +324,7 @@
 		FCEE873627DDFF08005B5B70 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FC6A895C28698D9C007CABC3 /* CategoryDetails */,
 				FC610F362844400D00A0BD95 /* TabBar */,
 				FC610F392844411300A0BD95 /* PrimaryScreens */,
 				FCB1AD6527F4816A00EBCABC /* HomeScreen */,
@@ -579,6 +593,7 @@
 				FCEE874427DE5CC9005B5B70 /* SignUpViewController.swift in Sources */,
 				FC44EB8928224E2700019723 /* FavoriteHomeCollectionViewCell.swift in Sources */,
 				FCEA6DE12818C59900BD1E77 /* UIView+Extensions.swift in Sources */,
+				FC6A895E28698DDD007CABC3 /* CategoryDetailsViewController.swift in Sources */,
 				FC8380DC2867C7C60028E5C6 /* ConvertImageType.swift in Sources */,
 				FC9C2A6B28688C1100CEA8D4 /* AddUserImg.swift in Sources */,
 				FCBB06392867105D004C6A45 /* ComingHomeDataServiceManager.swift in Sources */,
@@ -588,6 +603,7 @@
 				FC18F7D62861E29B001B85C5 /* HomeImagesCollectionViewCell.swift in Sources */,
 				FCA892C7285B9269004A4E6D /* NearbyYourLocationCollectionViewCell.swift in Sources */,
 				FCB1AD6727F481A600EBCABC /* HomeCollectionViewCell.swift in Sources */,
+				FC6A896028698E7A007CABC3 /* CategoryDetailsCollectionViewCell.swift in Sources */,
 				FCEE873E27DE0818005B5B70 /* HomePageViewController.swift in Sources */,
 				FC908C6228653D3200939C3E /* Model.swift in Sources */,
 				FCEE870327DDFEF0005B5B70 /* AppDelegate.swift in Sources */,

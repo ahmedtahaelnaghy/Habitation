@@ -19,9 +19,6 @@ class AllDetailsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var callBtn: UIButton!
     
-    
-    
-    
     var imagesArray = ["", "", "", "", ""]
 
     override func awakeFromNib() {
@@ -84,7 +81,7 @@ extension AllDetailsTableViewCell: UICollectionViewDelegate, UICollectionViewDat
             let imagesCell = collectionView.dequeueReusableCell(withReuseIdentifier: "imagesCell", for: indexPath) as! HomeImagesCollectionViewCell
 
 
-            imagesCell.homeImages.image = UIImage(named: "Photo")
+            imagesCell.homeImages.image = UIImage(named: "unit5")
             
             imagesCell.layer.masksToBounds = true
 
@@ -94,7 +91,7 @@ extension AllDetailsTableViewCell: UICollectionViewDelegate, UICollectionViewDat
 
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! HomeImagesCollectionViewCell
 
-            cell.image.image = UIImage(named: "logo")
+            cell.image.image = UIImage(named: "unit1")
             cell.layer.cornerRadius = 15
             cell.layer.borderWidth = 0.5
             cell.layer.borderColor = UIColor.lightGray.cgColor
