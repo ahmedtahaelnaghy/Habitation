@@ -11,7 +11,8 @@ class CategoriesViewController: UIViewController {
 
     @IBOutlet weak var allCategoriesCollectionView: UICollectionView!
     
-    var categoriesArray:[Categories] = [Categories(image: "homeIcon", name: "Home"),
+    var categoriesArray:[Categories] = [
+                                        Categories(image: "homeIcon", name: "Home"),
                                         Categories(image: "hotel", name: "Hotel"),
                                         Categories(image: "apartment", name: "Apartment"),
                                         Categories(image: "office", name: "Office"),
@@ -21,11 +22,8 @@ class CategoriesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         setupUi()
-        
-        
-        
         
     }
     
@@ -33,7 +31,6 @@ class CategoriesViewController: UIViewController {
 
 extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
    
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return categoriesArray.count
@@ -63,15 +60,13 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        
-        if collectionView == allCategoriesCollectionView {
-
         if let vc = storyboard?.instantiateViewController(withIdentifier: "CategoryDetailsVC") as? CategoryDetailsViewController {
+            
+            vc.comingNavigationTitle = categoriesArray[indexPath.row].name
             
             self.navigationController?.pushViewController(vc, animated: true)
             
             }
-        }
         
     }
     

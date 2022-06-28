@@ -57,7 +57,6 @@ class AllDetailsTableViewCell: UITableViewCell {
 
 extension AllDetailsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
 
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
         if collectionView == homeImagesCollectionView {

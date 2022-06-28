@@ -12,19 +12,14 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var userProfileView: UIView!
     @IBOutlet weak var logOutBtnShape: UIButton!
-    
     @IBOutlet weak var userImg: UIImageView!
-    
     @IBOutlet weak var userDetails: UILabel!
-        
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         editItems()
-        
         setUserDetailsOnLabel()
-        
         
     }
         
@@ -46,20 +41,12 @@ class SettingsViewController: UIViewController {
         
     }
     
-    
-    
-    
-    
     @IBAction func logOutBtn(_ sender: Any) {
         
         let userDefaults = UserDefaults.standard
+        
         userDefaults.set("", forKey: "name")
         userDefaults.set("", forKey: "email")
-        
-        print(userDefaults.set("", forKey: "name"))
-        print(userDefaults.set("", forKey: "email"))
-        
-        
         
         if let vc = storyboard?.instantiateViewController(withIdentifier: "rootVC") as? HomePageViewController {
             
@@ -69,8 +56,6 @@ class SettingsViewController: UIViewController {
         
     }
     
-
-
 }
 
 // Code for view and button shape

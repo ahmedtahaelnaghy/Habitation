@@ -26,14 +26,10 @@ class HomeDetailsViewController: UIViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        
+        
                 
     }
-    
-    
-    
-
-    
-
     
     
 }
@@ -45,8 +41,6 @@ extension HomeDetailsViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
-    
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
                 
@@ -61,21 +55,18 @@ extension HomeDetailsViewController: UITableViewDelegate, UITableViewDataSource 
             
         case 1:
             let secondCell = tableView.dequeueReusableCell(withIdentifier: "secondCell", for: indexPath) as! AllDetailsTableViewCell
-//            secondCell.selectionStyle = .none
             
             return secondCell
             
         case 2:
             
             let thirdCell = tableView.dequeueReusableCell(withIdentifier: "thirdCell", for: indexPath) as! AllDetailsTableViewCell
-//            thirdCell.selectionStyle = .none
             
             return thirdCell
             
         default:
             
             let fourthCell = tableView.dequeueReusableCell(withIdentifier: "fourthCell", for: indexPath)
-//            fourthCell.selectionStyle = .none
             
             return fourthCell
             

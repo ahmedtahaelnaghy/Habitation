@@ -42,7 +42,7 @@ extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDat
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! FavoriteHomeCollectionViewCell
         
-        cell.image.image = UIImage(named: "unit5")
+        cell.image.image = UIImage(named: "apartentShape")
         cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.layer.borderWidth = 0.8
         cell.layer.cornerRadius = 20
@@ -53,6 +53,16 @@ extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.layer.masksToBounds = true
             
         return cell
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "HDVC") as? HomeDetailsViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
         
     }
     

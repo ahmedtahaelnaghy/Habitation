@@ -6,9 +6,10 @@
 //
 
 import UIKit
-import PhotosUI
+import Photos
+import BSImagePicker
 
-class AddNewHomeViewController: UIViewController, PHPickerViewControllerDelegate {
+class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegate  {
     
     @IBOutlet weak var unitNameTextField: UITextView!
     @IBOutlet weak var descriptionTextField: UITextView!
@@ -18,19 +19,19 @@ class AddNewHomeViewController: UIViewController, PHPickerViewControllerDelegate
     @IBOutlet weak var areaTextField: UITextView!
     @IBOutlet weak var numberOfBathroomsTextField: UITextView!
     @IBOutlet weak var numberOfBedroomsTextField: UITextView!
-    @IBOutlet weak var locationTextField: UITextView!
+    @IBOutlet weak var directionTextField: UITextView!
     @IBOutlet weak var saveBtnShape: UIButton!
     @IBOutlet weak var cancelBtnShape: UIButton!
     @IBOutlet weak var openGalleryShape: UIButton!
     
     var imagesArray: [String] = []
     
+    var selectedImages: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.hidesBackButton = true
-        
         
         editItems()
         textFieldShape()
@@ -38,56 +39,47 @@ class AddNewHomeViewController: UIViewController, PHPickerViewControllerDelegate
     }
     
     @IBAction func openGalleryBtn(_ sender: Any) {
-        getImagesFromGallery()
+        uploadPhotosFromLibraryButtonPressed()
+//        var modelDetails = getAddItemFromData()
+//        modelDetails.SetNewItemImage(images: selectedImages)
     }
     
     @IBAction func saveBtn(_ sender: Any) {
         
-        guard let unitName = unitNameTextField.text else {return}
-        guard let description = descriptionTextField.text else {return}
-        guard let unitPrice = Double(unitPriceTextField.text) else {return}
-        guard let cashPercentageDiscount = Double(cashPercentageDiscountTextField.text) else {return}
-        guard let type = typeTextField.text else {return}
-        guard let area = Int(areaTextField.text) else {return}
-        guard let numberOfBathrooms = Int(numberOfBathroomsTextField.text) else {return}
-        guard let numberOfBedrooms = Int(numberOfBedroomsTextField.text) else {return}
-//        guard let location = Double(locationTextField.text) else {return}
         
+    }
+    
+    func getAddItemFromData() -> AddNewItemViewModelProtocol{
+        
+//        guard let unitName = unitNameTextField.text else {return "" as! AddNewItemViewModelProtocol}
+//        guard let description = descriptionTextField.text else {return ""}
+//        guard let unitPrice = Double(unitPriceTextField.text) else {return}
+//        guard let cashPercentageDiscount = Double(cashPercentageDiscountTextField.text) else {return}
+//        guard let type = typeTextField.text else {return}
+//        guard let area = Int(areaTextField.text) else {return}
+//        guard let numberOfBathrooms = Int(numberOfBathroomsTextField.text) else {return}
+//        guard let numberOfBedrooms = Int(numberOfBedroomsTextField.text) else {return}
+//        guard let dirextion = Double(locationTextField.text) else {return}
+//        let direction: String = "North"
+
         let avaiable: Bool = true
-        let direction: String = "North"
         let location = [500.5, 800.1]
-        let images = UIImage().convertImageToPngString(image: UIImage(named: "logo")!)
-        let img = [images]
-        
-//        let images = UIImage(named: "unit5")
-//        let img = [images]
         
         
-        ComingHomeDataServiceManager().homeData(unitName: unitName, description: description, unitPrice: unitPrice, cashPercentageDiscount: cashPercentageDiscount, type: type, area: area, location: location, numberOfBathrooms: numberOfBathrooms, numberOfBedrooms: numberOfBedrooms, images: img, available: avaiable, direction: direction) { result in
-            
-            switch result {
-            
-            case .success(_):
-                print("Sucess")
-            case .failure(_):
-                print("Fail")
-            }
-            
-            
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        return AddNewItemViewModel(
+                            name: unitNameTextField.text ?? "",
+                            description: descriptionTextField.text ?? "",
+                            price: Double(unitPriceTextField.text) ?? 0.0,
+                            cashDiscount: Double(cashPercentageDiscountTextField.text) ?? 0.0,
+                            type: typeTextField.text ?? "",
+                            area: Int(areaTextField.text) ?? 0,
+                            bathsNo: Int(numberOfBathroomsTextField.text) ?? 0,
+                            bedRoomsNo: Int(numberOfBedroomsTextField.text) ?? 0,
+                            location: location,
+                            images: selectedImages,
+                            available: avaiable,
+                            diriction: directionTextField.text ?? ""
+                            )
         
         
         
@@ -105,69 +97,20 @@ class AddNewHomeViewController: UIViewController, PHPickerViewControllerDelegate
 
 extension AddNewHomeViewController {
     
-    func getImagesFromGallery() {
+    func uploadPhotosFromLibraryButtonPressed(){
         
-        var config = PHPickerConfiguration()
-        
-        config.selectionLimit = 10
-        
-        let phPickerVC = PHPickerViewController(configuration: config)
-        
-        phPickerVC.delegate = self
-        
-        present(phPickerVC, animated: true, completion: nil)
-        
-    }
-    
-
-    
-    
-    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-        
-        for result in results {
+            let imagePicker = ImagePickerController()
             
-            result.itemProvider.loadObject(ofClass: UIImage.self) { obj, error in
-                
-                if let image = obj as? UIImage {
-                    
-                    
-                    
-//                    let fm = FileManager.default
-//                    let path = Bundle.main.resourcePath!
-//                    let items = try! fm.contentsOfDirectory(atPath: path)
-//
-//                    for item in items {
-//                        if item.hasPrefix("nssl") {
-//
-//                            imagesArray.append(contentsOf: item)
-//
-//                        }
-//                    }
-                    
-                    
-                    
-                    
-                    
-                    
-//                    DispatchQueue.main.async {
-//
-////                        self.newFriendImage.image = image
-//
-//                    }
-                    
-                }
-  
+            presentImagePicker(imagePicker, select: nil, deselect: nil, cancel: nil) { assets in
+                assets.forEach({self.selectedImages.append($0.uiImage)})
+//                self.mainView.reloadSelectedImagesCollectionViewData()
+                print(self.selectedImages)
+
             }
-            
-        }
-        
-        dismiss(animated: true, completion: nil)
-        
     }
-    
-    
-}
 
+                    
+}
 
 
 extension AddNewHomeViewController {
@@ -192,7 +135,7 @@ extension AddNewHomeViewController {
     
     func textFieldShape() {
         
-        let textFieldsArray = [unitNameTextField, descriptionTextField, unitPriceTextField, cashPercentageDiscountTextField, typeTextField, areaTextField, numberOfBathroomsTextField, numberOfBedroomsTextField, locationTextField]
+        let textFieldsArray = [unitNameTextField, descriptionTextField, unitPriceTextField, cashPercentageDiscountTextField, typeTextField, areaTextField, numberOfBathroomsTextField, numberOfBedroomsTextField, directionTextField]
 
         _ = textFieldsArray.map {
             

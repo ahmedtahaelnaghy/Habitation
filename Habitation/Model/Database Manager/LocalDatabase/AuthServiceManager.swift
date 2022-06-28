@@ -19,7 +19,6 @@ class AuthServiceManager {
                           "password": password
                           ]
         
-        
         guard let url = URL(string: "http://13.93.33.202:8000/auth/token/login/") else {return}
         
         let request = AF.request(url, method: .post, parameters: parameters , encoding: JSONEncoding.default)

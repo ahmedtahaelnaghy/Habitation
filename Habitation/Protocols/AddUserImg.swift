@@ -11,6 +11,5 @@ protocol AddUserImg {
     
     func addImg(image: UserImg)
     
-    
 }
 

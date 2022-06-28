@@ -7,4 +7,6 @@ target 'Habitation' do
 
 pod 'Alamofire'
 
+pod "BSImagePicker", "~> 3.1"
+
 end

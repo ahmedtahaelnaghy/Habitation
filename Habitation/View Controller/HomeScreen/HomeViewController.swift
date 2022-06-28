@@ -20,7 +20,7 @@ class HomeViewController: UIViewController {
                                          Categories(image: "office", name: "Office")
                                         ]
     
-    var homeArray = ["", "" , "", "", "" ,""]
+    var homesArray: [HomesComingData] = []
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +39,27 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         editWelcomeLabel()
+        
+        
+        ComingHomeDataServiceManager().fetchDataFromAlamofire { [self] result in
+
+            switch result {
+
+            case .success(let data):
+
+                self.homesArray = data
+                print(homesArray)
+                DispatchQueue.main.async {
+
+                    self.homeCollectionView.reloadData()
+
+                }
+
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+
+        }
     }
     
     func editWelcomeLabel() {
@@ -82,11 +103,10 @@ class HomeViewController: UIViewController {
     @IBAction func nearbyYourLocationSeeMoreBtn(_ sender: Any) {
         
         if let vc = storyboard?.instantiateViewController(withIdentifier: "NearbyVC") as? NearbyYourLocationViewController {
-            
+
             self.navigationController?.pushViewController(vc, animated: true)
-            
+
         }
-        
         
     }
     
@@ -112,7 +132,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return categoriesArray.count
         }
         else {
-            return homeArray.count
+            return homesArray.count
         }
         
     }
@@ -141,7 +161,19 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             let homeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeCell", for: indexPath) as! SingleHomeCollectionViewCell
     
-            homeCell.homeImg.image = UIImage(named: "unit5")
+            
+            homeCell.homeImg.image = UIImage(named: homesArray[indexPath.row].images[0])
+
+
+
+
+            homeCell.homePriceLbl.text = "\(homesArray[indexPath.row].price) L.E/month"
+            homeCell.areaLbl.text = "\(homesArray[indexPath.row].area) sqrt"
+            homeCell.numberOfRoomsLbl.text = "\(homesArray[indexPath.row].bedRoomsNo) rooms"
+            homeCell.numberOfBathroomsLbl.text = "\(homesArray[indexPath.row].bathsNo) bathrooms"
+            
+            
+            
             homeCell.layer.borderColor = UIColor.lightGray.cgColor
             homeCell.layer.borderWidth = 0.6
             homeCell.layer.cornerRadius = 17
@@ -163,6 +195,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if collectionView == categoriesCollectionView {
             
             if let vc = storyboard?.instantiateViewController(withIdentifier: "CategoryDetailsVC") as? CategoryDetailsViewController {
+                
+                vc.comingNavigationTitle = categoriesArray[indexPath.row].name
                 
                 self.navigationController?.pushViewController(vc, animated: true)
                 

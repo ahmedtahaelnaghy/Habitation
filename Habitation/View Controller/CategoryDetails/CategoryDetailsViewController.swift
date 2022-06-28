@@ -15,11 +15,15 @@ class CategoryDetailsViewController: UIViewController {
     
     var homeArray = ["", "", "", ""]
     
+    var comingNavigationTitle: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         categoryDetailsCollectionView.delegate = self
         categoryDetailsCollectionView.dataSource = self
+        
+        navigationItem.title = comingNavigationTitle
         
         addImgToSearchTextField(textField: searchTextField, image: UIImage(named: "search")!)
         editItems()
@@ -28,7 +32,6 @@ class CategoryDetailsViewController: UIViewController {
     }
 
 }
-
 
 extension CategoryDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -54,6 +57,18 @@ extension CategoryDetailsViewController: UICollectionViewDelegate, UICollectionV
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "HDVC") as? HomeDetailsViewController {
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
+        
+        
+        
+    }
+    
     func setupUiForCategoryDetailsCollectionView() {
 
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
@@ -71,7 +86,6 @@ extension CategoryDetailsViewController: UICollectionViewDelegate, UICollectionV
     }
     
 }
-
 
 extension CategoryDetailsViewController {
     
