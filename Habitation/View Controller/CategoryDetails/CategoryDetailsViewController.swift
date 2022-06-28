@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SDWebImage
+
 
 class CategoryDetailsViewController: UIViewController {
 
@@ -13,7 +15,7 @@ class CategoryDetailsViewController: UIViewController {
     
     @IBOutlet weak var searchTextField: UITextField!
     
-    var homeArray = ["", "", "", ""]
+    var homesArray: [HomesComingData] = []
     
     var comingNavigationTitle: String = ""
     
@@ -30,20 +32,45 @@ class CategoryDetailsViewController: UIViewController {
         setupUiForCategoryDetailsCollectionView()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+
+        ComingHomeDataServiceManager().fetchDataFromAlamofire(type: comingNavigationTitle) { [self] result in
+
+            switch result {
+
+            case .success(let data):
+                
+                self.homesArray = data
+                self.categoryDetailsCollectionView.reloadData()
+
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+
+        }
+
+    }
 
 }
 
 extension CategoryDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return homeArray.count
+        return homesArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CategoryDetailsCollectionViewCell
+ 
+        cell.homeImg.sd_setImage(with: URL(string: "http://13.93.33.202:8000\(homesArray[indexPath.row].images[0])"), placeholderImage: UIImage(systemName: "exclamationmark.triangle.fill"))
+
+        cell.priceLbl.text = "\(homesArray[indexPath.row].price) L.E/month"
+        cell.areaLbl.text = "\(homesArray[indexPath.row].area) sqrt"
+        cell.numberOfRoomsLbl.text = "\(homesArray[indexPath.row].bedRoomsNo) rooms"
+        cell.numberOfBathroomsLbl.text = "\(homesArray[indexPath.row].bathsNo) bathrooms"
         
-        cell.homeImg.image = UIImage(named: "unit5")
         cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.layer.borderWidth = 0.8
         cell.layer.cornerRadius = 20
@@ -59,13 +86,13 @@ extension CategoryDetailsViewController: UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "HDVC") as? HomeDetailsViewController {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "DetailsVC") as? DetailsViewController {
+            
+            vc.comingData = homesArray[indexPath.row]
             
             self.navigationController?.pushViewController(vc, animated: true)
             
         }
-        
-        
         
     }
     

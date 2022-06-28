@@ -11,7 +11,7 @@ import Alamofire
 
 class ComingHomeDataServiceManager {
     
-    func homeData(unitName: String, description: String, unitPrice: Double, cashPercentageDiscount:Double, type: String, area: Int, location: [Double], numberOfBathrooms: Int, numberOfBedrooms: Int, images: [UIImage], available: Bool, direction: String, completion: @escaping (Result<AddNewItem, Error>) -> (Void)) {
+    func uploadDataToAlamofire(unitName: String, description: String, unitPrice: Double, cashPercentageDiscount:Double, type: String, area: Int, location: [Double], numberOfBathrooms: Int, numberOfBedrooms: Int, images: [UIImage], available: Bool, direction: String, completion: @escaping (Result<AddNewItem, Error>) -> (Void)) {
         
         
         let addNewItemViewModel = AddNewItemViewModel(name: unitName, description: description, price: unitPrice, cashDiscount: cashPercentageDiscount, type: type, area: area, bathsNo: numberOfBathrooms, bedRoomsNo: numberOfBedrooms, location: location, images: images, available: available, diriction: direction)
@@ -47,11 +47,18 @@ class ComingHomeDataServiceManager {
         
     }
     
-    func fetchDataFromAlamofire(completion: @escaping (Result<[HomesComingData], Error>) -> (Void)) {
+    
+    
+    
+    
+    
+    
+    
+    func fetchDataFromAlamofire(type: String, completion: @escaping (Result<[HomesComingData], Error>) -> (Void)) {
 
-        guard let url = URL(string: "http://13.93.33.202:8000/api/ads/") else {return}
+        guard let url = URL(string: "http://13.93.33.202:8000/api/ads/?type=\(type)") else {return}
 
-        let request = AF.request(url, method: .get, encoding: JSONEncoding.default )
+        let request = AF.request(url, method: .get, encoding: JSONEncoding.default)
 
         request.response { dataResponse in
 
@@ -85,24 +92,4 @@ class ComingHomeDataServiceManager {
     
     
 }
-
-//let parameters = [
-//
-//    "id": id,
-//    "location": location,
-//    "created": created,
-//    "modified": modified,
-//    "name": unitName,
-//    "description": description,
-//    "price": unitPrice,
-//    "cash_discount": cashPercentageDiscount,
-//    "available": available,
-//    "type": type,
-//    "area": area,
-//    "diriction": diriction,
-//    "baths_no": numberOfBathrooms,
-//    "bed_rooms_no": numberOfBedrooms,
-//    "images": images
-//
-//]
 

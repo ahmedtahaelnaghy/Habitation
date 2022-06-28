@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SDWebImage
+
 
 class HomeViewController: UIViewController {
     
@@ -14,6 +16,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var welcomeLbl: UILabel!
     
+    
+    
     var categoriesArray: [Categories] = [
                                          Categories(image: "homeIcon", name: "Home"),
                                          Categories(image: "apartment", name: "Apartment"),
@@ -21,7 +25,9 @@ class HomeViewController: UIViewController {
                                         ]
     
     var homesArray: [HomesComingData] = []
-        
+    var isFavorite: Bool = false
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,22 +44,17 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         editWelcomeLabel()
         
-        
-        ComingHomeDataServiceManager().fetchDataFromAlamofire { [self] result in
-
+        ComingHomeDataServiceManager().fetchDataFromAlamofire(type: "") { [self] result in
+            
             switch result {
 
             case .success(let data):
-
+                
                 self.homesArray = data
-                print(homesArray)
-                DispatchQueue.main.async {
-
-                    self.homeCollectionView.reloadData()
-
-                }
+                self.homeCollectionView.reloadData()
 
             case .failure(let error):
                 print(error.localizedDescription)
@@ -103,20 +104,15 @@ class HomeViewController: UIViewController {
     @IBAction func nearbyYourLocationSeeMoreBtn(_ sender: Any) {
         
         if let vc = storyboard?.instantiateViewController(withIdentifier: "NearbyVC") as? NearbyYourLocationViewController {
-
             self.navigationController?.pushViewController(vc, animated: true)
-
         }
         
     }
     
-    
     @IBAction func addBtn(_ sender: Any) {
         
         if let vc = storyboard?.instantiateViewController(withIdentifier: "AddNewHomeVC") as? AddNewHomeViewController {
-            
             self.navigationController?.pushViewController(vc, animated: true)
-            
         }
         
     }
@@ -160,19 +156,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }else {
             
             let homeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeCell", for: indexPath) as! SingleHomeCollectionViewCell
-    
+                        
+            homeCell.homeImg.sd_setImage(with: URL(string: "http://13.93.33.202:8000\(homesArray[indexPath.row].images[0])"), placeholderImage: UIImage(systemName: "exclamationmark.triangle.fill"))
             
-            homeCell.homeImg.image = UIImage(named: homesArray[indexPath.row].images[0])
-
-
-
-
             homeCell.homePriceLbl.text = "\(homesArray[indexPath.row].price) L.E/month"
             homeCell.areaLbl.text = "\(homesArray[indexPath.row].area) sqrt"
             homeCell.numberOfRoomsLbl.text = "\(homesArray[indexPath.row].bedRoomsNo) rooms"
             homeCell.numberOfBathroomsLbl.text = "\(homesArray[indexPath.row].bathsNo) bathrooms"
-            
-            
             
             homeCell.layer.borderColor = UIColor.lightGray.cgColor
             homeCell.layer.borderWidth = 0.6
@@ -182,7 +172,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             homeCell.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
             homeCell.layer.shadowOpacity = 0.1
             homeCell.layer.masksToBounds = true
-            
             return homeCell
             
         }
@@ -190,7 +179,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         
         if collectionView == categoriesCollectionView {
             
@@ -204,16 +192,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         }else {
             
-            if let vc = storyboard?.instantiateViewController(withIdentifier: "HDVC") as? HomeDetailsViewController {
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "DetailsVC") as? DetailsViewController {
                 
+                vc.comingData = homesArray[indexPath.row]
+
                 self.navigationController?.pushViewController(vc, animated: true)
                 
             }
-
-            
-            
+  
         }
-        
         
     }
     
@@ -288,3 +275,4 @@ extension HomeViewController {
     }
     
 }
+

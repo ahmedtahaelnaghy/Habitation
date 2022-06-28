@@ -6,7 +6,8 @@ target 'Habitation' do
   use_frameworks!
 
 pod 'Alamofire'
-
 pod "BSImagePicker", "~> 3.1"
+pod 'SDWebImage'
+
 
 end

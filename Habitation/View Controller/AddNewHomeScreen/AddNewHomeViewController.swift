@@ -28,6 +28,8 @@ class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegat
     
     var selectedImages: [UIImage] = []
     
+    let requestAPI = AddNewUnitRequest()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,21 +48,28 @@ class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBAction func saveBtn(_ sender: Any) {
         
+        requestAPI.addNewUnit(model: AddNewItem(viewModel: getAddItemFromData())) { result in
+            print(result)
+            switch result {
+                
+            case.success(let data):
+                
+                print(data)
+                
+            case.failure(let error):
+                print(error.localizedDescription)
+            }
+            
+            
+        }
+        
+        
         
     }
     
     func getAddItemFromData() -> AddNewItemViewModelProtocol{
         
-//        guard let unitName = unitNameTextField.text else {return "" as! AddNewItemViewModelProtocol}
-//        guard let description = descriptionTextField.text else {return ""}
-//        guard let unitPrice = Double(unitPriceTextField.text) else {return}
-//        guard let cashPercentageDiscount = Double(cashPercentageDiscountTextField.text) else {return}
-//        guard let type = typeTextField.text else {return}
-//        guard let area = Int(areaTextField.text) else {return}
-//        guard let numberOfBathrooms = Int(numberOfBathroomsTextField.text) else {return}
-//        guard let numberOfBedrooms = Int(numberOfBedroomsTextField.text) else {return}
-//        guard let dirextion = Double(locationTextField.text) else {return}
-//        let direction: String = "North"
+
 
         let avaiable: Bool = true
         let location = [500.5, 800.1]
@@ -147,3 +156,13 @@ extension AddNewHomeViewController {
     }
     
 }
+//        guard let unitName = unitNameTextField.text else {return "" as! AddNewItemViewModelProtocol}
+//        guard let description = descriptionTextField.text else {return ""}
+//        guard let unitPrice = Double(unitPriceTextField.text) else {return}
+//        guard let cashPercentageDiscount = Double(cashPercentageDiscountTextField.text) else {return}
+//        guard let type = typeTextField.text else {return}
+//        guard let area = Int(areaTextField.text) else {return}
+//        guard let numberOfBathrooms = Int(numberOfBathroomsTextField.text) else {return}
+//        guard let numberOfBedrooms = Int(numberOfBedroomsTextField.text) else {return}
+//        guard let dirextion = Double(locationTextField.text) else {return}
+//        let direction: String = "North"

@@ -28,8 +28,6 @@ class FavoritesViewController: UIViewController {
         setupUiForCategoriesCollectionView()
     }
     
-
-    
 }
 
 extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDataSource {

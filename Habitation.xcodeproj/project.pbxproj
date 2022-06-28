@@ -36,6 +36,11 @@
 		FCB7B09728630C55009BA034 /* AuthServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB7B09628630C55009BA034 /* AuthServiceManager.swift */; };
 		FCB7B0992863158C009BA034 /* LoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB7B0982863158C009BA034 /* LoginInfo.swift */; };
 		FCBB06392867105D004C6A45 /* ComingHomeDataServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBB06382867105D004C6A45 /* ComingHomeDataServiceManager.swift */; };
+		FCC28C53286B51CF003E7B52 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC28C52286B51CF003E7B52 /* TargetType.swift */; };
+		FCC28C55286B51EF003E7B52 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC28C54286B51EF003E7B52 /* BaseAPI.swift */; };
+		FCC28C58286B5351003E7B52 /* AddNewUnitNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC28C57286B5351003E7B52 /* AddNewUnitNetworking.swift */; };
+		FCC28C5A286B5642003E7B52 /* AddNewUnitRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC28C59286B5642003E7B52 /* AddNewUnitRequest.swift */; };
+		FCC28C5C286B5D7D003E7B52 /* AddNewItemResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC28C5B286B5D7D003E7B52 /* AddNewItemResponseModel.swift */; };
 		FCEA6DE12818C59900BD1E77 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEA6DE02818C59900BD1E77 /* UIView+Extensions.swift */; };
 		FCEE870327DDFEF0005B5B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE870227DDFEF0005B5B70 /* AppDelegate.swift */; };
 		FCEE870527DDFEF0005B5B70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE870427DDFEF0005B5B70 /* SceneDelegate.swift */; };
@@ -51,6 +56,8 @@
 		FCEE874427DE5CC9005B5B70 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE874327DE5CC9005B5B70 /* SignUpViewController.swift */; };
 		FCEE874627DE6DCF005B5B70 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE874527DE6DCF005B5B70 /* ForgotPasswordViewController.swift */; };
 		FCEF5FAB286AC60100A01B58 /* HomesComingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF5FAA286AC60100A01B58 /* HomesComingData.swift */; };
+		FCF905AD286B06FE007DD696 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF905AC286B06FE007DD696 /* DetailsViewController.swift */; };
+		FCF905AF286B0AF6007DD696 /* ImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF905AE286B0AF6007DD696 /* ImagesCollectionViewCell.swift */; };
 		FCF9D4E527F2743B00CCE0B9 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF9D4E427F2743B00CCE0B9 /* CategoryCollectionViewCell.swift */; };
 		FCF9D4E727F2757500CCE0B9 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF9D4E627F2757500CCE0B9 /* Categories.swift */; };
 /* End PBXBuildFile section */
@@ -104,6 +111,11 @@
 		FCB7B09628630C55009BA034 /* AuthServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceManager.swift; sourceTree = "<group>"; };
 		FCB7B0982863158C009BA034 /* LoginInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInfo.swift; sourceTree = "<group>"; };
 		FCBB06382867105D004C6A45 /* ComingHomeDataServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingHomeDataServiceManager.swift; sourceTree = "<group>"; };
+		FCC28C52286B51CF003E7B52 /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
+		FCC28C54286B51EF003E7B52 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
+		FCC28C57286B5351003E7B52 /* AddNewUnitNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewUnitNetworking.swift; sourceTree = "<group>"; };
+		FCC28C59286B5642003E7B52 /* AddNewUnitRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewUnitRequest.swift; sourceTree = "<group>"; };
+		FCC28C5B286B5D7D003E7B52 /* AddNewItemResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewItemResponseModel.swift; sourceTree = "<group>"; };
 		FCEA6DE02818C59900BD1E77 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		FCEE86FF27DDFEF0005B5B70 /* Habitation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habitation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCEE870227DDFEF0005B5B70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +135,8 @@
 		FCEE874327DE5CC9005B5B70 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FCEE874527DE6DCF005B5B70 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		FCEF5FAA286AC60100A01B58 /* HomesComingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomesComingData.swift; sourceTree = "<group>"; };
+		FCF905AC286B06FE007DD696 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		FCF905AE286B0AF6007DD696 /* ImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		FCF9D4E427F2743B00CCE0B9 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		FCF9D4E627F2757500CCE0B9 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -261,6 +275,24 @@
 			path = HomeScreen;
 			sourceTree = "<group>";
 		};
+		FCC28C51286B51B7003E7B52 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				FCC28C52286B51CF003E7B52 /* TargetType.swift */,
+				FCC28C54286B51EF003E7B52 /* BaseAPI.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		FCC28C56286B5329003E7B52 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				FCC28C57286B5351003E7B52 /* AddNewUnitNetworking.swift */,
+				FCC28C59286B5642003E7B52 /* AddNewUnitRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
 		FCEE86F627DDFEF0005B5B70 = {
 			isa = PBXGroup;
 			children = (
@@ -328,17 +360,18 @@
 		FCEE873627DDFF08005B5B70 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FC6A895C28698D9C007CABC3 /* CategoryDetails */,
 				FC610F362844400D00A0BD95 /* TabBar */,
 				FC610F392844411300A0BD95 /* PrimaryScreens */,
 				FCB1AD6527F4816A00EBCABC /* HomeScreen */,
-				FC18F7D02861B482001B85C5 /* HomeDetails */,
+				FC6A895C28698D9C007CABC3 /* CategoryDetails */,
+				FCF905AB286B06DF007DD696 /* Details */,
 				FC4618D1285E191C00703FCB /* AddNewHomeScreen */,
 				FCA892C3285B900D004A4E6D /* NearbyYourLocationScreen */,
 				FCF9D4E127F2738000CCE0B9 /* CategoriesScreen */,
 				FC44EB87282246E100019723 /* FavoritesScreen */,
 				FC29BAC9282226770017425C /* SettingsScreen */,
 				FCA74580285F37B30006D499 /* ProfileScreen */,
+				FC18F7D02861B482001B85C5 /* HomeDetails */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -346,6 +379,8 @@
 		FCEE873727DDFF12005B5B70 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FCC28C56286B5329003E7B52 /* Requests */,
+				FCC28C51286B51B7003E7B52 /* Base */,
 				FCEE873A27DDFF72005B5B70 /* Pojo */,
 				FCEE873927DDFF55005B5B70 /* Database Manager */,
 			);
@@ -382,6 +417,7 @@
 				FCB7B0982863158C009BA034 /* LoginInfo.swift */,
 				FC69CC802869ED3B0083DC63 /* AddNewItemViewModel.swift */,
 				FCEF5FAA286AC60100A01B58 /* HomesComingData.swift */,
+				FCC28C5B286B5D7D003E7B52 /* AddNewItemResponseModel.swift */,
 			);
 			path = Pojo;
 			sourceTree = "<group>";
@@ -400,6 +436,15 @@
 			children = (
 			);
 			path = RemoteDatabase;
+			sourceTree = "<group>";
+		};
+		FCF905AB286B06DF007DD696 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				FCF905AC286B06FE007DD696 /* DetailsViewController.swift */,
+				FCF905AE286B0AF6007DD696 /* ImagesCollectionViewCell.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		FCF9D4E127F2738000CCE0B9 /* CategoriesScreen */ = {
@@ -590,21 +635,27 @@
 				FCEF5FAB286AC60100A01B58 /* HomesComingData.swift in Sources */,
 				FC87530C285E054400AF4197 /* CheckYourEmailViewController.swift in Sources */,
 				FC69CC812869ED3B0083DC63 /* AddNewItemViewModel.swift in Sources */,
+				FCC28C5A286B5642003E7B52 /* AddNewUnitRequest.swift in Sources */,
 				FCEE874227DE2228005B5B70 /* LoginViewController.swift in Sources */,
 				FC45E8D3286445CD0016F668 /* SignUpInfo.swift in Sources */,
+				FCC28C53286B51CF003E7B52 /* TargetType.swift in Sources */,
 				FCB7B0992863158C009BA034 /* LoginInfo.swift in Sources */,
 				FC06D0E027E525A800E65142 /* SettingsViewController.swift in Sources */,
 				FC06D0DC27E5255E00E65142 /* CategoriesViewController.swift in Sources */,
 				FC610F382844402F00A0BD95 /* TabBarViewController.swift in Sources */,
 				FCAA4F4628451878006C9069 /* AddNewItem.swift in Sources */,
+				FCC28C58286B5351003E7B52 /* AddNewUnitNetworking.swift in Sources */,
 				FCF9D4E527F2743B00CCE0B9 /* CategoryCollectionViewCell.swift in Sources */,
 				FCEE874427DE5CC9005B5B70 /* SignUpViewController.swift in Sources */,
 				FC44EB8928224E2700019723 /* FavoriteHomeCollectionViewCell.swift in Sources */,
+				FCC28C55286B51EF003E7B52 /* BaseAPI.swift in Sources */,
 				FCEA6DE12818C59900BD1E77 /* UIView+Extensions.swift in Sources */,
 				FC6A895E28698DDD007CABC3 /* CategoryDetailsViewController.swift in Sources */,
 				FC8380DC2867C7C60028E5C6 /* ConvertImageType.swift in Sources */,
 				FC9C2A6B28688C1100CEA8D4 /* AddUserImg.swift in Sources */,
+				FCC28C5C286B5D7D003E7B52 /* AddNewItemResponseModel.swift in Sources */,
 				FCBB06392867105D004C6A45 /* ComingHomeDataServiceManager.swift in Sources */,
+				FCF905AD286B06FE007DD696 /* DetailsViewController.swift in Sources */,
 				FC18F7D22861B499001B85C5 /* HomeDetailsViewController.swift in Sources */,
 				FC06D0DA27E5251500E65142 /* HomeViewController.swift in Sources */,
 				FCA51832281183100045A28C /* SingleHomeCollectionViewCell.swift in Sources */,
@@ -621,6 +672,7 @@
 				FCB7B09728630C55009BA034 /* AuthServiceManager.swift in Sources */,
 				FC4618D3285E195700703FCB /* AddNewHomeViewController.swift in Sources */,
 				FCA892C5285B90BA004A4E6D /* NearbyYourLocationViewController.swift in Sources */,
+				FCF905AF286B0AF6007DD696 /* ImagesCollectionViewCell.swift in Sources */,
 				FCA74582285F37CA0006D499 /* ProfileViewController.swift in Sources */,
 				FC18F7D42861DDDB001B85C5 /* AllDetailsTableViewCell.swift in Sources */,
 				FCEE870527DDFEF0005B5B70 /* SceneDelegate.swift in Sources */,

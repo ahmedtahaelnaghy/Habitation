@@ -1,20 +1,26 @@
 PODS:
   - Alamofire (5.4.3)
   - BSImagePicker (3.3.1)
+  - SDWebImage (5.11.1):
+    - SDWebImage/Core (= 5.11.1)
+  - SDWebImage/Core (5.11.1)
 
 DEPENDENCIES:
   - Alamofire
   - BSImagePicker (~> 3.1)
+  - SDWebImage
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - BSImagePicker
+    - SDWebImage
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   BSImagePicker: 0fe04b574d4d6b81093785d2af6c26227efc8428
+  SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
 
-PODFILE CHECKSUM: e3e5296a9c66bde97cc0a33253b56dae5156abba
+PODFILE CHECKSUM: f90e8b43f6643220e2f64fc43cf09aa5d8759148
 
 COCOAPODS: 1.10.2

@@ -9,11 +9,10 @@ import UIKit
 
 class NearbyYourLocationViewController: UIViewController {
     
-    
     @IBOutlet weak var nearbyCollectionView: UICollectionView!
     @IBOutlet weak var searchTextField: UITextField!
     
-    var homeArray = ["", "", "", ""]
+    var homesArray:[HomesComingData] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,28 +21,49 @@ class NearbyYourLocationViewController: UIViewController {
         nearbyCollectionView.dataSource = self
         
         addImgToSearchTextField(textField: searchTextField, image: UIImage(named: "search")!)
-        
         editItems()
-        
         setupUiForNearbyCollectionView()
         
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        ComingHomeDataServiceManager().fetchDataFromAlamofire(type: "") { [self] result in
+            
+            switch result {
+
+            case .success(let data):
+                
+                self.homesArray = data
+                self.nearbyCollectionView.reloadData()
+
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+
+        }
+        
+    }
     
 }
 
 extension NearbyYourLocationViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return homeArray.count
+        return homesArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! NearbyYourLocationCollectionViewCell
         
-        cell.homeImg.image = UIImage(named: "unit5")
+        cell.homeImg.sd_setImage(with: URL(string: "http://13.93.33.202:8000\(homesArray[indexPath.row].images[0])"), placeholderImage: UIImage(systemName: "exclamationmark.triangle.fill"))
+        
+        cell.homePrice.text = "\(homesArray[indexPath.row].price) L.E/month"
+        cell.homeArea.text = "\(homesArray[indexPath.row].area) sqrt"
+        cell.numberOfRooms.text = "\(homesArray[indexPath.row].bedRoomsNo) rooms"
+        cell.numberOfBathrooms.text = "\(homesArray[indexPath.row].bathsNo) bathrooms"
+        
         cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.layer.borderWidth = 0.8
         cell.layer.cornerRadius = 20
@@ -56,6 +76,16 @@ extension NearbyYourLocationViewController: UICollectionViewDelegate, UICollecti
         return cell
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "DetailsVC") as? DetailsViewController {
+            vc.comingData = homesArray[indexPath.row]
+            self.navigationController?.pushViewController(vc, animated: true)
+        
+        }
+    }
+        
     
     func setupUiForNearbyCollectionView() {
 
@@ -72,15 +102,6 @@ extension NearbyYourLocationViewController: UICollectionViewDelegate, UICollecti
         nearbyCollectionView.collectionViewLayout = layout
 
     }
-
-    
-    
-    
-    
-    
-    
-    
-    
     
 }
 
@@ -109,11 +130,8 @@ extension NearbyYourLocationViewController {
         
         let imageView = UIImageView(frame: CGRect(x: 35, y: 0, width: image.size.width, height: image.size.height))
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 70, height: image.size.height))
-
         view.addSubview(imageView)
-
         imageView.image = image
-
         textField.leftView = view
         textField.leftViewMode = .always
         
