@@ -26,14 +26,28 @@ class SingleHomeCollectionViewCell: UICollectionViewCell {
     func changeFavBtnImage() {
         
         if isfav {
+            
                 favBtnShape.setImage(UIImage(named: "heart_like"), for: .normal)
         }
         else {
+            
+            let userDefaults = UserDefaults.standard
+            let myId = userDefaults.string(forKey: "id") ?? ""
+            
+            FavoriteServiceManager().uploadFavoriteDataToAlamofire(id: myId) { result in
+                print(result)
+                switch result {
+                    
+                case .success(_):
+                    print("Done")
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
             favBtnShape.setImage(UIImage(named: "heart"), for: .normal)
         }
         
         isfav.toggle()
-        
     }
     
 }

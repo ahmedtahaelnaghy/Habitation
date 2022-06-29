@@ -9,6 +9,14 @@ import UIKit
 
 class FavoriteHomeCollectionViewCell: UICollectionViewCell {
   
-    @IBOutlet weak var image: UIImageView!
+    
+    @IBOutlet weak var homeImg: UIImageView!
+    @IBOutlet weak var homePriceLbl: UILabel!
+    @IBOutlet weak var areaLbl: UILabel!
+    @IBOutlet weak var numberOfRoomsLbl: UILabel!
+    @IBOutlet weak var numberOfBathroomsLbl: UILabel!
+    @IBOutlet weak var favBtnShape: UIButton!
+    
+    
    
 }

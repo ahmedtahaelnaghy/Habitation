@@ -12,18 +12,14 @@ struct AddNewItem: Codable {
     
     var name: String
     var description: String
-    
     var price: Double
     var cash_discount: Double
-    
     var type: String
     var area: Int
     var baths_no: Int
     var bed_rooms_no: Int
     var location: [Double]
-    
     var images: [Data]
-    
     var available: Bool
     var diriction: String
     

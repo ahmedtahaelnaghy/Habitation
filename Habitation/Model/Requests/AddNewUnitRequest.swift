@@ -9,9 +9,6 @@ import Foundation
 
 class AddNewUnitRequest: BaseAPI<AddNewUnitNetworking> {
     
-    
-    
-    
     func addNewUnit(model: AddNewItem, completion: @escaping(Result<AddNewItemResponseModel, Error>) -> (Void)) {
         
 //        let token = UserDefaults.standard.string(forKey: "token") ?? ""

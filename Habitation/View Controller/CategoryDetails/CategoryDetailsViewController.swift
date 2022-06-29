@@ -8,7 +8,6 @@
 import UIKit
 import SDWebImage
 
-
 class CategoryDetailsViewController: UIViewController {
 
     @IBOutlet weak var categoryDetailsCollectionView: UICollectionView!
@@ -28,7 +27,7 @@ class CategoryDetailsViewController: UIViewController {
         navigationItem.title = comingNavigationTitle
         
         addImgToSearchTextField(textField: searchTextField, image: UIImage(named: "search")!)
-        editItems()
+        editSearchTextFieldShape(textField: searchTextField)
         setupUiForCategoryDetailsCollectionView()
         
     }
@@ -47,13 +46,12 @@ class CategoryDetailsViewController: UIViewController {
             case .failure(let error):
                 print(error.localizedDescription)
             }
-
         }
-
     }
 
 }
 
+// Collection View delegate and dataSource
 extension CategoryDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -71,30 +69,23 @@ extension CategoryDetailsViewController: UICollectionViewDelegate, UICollectionV
         cell.numberOfRoomsLbl.text = "\(homesArray[indexPath.row].bedRoomsNo) rooms"
         cell.numberOfBathroomsLbl.text = "\(homesArray[indexPath.row].bathsNo) bathrooms"
         
-        cell.layer.borderColor = UIColor.lightGray.cgColor
-        cell.layer.borderWidth = 0.8
-        cell.layer.cornerRadius = 20
-        cell.layer.shadowColor = UIColor.lightGray.cgColor
-        cell.layer.shadowOpacity = 0.5
-        cell.layer.shadowRadius = 1
-        cell.layer.shadowOffset = CGSize(width: 1.2, height: 1.2)
-        cell.layer.masksToBounds = true
-            
+        editCollectionViewShape(collectionView: cell)
+        
         return cell
         
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         if let vc = storyboard?.instantiateViewController(withIdentifier: "DetailsVC") as? DetailsViewController {
-            
             vc.comingData = homesArray[indexPath.row]
-            
             self.navigationController?.pushViewController(vc, animated: true)
-            
         }
-        
     }
+    
+}
+
+// Collection View design
+extension CategoryDetailsViewController {
     
     func setupUiForCategoryDetailsCollectionView() {
 
@@ -114,24 +105,33 @@ extension CategoryDetailsViewController: UICollectionViewDelegate, UICollectionV
     
 }
 
+// Collection View and Search textField shape
 extension CategoryDetailsViewController {
     
-    func editItems() {
+    func editCollectionViewShape(collectionView: UICollectionViewCell) {
         
-        let itemsArray = [searchTextField]
+        collectionView.layer.borderColor = UIColor.lightGray.cgColor
+        collectionView.layer.borderWidth = 0.8
+        collectionView.layer.cornerRadius = 20
+        collectionView.layer.shadowColor = UIColor.lightGray.cgColor
+        collectionView.layer.shadowOpacity = 0.5
+        collectionView.layer.shadowRadius = 1
+        collectionView.layer.shadowOffset = CGSize(width: 1.2, height: 1.2)
+        collectionView.layer.masksToBounds = true
         
-        _ = itemsArray.map {
-            
-            $0!.layer.borderColor = UIColor.lightGray.cgColor
-            $0!.layer.borderWidth = 0.6
-            $0!.layer.cornerRadius = 17
-            $0!.layer.shadowColor = UIColor.black.cgColor
-            $0!.layer.shadowRadius = 4
-            $0!.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
-            $0!.layer.shadowOpacity = 0.1
-            $0!.layer.masksToBounds = false
+    }
 
-        }
+    func editSearchTextFieldShape(textField: UITextField) {
+            
+        textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.layer.borderWidth = 0.6
+        textField.layer.cornerRadius = 17
+        textField.layer.shadowColor = UIColor.black.cgColor
+        textField.layer.shadowRadius = 4
+        textField.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+        textField.layer.shadowOpacity = 0.1
+        textField.layer.masksToBounds = false
+        
     }
     
     func addImgToSearchTextField(textField: UITextField, image: UIImage) {

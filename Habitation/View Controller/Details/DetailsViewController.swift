@@ -16,15 +16,12 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var areaDetailsLbl: UILabel!
     @IBOutlet weak var numberOfRoomsDetailsLbl: UILabel!
     @IBOutlet weak var numberOfBathroomsDetailsLbl: UILabel!
-
     @IBOutlet weak var descriptionDetailsText: UILabel!
-    
     @IBOutlet weak var directionDetailsLbl: UILabel!
     @IBOutlet weak var locationDetailsLbl: UILabel!
     @IBOutlet weak var priceDetailsLbl: UILabel!
     @IBOutlet weak var cashDiscountDetailsLbl: UILabel!
     @IBOutlet weak var callBtnShape: UIButton!
-    
     @IBOutlet weak var favBtnShape: UIButton!
     
     var isfav: Bool = true
@@ -37,11 +34,8 @@ class DetailsViewController: UIViewController {
         allImagesCollectionView.delegate = self
         allImagesCollectionView.dataSource = self
         
-        SingleHomeDetailsImage.image = UIImage(named: "Photo")
-        
         setupUiForAllImagesCollectionView()
-        
-        editItems()
+        editButtonsShape(button: callBtnShape)
         showDetails()
         
     }
@@ -49,7 +43,6 @@ class DetailsViewController: UIViewController {
     func showDetails() {
         
         SingleHomeDetailsImage.sd_setImage(with: URL(string: "http://13.93.33.202:8000\(comingData.images[0])"), placeholderImage: UIImage(systemName: "exclamationmark.triangle.fill"))
-        
         areaDetailsLbl.text = "\(comingData.area) sqrt"
         numberOfRoomsDetailsLbl.text = "\(comingData.bedRoomsNo) rooms"
         numberOfBathroomsDetailsLbl.text = "\(comingData.bathsNo) bathrooms"
@@ -92,25 +85,21 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         cell.homeImages.sd_setImage(with: URL(string: "http://13.93.33.202:8000\(comingData.images[indexPath.row])"), placeholderImage: UIImage(systemName: "exclamationmark.triangle.fill"))
         
-        cell.layer.cornerRadius = 15
-        cell.layer.borderWidth = 0.5
-        cell.layer.borderColor = UIColor.lightGray.cgColor
-        cell.layer.shadowOffset = CGSize(width: 2, height: 1)
-        cell.layer.shadowColor = UIColor.lightGray.cgColor
-        cell.layer.shadowOpacity = 0.5
-        cell.layer.shadowRadius = 1
-        cell.layer.masksToBounds = true
-
-            return cell
-
+        editCollectionViewShape(collectionView: cell)
+        
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         SingleHomeDetailsImage.sd_setImage(with: URL(string: "http://13.93.33.202:8000\(comingData.images[indexPath.row])"), placeholderImage: UIImage(systemName: "exclamationmark.triangle.fill"))
         
     }
+    
+}
 
+// Collection View design
+extension DetailsViewController {
+    
     func setupUiForAllImagesCollectionView() {
 
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
@@ -131,18 +120,32 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
     
 }
 
+// Collection View and Button shape
 extension DetailsViewController {
     
-    func editItems() {
+    func editCollectionViewShape(collectionView: UICollectionViewCell) {
+        
+        collectionView.layer.cornerRadius = 15
+        collectionView.layer.borderWidth = 0.5
+        collectionView.layer.borderColor = UIColor.lightGray.cgColor
+        collectionView.layer.shadowOffset = CGSize(width: 2, height: 1)
+        collectionView.layer.shadowColor = UIColor.lightGray.cgColor
+        collectionView.layer.shadowOpacity = 0.5
+        collectionView.layer.shadowRadius = 1
+        collectionView.layer.masksToBounds = true
+        
+    }
+    
+    func editButtonsShape(button: UIButton) {
             
-        callBtnShape?.layer.borderColor = UIColor.systemGray.cgColor
-        callBtnShape?.layer.borderWidth = 1
-        callBtnShape?.layer.cornerRadius = 24
-        callBtnShape?.layer.shadowColor = UIColor.lightGray.cgColor
-        callBtnShape?.layer.shadowOpacity = 0.5
-        callBtnShape?.layer.shadowRadius = 1
-        callBtnShape?.layer.shadowOffset = CGSize(width: 1.2, height: 1.2)
-        callBtnShape?.layer.masksToBounds = true
+        button.layer.borderColor = UIColor.systemGray.cgColor
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 24
+        button.layer.shadowColor = UIColor.lightGray.cgColor
+        button.layer.shadowOpacity = 0.5
+        button.layer.shadowRadius = 1
+        button.layer.shadowOffset = CGSize(width: 1.2, height: 1.2)
+        button.layer.masksToBounds = true
 
     }
     

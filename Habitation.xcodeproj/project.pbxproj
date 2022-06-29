@@ -33,6 +33,8 @@
 		FCA892C7285B9269004A4E6D /* NearbyYourLocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA892C6285B9269004A4E6D /* NearbyYourLocationCollectionViewCell.swift */; };
 		FCAA4F4628451878006C9069 /* AddNewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAA4F4528451878006C9069 /* AddNewItem.swift */; };
 		FCB1AD6727F481A600EBCABC /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB1AD6627F481A600EBCABC /* HomeCollectionViewCell.swift */; };
+		FCB55AF7286C1DE10008569C /* FavoriteServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB55AF6286C1DE10008569C /* FavoriteServiceManager.swift */; };
+		FCB55AF9286C28090008569C /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB55AF8286C28090008569C /* FavoriteModel.swift */; };
 		FCB7B09728630C55009BA034 /* AuthServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB7B09628630C55009BA034 /* AuthServiceManager.swift */; };
 		FCB7B0992863158C009BA034 /* LoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB7B0982863158C009BA034 /* LoginInfo.swift */; };
 		FCBB06392867105D004C6A45 /* ComingHomeDataServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBB06382867105D004C6A45 /* ComingHomeDataServiceManager.swift */; };
@@ -108,6 +110,8 @@
 		FCA892C6285B9269004A4E6D /* NearbyYourLocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyYourLocationCollectionViewCell.swift; sourceTree = "<group>"; };
 		FCAA4F4528451878006C9069 /* AddNewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewItem.swift; sourceTree = "<group>"; };
 		FCB1AD6627F481A600EBCABC /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		FCB55AF6286C1DE10008569C /* FavoriteServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteServiceManager.swift; sourceTree = "<group>"; };
+		FCB55AF8286C28090008569C /* FavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
 		FCB7B09628630C55009BA034 /* AuthServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceManager.swift; sourceTree = "<group>"; };
 		FCB7B0982863158C009BA034 /* LoginInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInfo.swift; sourceTree = "<group>"; };
 		FCBB06382867105D004C6A45 /* ComingHomeDataServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingHomeDataServiceManager.swift; sourceTree = "<group>"; };
@@ -412,11 +416,12 @@
 				FC908C6128653D3200939C3E /* Model.swift */,
 				FC45E8D2286445CD0016F668 /* SignUpInfo.swift */,
 				FCF9D4E627F2757500CCE0B9 /* Categories.swift */,
-				FCAA4F4528451878006C9069 /* AddNewItem.swift */,
 				FC9C2A6C28688C6500CEA8D4 /* UserImg.swift */,
 				FCB7B0982863158C009BA034 /* LoginInfo.swift */,
+				FCAA4F4528451878006C9069 /* AddNewItem.swift */,
 				FC69CC802869ED3B0083DC63 /* AddNewItemViewModel.swift */,
 				FCEF5FAA286AC60100A01B58 /* HomesComingData.swift */,
+				FCB55AF8286C28090008569C /* FavoriteModel.swift */,
 				FCC28C5B286B5D7D003E7B52 /* AddNewItemResponseModel.swift */,
 			);
 			path = Pojo;
@@ -427,6 +432,7 @@
 			children = (
 				FCB7B09628630C55009BA034 /* AuthServiceManager.swift */,
 				FCBB06382867105D004C6A45 /* ComingHomeDataServiceManager.swift */,
+				FCB55AF6286C1DE10008569C /* FavoriteServiceManager.swift */,
 			);
 			path = LocalDatabase;
 			sourceTree = "<group>";
@@ -646,9 +652,11 @@
 				FCAA4F4628451878006C9069 /* AddNewItem.swift in Sources */,
 				FCC28C58286B5351003E7B52 /* AddNewUnitNetworking.swift in Sources */,
 				FCF9D4E527F2743B00CCE0B9 /* CategoryCollectionViewCell.swift in Sources */,
+				FCB55AF9286C28090008569C /* FavoriteModel.swift in Sources */,
 				FCEE874427DE5CC9005B5B70 /* SignUpViewController.swift in Sources */,
 				FC44EB8928224E2700019723 /* FavoriteHomeCollectionViewCell.swift in Sources */,
 				FCC28C55286B51EF003E7B52 /* BaseAPI.swift in Sources */,
+				FCB55AF7286C1DE10008569C /* FavoriteServiceManager.swift in Sources */,
 				FCEA6DE12818C59900BD1E77 /* UIView+Extensions.swift in Sources */,
 				FC6A895E28698DDD007CABC3 /* CategoryDetailsViewController.swift in Sources */,
 				FC8380DC2867C7C60028E5C6 /* ConvertImageType.swift in Sources */,

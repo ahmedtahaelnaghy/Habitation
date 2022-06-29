@@ -16,8 +16,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var welcomeLbl: UILabel!
     
-    
-    
     var categoriesArray: [Categories] = [
                                          Categories(image: "homeIcon", name: "Home"),
                                          Categories(image: "apartment", name: "Apartment"),
@@ -25,8 +23,6 @@ class HomeViewController: UIViewController {
                                         ]
     
     var homesArray: [HomesComingData] = []
-    var isFavorite: Bool = false
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +32,7 @@ class HomeViewController: UIViewController {
         homeCollectionView.delegate = self
         homeCollectionView.dataSource = self
         
-        editeSearchTextFieldShape()
+        editSearchTextField(textField: searchTextField)
         addImgToSearchTextField(textField: searchTextField, image: UIImage(named: "search")!)
         setupUiForCategoriesCollectionView()
         setupUiForHomeCollectionView()
@@ -45,7 +41,7 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        editWelcomeLabel()
+        editGreetingLabel()
         
         ComingHomeDataServiceManager().fetchDataFromAlamofire(type: "") { [self] result in
             
@@ -63,46 +59,11 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func editWelcomeLabel() {
-        
-        let userDefaults = UserDefaults.standard
-        guard let userName = userDefaults.string(forKey: "name") else {return}
-        welcomeLbl.text = getGreeting(userName: userName)
-        
-    }
-    
-    private func getGreeting(userName: String) -> String {
-        
-        let hour = Calendar.current.component(.hour, from: Date())
-
-        switch hour {
-            
-        case 0..<4:
-            return "Hello, \(userName)"
-            
-        case 4..<12:
-            return "Good Morning, \(userName)"
-            
-        case 12..<18:
-            return "Good Afternoon, \(userName)"
-            
-        case 18..<24:
-            return "Good Evening, \(userName)"
-            
-        default:
-            break
-            
-        }
-        
-        return "Hello"
-    }
-    
     @IBAction func categorySeeMoreBtn(_ sender: Any) {
             self.tabBarController?.selectedIndex = 1
     }
     
     @IBAction func nearbyYourLocationSeeMoreBtn(_ sender: Any) {
-        
         if let vc = storyboard?.instantiateViewController(withIdentifier: "NearbyVC") as? NearbyYourLocationViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -110,7 +71,6 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func addBtn(_ sender: Any) {
-        
         if let vc = storyboard?.instantiateViewController(withIdentifier: "AddNewHomeVC") as? AddNewHomeViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -119,7 +79,7 @@ class HomeViewController: UIViewController {
     
 }
 
-// collectionView
+// Collection View delegate and dataSource
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -142,18 +102,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.categoryImg.image = UIImage(named: "\(categoriesArray[indexPath.row].image)")
             cell.categoryName.text = categoriesArray[indexPath.row].name
             
-            cell.layer.borderColor = UIColor.lightGray.cgColor
-            cell.layer.borderWidth = 0.6
-            cell.layer.cornerRadius = 17
-            cell.layer.shadowColor = UIColor.black.cgColor
-            cell.layer.shadowRadius = 4
-            cell.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
-            cell.layer.shadowOpacity = 0.1
-            cell.layer.masksToBounds = true
+            editCollectionViewShape(collectioView: cell)
             
             return cell
             
-        }else {
+        }
+        else {
             
             let homeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeCell", for: indexPath) as! SingleHomeCollectionViewCell
                         
@@ -164,18 +118,16 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             homeCell.numberOfRoomsLbl.text = "\(homesArray[indexPath.row].bedRoomsNo) rooms"
             homeCell.numberOfBathroomsLbl.text = "\(homesArray[indexPath.row].bathsNo) bathrooms"
             
-            homeCell.layer.borderColor = UIColor.lightGray.cgColor
-            homeCell.layer.borderWidth = 0.6
-            homeCell.layer.cornerRadius = 17
-            homeCell.layer.shadowColor = UIColor.black.cgColor
-            homeCell.layer.shadowRadius = 4
-            homeCell.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
-            homeCell.layer.shadowOpacity = 0.1
-            homeCell.layer.masksToBounds = true
+            let userDefaults = UserDefaults.standard
+            let comingId = homesArray[indexPath.row].id
+            
+            userDefaults.set(comingId, forKey: "id")
+            
+            editCollectionViewShape(collectioView: homeCell)
+            
             return homeCell
             
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -183,26 +135,25 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if collectionView == categoriesCollectionView {
             
             if let vc = storyboard?.instantiateViewController(withIdentifier: "CategoryDetailsVC") as? CategoryDetailsViewController {
-                
                 vc.comingNavigationTitle = categoriesArray[indexPath.row].name
-                
                 self.navigationController?.pushViewController(vc, animated: true)
                 
             }
-        
-        }else {
+        }
+        else {
             
             if let vc = storyboard?.instantiateViewController(withIdentifier: "DetailsVC") as? DetailsViewController {
-                
                 vc.comingData = homesArray[indexPath.row]
-
                 self.navigationController?.pushViewController(vc, animated: true)
                 
             }
-  
         }
-        
     }
+    
+}
+
+// Collection View design
+extension HomeViewController {
     
     func setupUiForCategoriesCollectionView() {
         
@@ -241,26 +192,40 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
 }
-// Search textField shape
+
+// Collection View and Search textField shape
 extension HomeViewController {
     
-    func editeSearchTextFieldShape() {
-
-        let itemsArray = [searchTextField]
+    func editCollectionViewShape(collectioView: UICollectionViewCell?) {
         
-        _ = itemsArray.map {
+        _ = collectioView.map {
             
-            $0!.layer.borderColor = UIColor.lightGray.cgColor
-            $0!.layer.borderWidth = 0.6
-            $0!.layer.cornerRadius = 17
-            $0!.layer.shadowColor = UIColor.black.cgColor
-            $0!.layer.shadowRadius = 4
-            $0!.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
-            $0!.layer.shadowOpacity = 0.1
-            $0!.layer.masksToBounds = false
+            $0.layer.borderColor = UIColor.lightGray.cgColor
+            $0.layer.borderWidth = 0.6
+            $0.layer.cornerRadius = 17
+            $0.layer.shadowColor = UIColor.black.cgColor
+            $0.layer.shadowRadius = 4
+            $0.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+            $0.layer.shadowOpacity = 0.1
+            $0.layer.masksToBounds = true
 
         }
+    }
+    
+    func editSearchTextField(textField: UITextField?) {
         
+        _ = textField.map {
+            
+            $0.layer.borderColor = UIColor.lightGray.cgColor
+            $0.layer.borderWidth = 0.6
+            $0.layer.cornerRadius = 17
+            $0.layer.shadowColor = UIColor.black.cgColor
+            $0.layer.shadowRadius = 4
+            $0.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+            $0.layer.shadowOpacity = 0.1
+            $0.layer.masksToBounds = false
+
+        }
     }
     
     func addImgToSearchTextField(textField: UITextField, image: UIImage) {
@@ -273,6 +238,44 @@ extension HomeViewController {
         textField.leftViewMode = .always
         
     }
+}
+
+// Change Greeting label with time
+extension HomeViewController {
     
+    func editGreetingLabel() {
+        
+        let userDefaults = UserDefaults.standard
+        guard let userName = userDefaults.string(forKey: "name") else {return}
+        welcomeLbl.text = getGreeting(userName: userName)
+        
+    }
+    
+    private func getGreeting(userName: String) -> String {
+        
+        let hour = Calendar.current.component(.hour, from: Date())
+
+        switch hour {
+            
+        case 0..<4:
+            return "Hello, \(userName)"
+            
+        case 4..<12:
+            return "Good Morning, \(userName)"
+            
+        case 12..<18:
+            return "Good Afternoon, \(userName)"
+            
+        case 18..<24:
+            return "Good Evening, \(userName)"
+            
+        default:
+            break
+            
+        }
+        
+        return "Hello"
+    }
+       
 }
 

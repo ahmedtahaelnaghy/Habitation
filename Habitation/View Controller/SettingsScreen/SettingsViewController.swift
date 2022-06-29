@@ -33,10 +33,7 @@ class SettingsViewController: UIViewController {
     @IBAction func userProfileBtn(_ sender: Any) {
         
         if let vc = storyboard?.instantiateViewController(withIdentifier: "ProfileVC") as? ProfileViewController {
-            
             self.navigationController?.pushViewController(vc, animated: true)
-        
-        
         }
         
     }
@@ -49,9 +46,7 @@ class SettingsViewController: UIViewController {
         userDefaults.set("", forKey: "email")
         
         if let vc = storyboard?.instantiateViewController(withIdentifier: "rootVC") as? HomePageViewController {
-            
             self.navigationController?.pushViewController(vc, animated: true)
-            
         }
         
     }

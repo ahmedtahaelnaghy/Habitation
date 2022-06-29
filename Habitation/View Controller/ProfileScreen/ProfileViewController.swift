@@ -26,7 +26,6 @@ class ProfileViewController: UIViewController {
         editImageShape(image: userImg)
         editBtnShape(button: updateProfileBtnShape)
         editItems()
-        
         setDataInFields()
 
     }
@@ -46,10 +45,7 @@ class ProfileViewController: UIViewController {
     
     @IBAction func updateProfileBtn(_ sender: Any) {
         
-
         self.navigationController?.popViewController(animated: true)
-        
-        
         
     }
        

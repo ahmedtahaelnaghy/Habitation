@@ -731,7 +731,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="380" id="x65-2f-u5g"/>
                                                 </constraints>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zlp-Lx-wY0">
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zlp-Lx-wY0">
                                                     <size key="itemSize" width="383" height="385"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -739,7 +739,7 @@
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="homeCell" id="A05-ay-Bex" customClass="SingleHomeCollectionViewCell" customModule="Habitation" customModuleProvider="target">
-                                                        <rect key="frame" x="7.666666666666667" y="0.0" width="383" height="385"/>
+                                                        <rect key="frame" x="0.0" y="-2.6666666666666665" width="383" height="385"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Agc-ji-RDm">
                                                             <rect key="frame" x="0.0" y="0.0" width="383" height="385"/>
@@ -779,7 +779,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="125 sqft" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iw9-qN-m8s">
-                                                                    <rect key="frame" x="45" y="355.33333333333331" width="46" height="13.333333333333314"/>
+                                                                    <rect key="frame" x="45" y="355.33333333333337" width="46" height="13.333333333333314"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -792,13 +792,13 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 rooms" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAH-lp-ath">
-                                                                    <rect key="frame" x="146" y="355.33333333333331" width="45.666666666666657" height="13.333333333333314"/>
+                                                                    <rect key="frame" x="146" y="355.33333333333337" width="45.666666666666657" height="13.333333333333314"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 bathrooms" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olS-5O-pk1">
-                                                                    <rect key="frame" x="246.66666666666666" y="355" width="70.666666666666657" height="14.333333333333314"/>
+                                                                    <rect key="frame" x="246.66666666666663" y="355" width="70.666666666666742" height="14.333333333333314"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -1010,17 +1010,17 @@
                                 <rect key="frame" x="0.0" y="173" width="428" height="670"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aag-HE-4Df">
-                                    <size key="itemSize" width="381" height="365"/>
+                                    <size key="itemSize" width="381" height="346"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="HUx-JG-DKe" customClass="FavoriteHomeCollectionViewCell" customModule="Habitation" customModuleProvider="target">
-                                        <rect key="frame" x="23.666666666666668" y="0.0" width="381" height="365"/>
+                                        <rect key="frame" x="23.666666666666668" y="0.0" width="381" height="346"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="iRV-ES-S7C">
-                                            <rect key="frame" x="0.0" y="0.0" width="381" height="365"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="381" height="346"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ef6-RY-35c">
@@ -1047,50 +1047,47 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Expanded" translatesAutoresizingMaskIntoConstraints="NO" id="uzw-Yj-nhk">
-                                                    <rect key="frame" x="10" y="275" width="25" height="30"/>
+                                                    <rect key="frame" x="10" y="259.33333333333331" width="25" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="SOU-uS-hGA"/>
                                                         <constraint firstAttribute="width" constant="25" id="wP5-68-mTy"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="125 sqft" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9SW-XS-Kdi">
-                                                    <rect key="frame" x="45" y="283.33333333333331" width="46" height="13.333333333333314"/>
+                                                    <rect key="frame" x="45" y="267.66666666666669" width="46" height="13.333333333333314"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_rooms" translatesAutoresizingMaskIntoConstraints="NO" id="OdB-t1-1Nv">
-                                                    <rect key="frame" x="111" y="275" width="25" height="30"/>
+                                                    <rect key="frame" x="111" y="259.33333333333331" width="25" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="wpa-JG-3KB"/>
                                                         <constraint firstAttribute="height" constant="30" id="zq9-Z0-1ri"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 rooms" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kib-be-Cs0">
-                                                    <rect key="frame" x="146" y="283.33333333333331" width="45.666666666666657" height="13.333333333333314"/>
+                                                    <rect key="frame" x="146" y="267.66666666666669" width="45.666666666666657" height="13.333333333333314"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 bathrooms" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4L-Hc-Ewm">
-                                                    <rect key="frame" x="246.66666666666666" y="283" width="70.666666666666657" height="14.333333333333314"/>
+                                                    <rect key="frame" x="246.66666666666666" y="267.33333333333331" width="70.666666666666657" height="14.333333333333314"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bathroom" translatesAutoresizingMaskIntoConstraints="NO" id="PVP-qo-tbl">
-                                                    <rect key="frame" x="211.66666666666666" y="275" width="25" height="30"/>
+                                                    <rect key="frame" x="211.66666666666666" y="259.33333333333331" width="25" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="jKY-bp-bzo"/>
                                                         <constraint firstAttribute="height" constant="30" id="v4S-zU-klF"/>
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fFx-Zl-bfK">
-                                                    <rect key="frame" x="0.0" y="315" width="381" height="50"/>
+                                                    <rect key="frame" x="0.0" y="299.33333333333331" width="381" height="46.666666666666686"/>
                                                     <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="uqN-Sh-XAu"/>
-                                                    </constraints>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Available">
@@ -1102,6 +1099,7 @@
                                                 <constraint firstItem="9SW-XS-Kdi" firstAttribute="leading" secondItem="uzw-Yj-nhk" secondAttribute="trailing" constant="10" id="2GF-NG-97Q"/>
                                                 <constraint firstItem="Ef6-RY-35c" firstAttribute="top" secondItem="iRV-ES-S7C" secondAttribute="top" id="2t3-27-iUR"/>
                                                 <constraint firstAttribute="trailing" secondItem="j2k-Ec-hZj" secondAttribute="trailing" constant="10" id="BFO-Ot-Nuc"/>
+                                                <constraint firstItem="uzw-Yj-nhk" firstAttribute="top" secondItem="f9l-bq-Gng" secondAttribute="bottom" constant="20" id="GDn-zb-lgc"/>
                                                 <constraint firstItem="PVP-qo-tbl" firstAttribute="leading" secondItem="Kib-be-Cs0" secondAttribute="trailing" constant="20" id="GQC-ta-j1r"/>
                                                 <constraint firstItem="Ef6-RY-35c" firstAttribute="leading" secondItem="iRV-ES-S7C" secondAttribute="leading" id="HBC-cq-h6Z"/>
                                                 <constraint firstItem="fFx-Zl-bfK" firstAttribute="top" secondItem="uzw-Yj-nhk" secondAttribute="bottom" constant="10" id="HKb-OU-v2o"/>
@@ -1125,9 +1123,14 @@
                                                 <constraint firstItem="PVP-qo-tbl" firstAttribute="top" secondItem="uzw-Yj-nhk" secondAttribute="top" id="tUJ-wj-Bxu"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="381" height="365"/>
+                                        <size key="customSize" width="381" height="346"/>
                                         <connections>
-                                            <outlet property="image" destination="Ef6-RY-35c" id="7pb-26-epX"/>
+                                            <outlet property="areaLbl" destination="9SW-XS-Kdi" id="90r-v8-8r4"/>
+                                            <outlet property="favBtnShape" destination="j2k-Ec-hZj" id="vTl-EO-ugV"/>
+                                            <outlet property="homeImg" destination="Ef6-RY-35c" id="BEW-P5-cFZ"/>
+                                            <outlet property="homePriceLbl" destination="zlx-KV-DtQ" id="S1X-xn-Ebh"/>
+                                            <outlet property="numberOfBathroomsLbl" destination="W4L-Hc-Ewm" id="Kdc-cN-FDE"/>
+                                            <outlet property="numberOfRoomsLbl" destination="Kib-be-Cs0" id="tpg-Iy-1hS"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -2105,6 +2108,9 @@
                                                     <rect key="frame" x="289" y="10" width="66" height="56"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="heart_like"/>
+                                                    <connections>
+                                                        <action selector="favBtn:" destination="Z3e-2i-KlY" eventType="touchUpInside" id="NwB-v4-ZDi"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Premium House" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wJ-Gr-cr5">
                                                     <rect key="frame" x="10" y="220" width="118" height="20"/>
@@ -2198,6 +2204,7 @@
                                         <size key="customSize" width="365" height="346"/>
                                         <connections>
                                             <outlet property="favBtn" destination="iRn-as-gxl" id="Ach-Se-v4s"/>
+                                            <outlet property="favBtnShape" destination="iRn-as-gxl" id="hrJ-8M-srN"/>
                                             <outlet property="homeArea" destination="Uuh-0g-JBw" id="zBB-Mu-fzn"/>
                                             <outlet property="homeImg" destination="Ybb-4b-JsL" id="Mcs-rl-fEa"/>
                                             <outlet property="homePrice" destination="Lrm-vw-CQH" id="Qck-sg-w2s"/>
@@ -2229,7 +2236,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ujh-cJ-96z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="11357" y="683"/>
+            <point key="canvasLocation" x="11455" y="665"/>
         </scene>
         <!--Category Details View Controller-->
         <scene sceneID="hP8-Vj-3IA">
@@ -2323,7 +2330,7 @@
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCD-dz-WhU">
                                                     <rect key="frame" x="0.0" y="300" width="397" height="45"/>
-                                                    <color key="backgroundColor" red="0.180649169" green="0.69965166170000004" blue="0.3150315347" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Available">
                                                         <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="18"/>
@@ -2397,7 +2404,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mFI-D1-VF0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12338" y="665"/>
+            <point key="canvasLocation" x="12338" y="683"/>
         </scene>
         <!--Add New Home View Controller-->
         <scene sceneID="fSh-xU-qsW">

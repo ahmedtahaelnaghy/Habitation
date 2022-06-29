@@ -16,4 +16,44 @@ class NearbyYourLocationCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var numberOfRooms: UILabel!
     @IBOutlet weak var numberOfBathrooms: UILabel!
     @IBOutlet weak var statusBtn: UIButton!
+    @IBOutlet weak var favBtnShape: UIButton!
+    
+    var isFav: Bool = false
+    
+    @IBAction func favBtn(_ sender: Any) {
+        
+        changeFavBtnImage()
+        
+    }
+
+    func changeFavBtnImage() {
+        
+        if isFav {
+            
+            favBtnShape.setImage(UIImage(named: "heart_like"), for: .normal)
+        }
+        else {
+            
+            let userDefaults = UserDefaults.standard
+            let myId = userDefaults.string(forKey: "id") ?? ""
+            
+            FavoriteServiceManager().uploadFavoriteDataToAlamofire(id: myId) { result in
+                
+                switch result {
+                    
+                case .success(_):
+                    print("Done")
+                    
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+            
+            favBtnShape.setImage(UIImage(named: "heart"), for: .normal)
+        }
+        
+        isFav.toggle()
+        
+    }
+    
 }

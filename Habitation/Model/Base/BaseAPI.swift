@@ -44,7 +44,7 @@ class BaseAPI<T: TargetType> {
                       method: method,
                       headers: headers
             ).validate(statusCode: acceptableStatusCodes).response { response in
-                
+                print(response.result)
                 switch response.result {
                     
                 case .success(let data):

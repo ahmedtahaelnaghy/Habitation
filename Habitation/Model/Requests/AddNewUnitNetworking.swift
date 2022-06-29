@@ -42,7 +42,7 @@ extension AddNewUnitNetworking: TargetType {
         case .addNewUnit(_, let token):
             let headers: HTTPHeaders = [
                             "Content-type": "multipart/form-data",
-                            "Authorization": "token dabdd4b716248fcab6f17198349e100845ab9a26"
+                            "Authorization": "token 3007c88f6f9269d913f32a7ac87ede57884ab755"
                         ]
                         return headers
 

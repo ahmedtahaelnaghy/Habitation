@@ -13,7 +13,7 @@ class FavoritesViewController: UIViewController {
     
     @IBOutlet weak var FavoritesCollectionView: UICollectionView!
     
-    var favArray = ["", "", "", ""]
+    var favHomesArray: [FavoriteId] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,25 +22,46 @@ class FavoritesViewController: UIViewController {
         FavoritesCollectionView.dataSource = self
         
         addImgToSearchTextField(textField: searchTextField, image: UIImage(named: "search")!)
-        
         editItems()
-        
         setupUiForCategoriesCollectionView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        FavoriteServiceManager().fetchFavoriteDataFromAlamofire { result in
+            
+            switch result {   
+            case .success(let data):
+                
+                self.favHomesArray = data
+                self.FavoritesCollectionView.reloadData()
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            
+        }
+        
+    }
 }
 
 extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return favArray.count
+        return favHomesArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! FavoriteHomeCollectionViewCell
         
-        cell.image.image = UIImage(named: "apartentShape")
+        cell.homeImg.sd_setImage(with: URL(string: "http://13.93.33.202:8000\(favHomesArray[indexPath.row].ad.images[0])"), placeholderImage: UIImage(systemName: "exclamationmark.triangle.fill"))
+        
+        cell.homePriceLbl.text = "\(favHomesArray[indexPath.row].ad.price) L.E/month"
+        cell.areaLbl.text = "\(favHomesArray[indexPath.row].ad.area) sqrt"
+        cell.numberOfRoomsLbl.text = "\(favHomesArray[indexPath.row].ad.bedRoomsNo) rooms"
+        cell.numberOfBathroomsLbl.text = "\(favHomesArray[indexPath.row].ad.bathsNo) bathrooms"
+        
         cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.layer.borderWidth = 0.8
         cell.layer.cornerRadius = 20
@@ -56,12 +77,11 @@ extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "HDVC") as? HomeDetailsViewController {
-            
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "DetailsVC") as? DetailsViewController {
+            vc.comingData = favHomesArray[indexPath.row].ad
             self.navigationController?.pushViewController(vc, animated: true)
             
         }
-        
     }
     
     func setupUiForCategoriesCollectionView() {
