@@ -118,10 +118,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             homeCell.numberOfRoomsLbl.text = "\(homesArray[indexPath.row].bedRoomsNo) rooms"
             homeCell.numberOfBathroomsLbl.text = "\(homesArray[indexPath.row].bathsNo) bathrooms"
             
-            let userDefaults = UserDefaults.standard
-            let comingId = homesArray[indexPath.row].id
-            
-            userDefaults.set(comingId, forKey: "id")
+            homeCell.setId = homesArray[indexPath.row].id
             
             editCollectionViewShape(collectioView: homeCell)
             

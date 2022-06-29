@@ -20,6 +20,8 @@ class NearbyYourLocationCollectionViewCell: UICollectionViewCell {
     
     var isFav: Bool = false
     
+    var setId: Int = 0
+    
     @IBAction func favBtn(_ sender: Any) {
         
         changeFavBtnImage()
@@ -34,10 +36,7 @@ class NearbyYourLocationCollectionViewCell: UICollectionViewCell {
         }
         else {
             
-            let userDefaults = UserDefaults.standard
-            let myId = userDefaults.string(forKey: "id") ?? ""
-            
-            FavoriteServiceManager().uploadFavoriteDataToAlamofire(id: myId) { result in
+            FavoriteServiceManager().uploadFavoriteDataToAlamofire(id: setId) { result in
                 
                 switch result {
                     

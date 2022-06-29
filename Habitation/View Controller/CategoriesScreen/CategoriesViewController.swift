@@ -29,12 +29,10 @@ class CategoriesViewController: UIViewController {
     
 }
 
-extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return categoriesArray.count
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -44,15 +42,7 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
         cell.categoryImg.image = UIImage(named: "\(categoriesArray[indexPath.row].image)")
         cell.categoryName.text = categoriesArray[indexPath.row].name
         
-        cell.layer.cornerRadius = 15
-        cell.layer.borderWidth = 0.5
-        cell.layer.borderColor = UIColor.lightGray.cgColor
-        cell.layer.shadowOffset = CGSize(width: 1.2, height: 1.2)
-        cell.layer.shadowColor = UIColor.lightGray.cgColor
-        cell.layer.shadowOpacity = 0.5
-        cell.layer.shadowRadius = 1
-        
-        cell.layer.masksToBounds = false
+        editCollectionViewShape(collectionView: cell)
 
         return cell
         
@@ -61,14 +51,15 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if let vc = storyboard?.instantiateViewController(withIdentifier: "CategoryDetailsVC") as? CategoryDetailsViewController {
-            
             vc.comingNavigationTitle = categoriesArray[indexPath.row].name
-            
             self.navigationController?.pushViewController(vc, animated: true)
-            
-            }
-        
+        }
     }
+    
+}
+
+// Collection View design
+extension CategoriesViewController {
     
     func setupUi() {
         
@@ -83,6 +74,24 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
         let layout = UICollectionViewCompositionalLayout(section: section)
         
         allCategoriesCollectionView.collectionViewLayout = layout
+        
+    }
+    
+}
+
+// Collection View shape
+extension CategoriesViewController {
+    
+    func editCollectionViewShape(collectionView: UICollectionViewCell) {
+        
+        collectionView.layer.cornerRadius = 15
+        collectionView.layer.borderWidth = 0.5
+        collectionView.layer.borderColor = UIColor.lightGray.cgColor
+        collectionView.layer.shadowOffset = CGSize(width: 1.2, height: 1.2)
+        collectionView.layer.shadowColor = UIColor.lightGray.cgColor
+        collectionView.layer.shadowOpacity = 0.5
+        collectionView.layer.shadowRadius = 1
+        collectionView.layer.masksToBounds = false
         
     }
     

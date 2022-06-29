@@ -68,6 +68,7 @@ extension CategoryDetailsViewController: UICollectionViewDelegate, UICollectionV
         cell.areaLbl.text = "\(homesArray[indexPath.row].area) sqrt"
         cell.numberOfRoomsLbl.text = "\(homesArray[indexPath.row].bedRoomsNo) rooms"
         cell.numberOfBathroomsLbl.text = "\(homesArray[indexPath.row].bathsNo) bathrooms"
+        cell.setId = homesArray[indexPath.row].id
         
         editCollectionViewShape(collectionView: cell)
         

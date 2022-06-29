@@ -62,9 +62,7 @@ extension NearbyYourLocationViewController: UICollectionViewDelegate, UICollecti
         cell.numberOfRooms.text = "\(homesArray[indexPath.row].bedRoomsNo) rooms"
         cell.numberOfBathrooms.text = "\(homesArray[indexPath.row].bathsNo) bathrooms"
         
-        let userDefaults = UserDefaults.standard
-        let comingId = homesArray[indexPath.row].id
-        userDefaults.set(comingId, forKey: "id")
+        cell.setId = homesArray[indexPath.row].id
         
         editCollectionViewShape(collectionView: cell)
         

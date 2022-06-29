@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Zls-N1-yfT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K9H-h9-CgB">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -1033,6 +1033,9 @@
                                                     <rect key="frame" x="305" y="10" width="66" height="56"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="heart"/>
+                                                    <connections>
+                                                        <action selector="favBtn:" destination="HUx-JG-DKe" eventType="touchUpInside" id="Rxi-YF-uxE"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Premium House" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9l-bq-Gng">
                                                     <rect key="frame" x="10" y="220" width="118" height="19.333333333333343"/>
@@ -2063,7 +2066,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xi2-f5-FF2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10221" y="2140"/>
+            <point key="canvasLocation" x="7464" y="2698"/>
         </scene>
         <!--Nearby Your Location-->
         <scene sceneID="Nhb-0Q-qiT">
@@ -2203,7 +2206,6 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="365" height="346"/>
                                         <connections>
-                                            <outlet property="favBtn" destination="iRn-as-gxl" id="Ach-Se-v4s"/>
                                             <outlet property="favBtnShape" destination="iRn-as-gxl" id="hrJ-8M-srN"/>
                                             <outlet property="homeArea" destination="Uuh-0g-JBw" id="zBB-Mu-fzn"/>
                                             <outlet property="homeImg" destination="Ybb-4b-JsL" id="Mcs-rl-fEa"/>
@@ -2236,7 +2238,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ujh-cJ-96z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="11455" y="665"/>
+            <point key="canvasLocation" x="11357" y="683"/>
         </scene>
         <!--Category Details View Controller-->
         <scene sceneID="hP8-Vj-3IA">
@@ -2341,6 +2343,9 @@
                                                     <rect key="frame" x="321" y="10" width="66" height="56"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="heart_like"/>
+                                                    <connections>
+                                                        <action selector="favBtn:" destination="faT-2u-ia9" eventType="touchUpInside" id="Wgg-xi-FS8"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -2375,6 +2380,7 @@
                                         <connections>
                                             <outlet property="areaLbl" destination="HAy-Gj-NJg" id="RVy-nh-YdA"/>
                                             <outlet property="availabilityBtn" destination="uCD-dz-WhU" id="73L-gA-c4o"/>
+                                            <outlet property="favBtnShape" destination="gJR-uf-iRc" id="vqv-yS-URz"/>
                                             <outlet property="homeImg" destination="30g-1M-645" id="aV5-ZA-hdl"/>
                                             <outlet property="numberOfBathroomsLbl" destination="0mi-1P-hAN" id="dzF-sj-LkS"/>
                                             <outlet property="numberOfRoomsLbl" destination="b2k-aO-YhT" id="wZY-ef-Gwh"/>
@@ -2828,7 +2834,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Akc-0I-u23" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10220" y="1427"/>
+            <point key="canvasLocation" x="6538" y="2698"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="F13-rf-buG">
@@ -3153,7 +3159,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="blZ-LU-0dl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12256.542056074766" y="1393.7365010799138"/>
+            <point key="canvasLocation" x="11357" y="1394"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ErA-yo-VLP">
@@ -3171,7 +3177,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OgX-gl-Rts" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13237.85046728972" y="1393.7365010799138"/>
+            <point key="canvasLocation" x="12338" y="1394"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VQx-ew-pcn">

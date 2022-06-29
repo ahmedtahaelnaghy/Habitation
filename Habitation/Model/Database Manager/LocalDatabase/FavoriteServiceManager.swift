@@ -10,7 +10,7 @@ import Alamofire
 
 class FavoriteServiceManager {
     
-    func uploadFavoriteDataToAlamofire(id: String, completion: @escaping(Result<FavoriteId, Error>) -> (Void)) {
+    func uploadFavoriteDataToAlamofire(id: Int, completion: @escaping(Result<FavoriteId, Error>) -> (Void)) {
         
         let userDefaults = UserDefaults.standard
         
@@ -22,7 +22,6 @@ class FavoriteServiceManager {
         
         let request = AF.request(url, method: .post, parameters: parameter, headers: [HTTPHeader(name: "Authorization", value: "token \(comingToken)")])
         
-        print(request)
         request.response { dataResponse in
             
             switch dataResponse.result {
@@ -44,7 +43,7 @@ class FavoriteServiceManager {
         }
         
     }
-        
+    
     func fetchFavoriteDataFromAlamofire(completion: @escaping (Result<[FavoriteId], Error>) -> (Void)) {
         
         let userDefaults = UserDefaults.standard

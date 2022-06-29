@@ -9,7 +9,6 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
-    
     @IBOutlet weak var userProfileView: UIView!
     @IBOutlet weak var logOutBtnShape: UIButton!
     @IBOutlet weak var userImg: UIImageView!

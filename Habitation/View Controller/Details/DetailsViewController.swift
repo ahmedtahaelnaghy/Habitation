@@ -24,7 +24,7 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var callBtnShape: UIButton!
     @IBOutlet weak var favBtnShape: UIButton!
     
-    var isfav: Bool = true
+    var isfav: Bool = false
     
     var comingData: HomesComingData!
     
