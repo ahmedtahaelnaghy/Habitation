@@ -17,7 +17,7 @@ struct AddNewItemViewModel: AddNewItemViewModelProtocol {
     var area: Int
     var bathsNo: Int
     var bedRoomsNo: Int
-    var location: [Double]
+    var location: [Int]
     var images: [UIImage]
     var available: Bool
     var diriction: String
@@ -37,7 +37,7 @@ protocol AddNewItemViewModelProtocol {
     var area: Int {get}
     var bathsNo: Int {get}
     var bedRoomsNo: Int {get}
-    var location: [Double] {get}
+    var location: [Int] {get}
     var images: [UIImage] {get}
     var available: Bool {get}
     var diriction: String {get}

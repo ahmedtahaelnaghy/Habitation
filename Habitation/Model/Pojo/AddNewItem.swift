@@ -10,19 +10,19 @@ import UIKit
 
 struct AddNewItem: Codable {
     
-    var name: String
-    var description: String
-    var price: Double
-    var cash_discount: Double
-    var type: String
-    var area: Int
-    var baths_no: Int
-    var bed_rooms_no: Int
-    var location: [Double]
-    var images: [Data]
-    var available: Bool
-    var diriction: String
-    
+    let location, diriction,type,name, description , available ,price, cashDiscount , area, bathsNo, bedRoomsNo : String
+    var images: [Data] = []
+
+    enum CodingKeys: String, CodingKey {
+        case location, name
+        case description = "description"
+        case available, price
+        case cashDiscount = "cash_discount"
+        case type, diriction, area
+        case bathsNo = "baths_no"
+        case bedRoomsNo = "bed_rooms_no"
+        
+    }
     func isDictionary() -> [String:Any] {
 
         if let jsonDecodedObj = try? JSONEncoder().encode(self) {
@@ -38,14 +38,14 @@ struct AddNewItem: Codable {
     init(viewModel: AddNewItemViewModelProtocol){
         self.name = viewModel.name
         self.description = viewModel.description
-        self.price = viewModel.price
-        self.cash_discount = viewModel.cashDiscount
+        self.price = String(viewModel.price)
+        self.cashDiscount = String(viewModel.cashDiscount)
         self.type = viewModel.type
-        self.area = viewModel.area
-        self.baths_no = viewModel.bathsNo
-        self.bed_rooms_no = viewModel.bedRoomsNo
-        self.location = viewModel.location
-        self.available = viewModel.available
+        self.area = String(viewModel.area)
+        self.bathsNo = String(viewModel.bathsNo)
+        self.bedRoomsNo = String(viewModel.bedRoomsNo)
+        self.location = "[\(viewModel.location[0]),\((viewModel.location[1]))]"
+        self.available = String(viewModel.available)
         self.diriction = viewModel.diriction
         
         self.images = viewModel.images.compactMap({$0.converUIImgaeToData(withQuality: 0.7)})

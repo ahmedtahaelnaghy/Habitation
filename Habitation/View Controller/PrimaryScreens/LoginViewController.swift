@@ -144,12 +144,12 @@ extension LoginViewController {
 }
 
 // Showing Alert functions
-extension LoginViewController {
+extension UIViewController {
     
-    func showAlert(message: String) {
+    func showAlert(message: String , completion:((UIAlertAction) -> Void)? = nil) {
         
         let alertController = UIAlertController(title: "Alert!", message: message, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: completion)
 
         alertController.addAction(alertAction)
         present(alertController, animated: true, completion: nil)

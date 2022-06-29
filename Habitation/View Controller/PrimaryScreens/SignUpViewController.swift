@@ -105,16 +105,16 @@ extension SignUpViewController {
     
 }
 
-extension SignUpViewController {
-    
-    func showAlert(message: String) {
-        
-        let alertController = UIAlertController(title: "Alert!", message: message, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-
-        alertController.addAction(alertAction)
-        present(alertController, animated: true, completion: nil)
-        
-    }
-    
-}
+//extension SignUpViewController {
+//    
+//    func showAlert(message: String) {
+//        
+//        let alertController = UIAlertController(title: "Alert!", message: message, preferredStyle: .alert)
+//        let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+//
+//        alertController.addAction(alertAction)
+//        present(alertController, animated: true, completion: nil)
+//        
+//    }
+//    
+//}

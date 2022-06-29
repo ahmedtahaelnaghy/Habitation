@@ -29,7 +29,7 @@ class BaseAPI<T: TargetType> {
             let params = buildParams(task: target.task)
             let url = target.baseURL + target.pathURL
             
-            let imageParamName = "images[]"
+            let imageParamName = "images"
             print(url)
             AF.upload(multipartFormData: { multipartFormData in
                         // import image to request
@@ -47,22 +47,14 @@ class BaseAPI<T: TargetType> {
                 print(response.result)
                 switch response.result {
                     
+                
                 case .success(let data):
                     guard let responseOBJ = try? JSONDecoder().decode(M.self, from: data!) else {
                         completion(.failure(CustomError(title: "Decode Error", description: "Decode Error" , code: 1)))
                         return
                     }
-                    print(response.response?.statusCode)
-                    if response.response?.statusCode == 200 {
+                    
                         completion(.success(responseOBJ))
-                    } else {
-                        
-//                        completion(.failure(CustomError(title: "State code error", description: "State code error" , code: 1)))
-//                            return
-                        
-                        completion(.failure(CustomError(title: "State code error", description: "State code error" , code: 1)))
-
-                    }
                 case .failure(let error):
                     completion(.failure(CustomError(title: error.localizedDescription, description: error.localizedDescription , code: 1)))
 

@@ -33,24 +33,21 @@ extension AddNewUnitNetworking: TargetType {
         switch self {
         case .addNewUnit(let model, _):
             return .requestParameters(parameters: model.asJson() ?? [:], encoding: URLEncoding.default)
-
-    }
+        }
     }
     
     var headers: HTTPHeaders {
         switch self {
-        case .addNewUnit(_, let token):
+        case .addNewUnit(_, _):
+            
+            let comingToken = UserDefaults.standard.string(forKey: "token") ?? ""
             let headers: HTTPHeaders = [
                             "Content-type": "multipart/form-data",
-                            "Authorization": "token 3007c88f6f9269d913f32a7ac87ede57884ab755"
+                            "Authorization": "token \(comingToken)"
                         ]
                         return headers
-
-    }
-    }
-    
- 
-    
+            }
+     }
 }
     
 extension Encodable {

@@ -8,6 +8,7 @@
 import UIKit
 import Photos
 import BSImagePicker
+import MapKit
 
 class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegate  {
     
@@ -23,11 +24,10 @@ class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var saveBtnShape: UIButton!
     @IBOutlet weak var cancelBtnShape: UIButton!
     @IBOutlet weak var openGalleryShape: UIButton!
+    @IBOutlet weak var map: MKMapView!
     
     var imagesArray: [String] = []
-    
     var selectedImages: [UIImage] = []
-    
     let requestAPI = AddNewUnitRequest()
     
     override func viewDidLoad() {
@@ -37,13 +37,10 @@ class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegat
         
         editItems()
         textFieldShape()
-    
     }
     
     @IBAction func openGalleryBtn(_ sender: Any) {
         uploadPhotosFromLibraryButtonPressed()
-//        var modelDetails = getAddItemFromData()
-//        modelDetails.SetNewItemImage(images: selectedImages)
     }
     
     @IBAction func saveBtn(_ sender: Any) {
@@ -52,55 +49,44 @@ class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegat
             print(result)
             switch result {
                 
-            case.success(let data):
+            case.success(_):
                 
-                print(data)
-                
+                self.showAlert(message: "Sucess") { _ in
+                    self.navigationController?.popViewController(animated: true)
+                }
+
             case.failure(let error):
                 print(error.localizedDescription)
             }
-            
-            
         }
-        
-        
-        
+          
     }
     
     func getAddItemFromData() -> AddNewItemViewModelProtocol{
-        
-
 
         let avaiable: Bool = true
-        let location = [500.5, 800.1]
-        
+        let location = [500, 800]
         
         return AddNewItemViewModel(
-                            name: unitNameTextField.text ?? "",
-                            description: descriptionTextField.text ?? "",
-                            price: Double(unitPriceTextField.text) ?? 0.0,
-                            cashDiscount: Double(cashPercentageDiscountTextField.text) ?? 0.0,
-                            type: typeTextField.text ?? "",
-                            area: Int(areaTextField.text) ?? 0,
-                            bathsNo: Int(numberOfBathroomsTextField.text) ?? 0,
-                            bedRoomsNo: Int(numberOfBedroomsTextField.text) ?? 0,
-                            location: location,
-                            images: selectedImages,
-                            available: avaiable,
-                            diriction: directionTextField.text ?? ""
-                            )
-        
-        
-        
+                                name: unitNameTextField.text ?? "",
+                                description: descriptionTextField.text ?? "",
+                                price: Double(unitPriceTextField.text) ?? 0.0,
+                                cashDiscount: Double(cashPercentageDiscountTextField.text) ?? 0.0,
+                                type: typeTextField.text ?? "",
+                                area: Int(areaTextField.text) ?? 0,
+                                bathsNo: Int(numberOfBathroomsTextField.text) ?? 0,
+                                bedRoomsNo: Int(numberOfBedroomsTextField.text) ?? 0,
+                                location: location,
+                                images: selectedImages,
+                                available: avaiable,
+                                diriction: directionTextField.text ?? ""
+                                )
         
     }
     
     @IBAction func cancelBtn(_ sender: Any) {
-        
         self.navigationController?.popViewController(animated: true)
-        
     }
-    
 }
 
 
@@ -108,17 +94,13 @@ extension AddNewHomeViewController {
     
     func uploadPhotosFromLibraryButtonPressed(){
         
-            let imagePicker = ImagePickerController()
-            
-            presentImagePicker(imagePicker, select: nil, deselect: nil, cancel: nil) { assets in
-                assets.forEach({self.selectedImages.append($0.uiImage)})
-//                self.mainView.reloadSelectedImagesCollectionViewData()
-                print(self.selectedImages)
-
-            }
+        let imagePicker = ImagePickerController()
+        
+        presentImagePicker(imagePicker, select: nil, deselect: nil, cancel: nil) { assets in
+            assets.forEach({self.selectedImages.append($0.uiImage)})
+            print(self.selectedImages)
+        }
     }
-
-                    
 }
 
 
@@ -144,25 +126,12 @@ extension AddNewHomeViewController {
     
     func textFieldShape() {
         
-        let textFieldsArray = [unitNameTextField, descriptionTextField, unitPriceTextField, cashPercentageDiscountTextField, typeTextField, areaTextField, numberOfBathroomsTextField, numberOfBedroomsTextField, directionTextField]
+        let textFieldsArray = [unitNameTextField, descriptionTextField, unitPriceTextField, cashPercentageDiscountTextField, typeTextField, areaTextField, numberOfBathroomsTextField, numberOfBedroomsTextField, directionTextField, map]
 
         _ = textFieldsArray.map {
             
             $0!.layer.borderColor = UIColor.lightGray.cgColor
             $0!.layer.borderWidth = 1
-            
         }
-        
     }
-    
 }
-//        guard let unitName = unitNameTextField.text else {return "" as! AddNewItemViewModelProtocol}
-//        guard let description = descriptionTextField.text else {return ""}
-//        guard let unitPrice = Double(unitPriceTextField.text) else {return}
-//        guard let cashPercentageDiscount = Double(cashPercentageDiscountTextField.text) else {return}
-//        guard let type = typeTextField.text else {return}
-//        guard let area = Int(areaTextField.text) else {return}
-//        guard let numberOfBathrooms = Int(numberOfBathroomsTextField.text) else {return}
-//        guard let numberOfBedrooms = Int(numberOfBedroomsTextField.text) else {return}
-//        guard let dirextion = Double(locationTextField.text) else {return}
-//        let direction: String = "North"
