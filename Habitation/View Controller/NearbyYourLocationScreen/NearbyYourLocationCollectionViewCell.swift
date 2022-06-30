@@ -23,9 +23,7 @@ class NearbyYourLocationCollectionViewCell: UICollectionViewCell {
     var favId: Int = 0
     
     @IBAction func favBtn(_ sender: Any) {
-        
         changeFavBtnImage()
-        
     }
 
     func changeFavBtnImage() {

@@ -23,19 +23,15 @@ class HomeViewController: UIViewController {
                                         ]
     
     var homesArray: [HomesComingData] = []
-    
     var favHomesArray: [FavoriteId] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.hidesBackButton = true
-        
         homeCollectionView.delegate = self
         homeCollectionView.dataSource = self
-        
         addBtnToSearchTextField(textField: searchTextField)
-        
         editSearchTextField(textField: searchTextField)
         addImgToSearchTextField(textField: searchTextField, image: UIImage(named: "search")!)
         setupUiForCategoriesCollectionView()
@@ -95,8 +91,6 @@ class HomeViewController: UIViewController {
 
             }
         }
-        
-        
     }
     
 }

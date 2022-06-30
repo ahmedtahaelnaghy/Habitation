@@ -10,17 +10,22 @@ import UIKit
 
 struct AddNewItem: Codable {
     
-    let location, diriction,type,name, description , available ,price, cashDiscount , area, bathsNo, bedRoomsNo : String
+    let diriction,type,name, description , available ,price, cashDiscount , area, bathsNo, bedRoomsNo : String
     var images: [Data] = []
-
+    
+    var locationOne: String
+    var locationTwo: String
+    
     enum CodingKeys: String, CodingKey {
-        case location, name
+        case name
         case description = "description"
         case available, price
         case cashDiscount = "cash_discount"
         case type, diriction, area
         case bathsNo = "baths_no"
         case bedRoomsNo = "bed_rooms_no"
+        case locationOne = "location[0]"
+        case locationTwo = "location[1]"
         
     }
     func isDictionary() -> [String:Any] {
@@ -44,7 +49,8 @@ struct AddNewItem: Codable {
         self.area = String(viewModel.area)
         self.bathsNo = String(viewModel.bathsNo)
         self.bedRoomsNo = String(viewModel.bedRoomsNo)
-        self.location = "[\(viewModel.location[0]),\((viewModel.location[1]))]"
+        self.locationOne = "\(viewModel.location[0])"
+        self.locationTwo = "\((viewModel.location[1]))"
         self.available = String(viewModel.available)
         self.diriction = viewModel.diriction
         

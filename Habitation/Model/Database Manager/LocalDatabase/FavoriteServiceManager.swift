@@ -85,6 +85,7 @@ class FavoriteServiceManager {
             }
             if let error = dataResponse.error {
                 print(error.localizedDescription)
+                completion(.failure(error))
             }
         }
     }

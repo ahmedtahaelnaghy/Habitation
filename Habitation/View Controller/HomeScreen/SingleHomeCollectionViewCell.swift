@@ -28,7 +28,7 @@ class SingleHomeCollectionViewCell: UICollectionViewCell {
         
         if isFavorite {
             
-            FavoriteServiceManager().deleteDataFromAlamofire(id: 108) { result in
+            FavoriteServiceManager().deleteDataFromAlamofire(id: 111) { result in
                 
                 switch result {
                 case .success(_):
