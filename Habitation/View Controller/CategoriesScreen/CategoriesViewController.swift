@@ -41,7 +41,6 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
         
         cell.categoryImg.image = UIImage(named: "\(categoriesArray[indexPath.row].image)")
         cell.categoryName.text = categoriesArray[indexPath.row].name
-        
         editCollectionViewShape(collectionView: cell)
 
         return cell

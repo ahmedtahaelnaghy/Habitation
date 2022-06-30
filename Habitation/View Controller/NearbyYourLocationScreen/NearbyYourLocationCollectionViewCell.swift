@@ -18,9 +18,9 @@ class NearbyYourLocationCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var statusBtn: UIButton!
     @IBOutlet weak var favBtnShape: UIButton!
     
-    var isFav: Bool = false
-    
+    var isFavorite: Bool = false
     var setId: Int = 0
+    var favId: Int = 0
     
     @IBAction func favBtn(_ sender: Any) {
         
@@ -30,8 +30,18 @@ class NearbyYourLocationCollectionViewCell: UICollectionViewCell {
 
     func changeFavBtnImage() {
         
-        if isFav {
+        if isFavorite {
             
+            FavoriteServiceManager().deleteDataFromAlamofire(id: 108) { result in
+                
+                switch result {
+                case .success(_):
+                    print("Sucess")
+                case .failure(_):
+                    print("Error")
+                }
+                
+            }
             favBtnShape.setImage(UIImage(named: "heart_like"), for: .normal)
         }
         else {
@@ -39,20 +49,16 @@ class NearbyYourLocationCollectionViewCell: UICollectionViewCell {
             FavoriteServiceManager().uploadFavoriteDataToAlamofire(id: setId) { result in
                 
                 switch result {
-                    
                 case .success(_):
                     print("Done")
-                    
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
             }
-            
             favBtnShape.setImage(UIImage(named: "heart"), for: .normal)
         }
         
-        isFav.toggle()
-        
+        isFavorite.toggle()
     }
     
 }

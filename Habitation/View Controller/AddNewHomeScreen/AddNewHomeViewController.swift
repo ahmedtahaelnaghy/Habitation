@@ -50,7 +50,6 @@ class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegat
             switch result {
                 
             case.success(_):
-                
                 self.showAlert(message: "Sucess") { _ in
                     self.navigationController?.popViewController(animated: true)
                 }
@@ -65,7 +64,7 @@ class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegat
     func getAddItemFromData() -> AddNewItemViewModelProtocol{
 
         let avaiable: Bool = true
-        let location = [500, 800]
+        let location = [500.5, 800.2]
         
         return AddNewItemViewModel(
                                 name: unitNameTextField.text ?? "",

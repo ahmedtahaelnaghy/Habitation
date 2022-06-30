@@ -24,6 +24,8 @@ class HomeViewController: UIViewController {
     
     var homesArray: [HomesComingData] = []
     
+    var favHomesArray: [FavoriteId] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,6 +33,8 @@ class HomeViewController: UIViewController {
         
         homeCollectionView.delegate = self
         homeCollectionView.dataSource = self
+        
+        addBtnToSearchTextField(textField: searchTextField)
         
         editSearchTextField(textField: searchTextField)
         addImgToSearchTextField(textField: searchTextField, image: UIImage(named: "search")!)
@@ -43,19 +47,17 @@ class HomeViewController: UIViewController {
         
         editGreetingLabel()
         
-        ComingHomeDataServiceManager().fetchDataFromAlamofire(type: "") { [self] result in
+        ComingHomeDataServiceManager().fetchDataFromAlamofire(type: "", name: "") { [self] result in
             
             switch result {
 
             case .success(let data):
-                
                 self.homesArray = data
                 self.homeCollectionView.reloadData()
-
             case .failure(let error):
                 print(error.localizedDescription)
+                
             }
-
         }
     }
     
@@ -74,6 +76,26 @@ class HomeViewController: UIViewController {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "AddNewHomeVC") as? AddNewHomeViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
+        
+    }
+    
+    @IBAction func searchPressed(_ sender: Any) {
+        
+        guard let search = searchTextField.text else {return}
+
+        ComingHomeDataServiceManager().fetchDataFromAlamofire(type: "", name: search) { [self] result in
+
+            switch result {
+
+            case .success(let data):
+                self.homesArray = data
+                self.homeCollectionView.reloadData()
+            case .failure(let error):
+                print(error.localizedDescription)
+
+            }
+        }
+        
         
     }
     
@@ -117,8 +139,17 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             homeCell.areaLbl.text = "\(homesArray[indexPath.row].area) sqrt"
             homeCell.numberOfRoomsLbl.text = "\(homesArray[indexPath.row].bedRoomsNo) rooms"
             homeCell.numberOfBathroomsLbl.text = "\(homesArray[indexPath.row].bathsNo) bathrooms"
-            
             homeCell.setId = homesArray[indexPath.row].id
+            homeCell.isFavorite = homesArray[indexPath.row].isFav
+            
+//            homeCell.favId = favHomesArray[indexPath.row].id
+            
+            switch homesArray[indexPath.row].isFav {
+            case true:
+                homeCell.favBtnShape.imageView?.image = UIImage(named: "heart")
+            case false:
+                homeCell.favBtnShape.imageView?.image = UIImage(named: "heart_like")
+            }
             
             editCollectionViewShape(collectioView: homeCell)
             
@@ -227,12 +258,26 @@ extension HomeViewController {
     
     func addImgToSearchTextField(textField: UITextField, image: UIImage) {
         
-        let imageView = UIImageView(frame: CGRect(x: 35, y: 0, width: image.size.width, height: image.size.height))
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 70, height: image.size.height))
+        let imageView = UIImageView(frame: CGRect(x: 27, y: 0, width: image.size.width, height: image.size.height))
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: image.size.height))
         view.addSubview(imageView)
         imageView.image = image
         textField.leftView = view
         textField.leftViewMode = .always
+        
+    }
+    
+    func addBtnToSearchTextField(textField: UITextField) {
+        
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "search"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -45, bottom: 0, right: 0)
+//        button.frame = CGRect(x: CGFloat(textField.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
+        button.addTarget(self, action: #selector(self.searchPressed), for: .touchUpInside)
+        textField.rightView = button
+        textField.rightViewMode = .always
+        
+        
         
     }
 }

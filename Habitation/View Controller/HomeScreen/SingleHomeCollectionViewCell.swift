@@ -16,26 +16,35 @@ class SingleHomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var numberOfBathroomsLbl: UILabel!
     @IBOutlet weak var favBtnShape: UIButton!
     
-    var isFav: Bool = false
+    var isFavorite: Bool = false
     var setId: Int = 0
+    var favId: Int = 0
     
     @IBAction func favBtn(_ sender: Any) {
-        
         changeFavBtnImage()
     }
     
     func changeFavBtnImage() {
         
-        if isFav {
+        if isFavorite {
             
-                favBtnShape.setImage(UIImage(named: "heart_like"), for: .normal)
+            FavoriteServiceManager().deleteDataFromAlamofire(id: 108) { result in
+                
+                switch result {
+                case .success(_):
+                    print("Sucess")
+                case .failure(_):
+                    print("Error")
+                }
+                
+            }
+            favBtnShape.setImage(UIImage(named: "heart_like"), for: .normal)
         }
         else {
             
             FavoriteServiceManager().uploadFavoriteDataToAlamofire(id: setId) { result in
                 
                 switch result {
-                    
                 case .success(_):
                     print("Done")
                 case .failure(let error):
@@ -45,7 +54,7 @@ class SingleHomeCollectionViewCell: UICollectionViewCell {
             favBtnShape.setImage(UIImage(named: "heart"), for: .normal)
         }
         
-        isFav.toggle()
+        isFavorite.toggle()
     }
     
 }

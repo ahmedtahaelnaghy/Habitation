@@ -47,9 +47,7 @@ class AuthServiceManager {
                                 
                 print(error.localizedDescription)
             }
-            
         }
-        
     }
     
     // function that post SignUp and save name in userDefaults
@@ -92,9 +90,7 @@ class AuthServiceManager {
             case .failure(let error):
                 print(error.localizedDescription)
             }
-            
         }
-         
     }
     
     // function that get token and save name in userDefaults
@@ -124,11 +120,8 @@ class AuthServiceManager {
             case .failure(let error):
                 print(error.localizedDescription)
             }
-            
         }
-        
     }
-    
 }
 
 protocol OurErrorProtocol: LocalizedError {

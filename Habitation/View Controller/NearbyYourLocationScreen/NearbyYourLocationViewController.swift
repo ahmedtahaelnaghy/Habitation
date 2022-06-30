@@ -19,7 +19,7 @@ class NearbyYourLocationViewController: UIViewController {
         
         nearbyCollectionView.delegate = self
         nearbyCollectionView.dataSource = self
-        
+        addBtnToSearchTextField(textField: searchTextField)
         addImgToSearchTextField(textField: searchTextField, image: UIImage(named: "search")!)
         editTextFieldShape(textField: searchTextField)
         setupUiForNearbyCollectionView()
@@ -28,10 +28,27 @@ class NearbyYourLocationViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        ComingHomeDataServiceManager().fetchDataFromAlamofire(type: "") { [self] result in
+        ComingHomeDataServiceManager().fetchDataFromAlamofire(type: "", name: "") { [self] result in
             
             switch result {
+            case .success(let data):
+                
+                self.homesArray = data
+                self.nearbyCollectionView.reloadData()
 
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    @IBAction func searchPressed(_ sender: Any) {
+        
+        guard let search = searchTextField.text else {return}
+
+        ComingHomeDataServiceManager().fetchDataFromAlamofire(type: "", name: search) { [self] result in
+
+            switch result {
             case .success(let data):
                 
                 self.homesArray = data
@@ -56,13 +73,19 @@ extension NearbyYourLocationViewController: UICollectionViewDelegate, UICollecti
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! NearbyYourLocationCollectionViewCell
         
         cell.homeImg.sd_setImage(with: URL(string: "http://13.93.33.202:8000\(homesArray[indexPath.row].images[0])"), placeholderImage: UIImage(systemName: "exclamationmark.triangle.fill"))
-        
         cell.homePrice.text = "\(homesArray[indexPath.row].price) L.E/month"
         cell.homeArea.text = "\(homesArray[indexPath.row].area) sqrt"
         cell.numberOfRooms.text = "\(homesArray[indexPath.row].bedRoomsNo) rooms"
         cell.numberOfBathrooms.text = "\(homesArray[indexPath.row].bathsNo) bathrooms"
-        
         cell.setId = homesArray[indexPath.row].id
+        cell.isFavorite = homesArray[indexPath.row].isFav
+        
+        switch homesArray[indexPath.row].isFav {
+        case true:
+            cell.favBtnShape.imageView?.image = UIImage(named: "heart")
+        case false:
+            cell.favBtnShape.imageView?.image = UIImage(named: "heart_like")
+        }
         
         editCollectionViewShape(collectionView: cell)
         
@@ -131,13 +154,25 @@ extension NearbyYourLocationViewController {
     
     func addImgToSearchTextField(textField: UITextField, image: UIImage) {
         
-        let imageView = UIImageView(frame: CGRect(x: 35, y: 0, width: image.size.width, height: image.size.height))
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 70, height: image.size.height))
+        let imageView = UIImageView(frame: CGRect(x: 27, y: 0, width: image.size.width, height: image.size.height))
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: image.size.height))
         view.addSubview(imageView)
         imageView.image = image
         textField.leftView = view
         textField.leftViewMode = .always
         
+    }
+    
+    func addBtnToSearchTextField(textField: UITextField) {
+        
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "search"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -45, bottom: 0, right: 0)
+//        button.frame = CGRect(x: CGFloat(textField.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
+        button.addTarget(self, action: #selector(self.searchPressed), for: .touchUpInside)
+        textField.rightView = button
+        textField.rightViewMode = .always
+         
     }
     
 }

@@ -25,7 +25,7 @@ class CategoryDetailsViewController: UIViewController {
         categoryDetailsCollectionView.dataSource = self
         
         navigationItem.title = comingNavigationTitle
-        
+        addBtnToSearchTextField(textField: searchTextField)
         addImgToSearchTextField(textField: searchTextField, image: UIImage(named: "search")!)
         editSearchTextFieldShape(textField: searchTextField)
         setupUiForCategoryDetailsCollectionView()
@@ -34,7 +34,7 @@ class CategoryDetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
 
-        ComingHomeDataServiceManager().fetchDataFromAlamofire(type: comingNavigationTitle) { [self] result in
+        ComingHomeDataServiceManager().fetchDataFromAlamofire(type: comingNavigationTitle, name: "") { [self] result in
 
             switch result {
 
@@ -47,6 +47,26 @@ class CategoryDetailsViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    @IBAction func searchPressed(_ sender: Any) {
+        
+        guard let search = searchTextField.text else {return}
+
+        ComingHomeDataServiceManager().fetchDataFromAlamofire(type: comingNavigationTitle, name: search) { [self] result in
+
+            switch result {
+
+            case .success(let data):
+                
+                self.homesArray = data
+                self.categoryDetailsCollectionView.reloadData()
+
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+
     }
 
 }
@@ -69,6 +89,16 @@ extension CategoryDetailsViewController: UICollectionViewDelegate, UICollectionV
         cell.numberOfRoomsLbl.text = "\(homesArray[indexPath.row].bedRoomsNo) rooms"
         cell.numberOfBathroomsLbl.text = "\(homesArray[indexPath.row].bathsNo) bathrooms"
         cell.setId = homesArray[indexPath.row].id
+        
+        cell.isFavorite = homesArray[indexPath.row].isFav
+        
+        switch homesArray[indexPath.row].isFav {
+        case true:
+            cell.favBtnShape.imageView?.image = UIImage(named: "heart")
+        case false:
+            cell.favBtnShape.imageView?.image = UIImage(named: "heart_like")
+        }
+        
         
         editCollectionViewShape(collectionView: cell)
         
@@ -137,15 +167,26 @@ extension CategoryDetailsViewController {
     
     func addImgToSearchTextField(textField: UITextField, image: UIImage) {
         
-        let imageView = UIImageView(frame: CGRect(x: 35, y: 0, width: image.size.width, height: image.size.height))
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 70, height: image.size.height))
-
+        let imageView = UIImageView(frame: CGRect(x: 27, y: 0, width: image.size.width, height: image.size.height))
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: image.size.height))
         view.addSubview(imageView)
-
         imageView.image = image
-
         textField.leftView = view
         textField.leftViewMode = .always
+        
+    }
+    
+    func addBtnToSearchTextField(textField: UITextField) {
+        
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "search"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -45, bottom: 0, right: 0)
+//        button.frame = CGRect(x: CGFloat(textField.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
+        button.addTarget(self, action: #selector(self.searchPressed), for: .touchUpInside)
+        textField.rightView = button
+        textField.rightViewMode = .always
+        
+        
         
     }
     

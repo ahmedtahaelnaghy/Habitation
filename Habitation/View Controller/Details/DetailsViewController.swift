@@ -28,6 +28,8 @@ class DetailsViewController: UIViewController {
     
     var comingData: HomesComingData!
     
+    var comingFavData: FavoriteModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,25 +53,32 @@ class DetailsViewController: UIViewController {
         cashDiscountDetailsLbl.text = "Cash Discount \(comingData.cashDiscount)"
         descriptionDetailsText.text = "\(comingData.description)"
         
+        switch comingData.isFav {
+        case true:
+            favBtnShape.imageView?.image = UIImage(named: "heart")
+        case false:
+            favBtnShape.imageView?.image = UIImage(named: "heart_like")
+        }
+        
     }
     
     @IBAction func favBtn(_ sender: Any) {
         
-        changeFavBtnImage() 
+//        changeFavBtnImage()
     }
     
-    func changeFavBtnImage() {
-        
-        if isfav {
-                favBtnShape.setImage(UIImage(named: "heart_like"), for: .normal)
-        }
-        else {
-            favBtnShape.setImage(UIImage(named: "heart"), for: .normal)
-        }
-        
-        isfav.toggle()
-        
-    }
+//    func changeFavBtnImage() {
+//
+//        if isfav {
+//                favBtnShape.setImage(UIImage(named: "heart_like"), for: .normal)
+//        }
+//        else {
+//            favBtnShape.setImage(UIImage(named: "heart"), for: .normal)
+//        }
+//
+//        isfav.toggle()
+//
+//    }
     
 }
 

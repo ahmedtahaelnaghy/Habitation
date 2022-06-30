@@ -7,11 +7,10 @@
 
 import Foundation
 
-
 struct AddNewItemResponseModel: Codable {
     
-    let id: Int
-     let location: [Int]
+     let id: Int
+     let location: [Double]
      let created, modified, name, welcomeDescription: String
      let available: Bool
      let price, cashDiscount, type, diriction: String

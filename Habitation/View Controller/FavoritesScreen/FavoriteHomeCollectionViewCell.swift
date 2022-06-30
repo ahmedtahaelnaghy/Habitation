@@ -16,8 +16,8 @@ class FavoriteHomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var numberOfBathroomsLbl: UILabel!
     @IBOutlet weak var favBtnShape: UIButton!
     
-    var isFav: Bool = true
-    
+    var isFavorite: Bool = false
+
     @IBAction func favBtn(_ sender: Any) {
         
         changeFavBtnImage()
@@ -26,7 +26,7 @@ class FavoriteHomeCollectionViewCell: UICollectionViewCell {
 
     func changeFavBtnImage() {
         
-        if isFav {
+        if isFavorite {
             
             favBtnShape.setImage(UIImage(named: "heart_like"), for: .normal)
         }

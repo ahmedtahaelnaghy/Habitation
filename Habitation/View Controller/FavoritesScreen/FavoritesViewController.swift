@@ -17,13 +17,14 @@ class FavoritesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         FavoritesCollectionView.delegate = self
         FavoritesCollectionView.dataSource = self
-        
+        addBtnToSearchTextField(textField: searchTextField)
         addImgToSearchTextField(textField: searchTextField, image: UIImage(named: "search")!)
-        editItems()
         setupUiForCategoriesCollectionView()
+        editItems()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,6 +42,7 @@ class FavoritesViewController: UIViewController {
             }
         }
     }
+    
 }
 
 extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -60,14 +62,7 @@ extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.numberOfRoomsLbl.text = "\(favHomesArray[indexPath.row].ad.bedRoomsNo) rooms"
         cell.numberOfBathroomsLbl.text = "\(favHomesArray[indexPath.row].ad.bathsNo) bathrooms"
         
-        cell.layer.borderColor = UIColor.lightGray.cgColor
-        cell.layer.borderWidth = 0.8
-        cell.layer.cornerRadius = 20
-        cell.layer.shadowColor = UIColor.lightGray.cgColor
-        cell.layer.shadowOpacity = 0.5
-        cell.layer.shadowRadius = 1
-        cell.layer.shadowOffset = CGSize(width: 1.2, height: 1.2)
-        cell.layer.masksToBounds = true
+        editCollectionViewShape(collectioView: cell)
             
         return cell
         
@@ -76,11 +71,14 @@ extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if let vc = storyboard?.instantiateViewController(withIdentifier: "DetailsVC") as? DetailsViewController {
-            vc.comingData = favHomesArray[indexPath.row].ad
+            vc.comingFavData = favHomesArray[indexPath.row].ad
             self.navigationController?.pushViewController(vc, animated: true)
-            
         }
     }
+
+}
+// Collection View design
+extension FavoritesViewController {
     
     func setupUiForCategoriesCollectionView() {
 
@@ -97,11 +95,23 @@ extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDat
         FavoritesCollectionView.collectionViewLayout = layout
 
     }
-
+    
 }
 
-// Code for textFields shape
+// Collection View and textFields shape
 extension FavoritesViewController {
+    
+    func editCollectionViewShape(collectioView: UICollectionViewCell) {
+            
+        collectioView.layer.borderColor = UIColor.lightGray.cgColor
+        collectioView.layer.borderWidth = 0.8
+        collectioView.layer.cornerRadius = 20
+        collectioView.layer.shadowColor = UIColor.lightGray.cgColor
+        collectioView.layer.shadowOpacity = 0.5
+        collectioView.layer.shadowRadius = 1
+        collectioView.layer.shadowOffset = CGSize(width: 1.2, height: 1.2)
+        collectioView.layer.masksToBounds = true
+    }
     
     func editItems() {
         
@@ -123,15 +133,26 @@ extension FavoritesViewController {
     
     func addImgToSearchTextField(textField: UITextField, image: UIImage) {
         
-        let imageView = UIImageView(frame: CGRect(x: 35, y: 0, width: image.size.width, height: image.size.height))
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 70, height: image.size.height))
-
+        let imageView = UIImageView(frame: CGRect(x: 27, y: 0, width: image.size.width, height: image.size.height))
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: image.size.height))
         view.addSubview(imageView)
-
         imageView.image = image
-
         textField.leftView = view
         textField.leftViewMode = .always
+        
+    }
+    
+    func addBtnToSearchTextField(textField: UITextField) {
+        
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "search"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -45, bottom: 0, right: 0)
+//        button.frame = CGRect(x: CGFloat(textField.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
+//        button.addTarget(self, action: #selector(self.searchPressed), for: .touchUpInside)
+        textField.rightView = button
+        textField.rightViewMode = .always
+        
+        
         
     }
     

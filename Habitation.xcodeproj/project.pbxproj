@@ -420,9 +420,9 @@
 				FCB7B0982863158C009BA034 /* LoginInfo.swift */,
 				FCAA4F4528451878006C9069 /* AddNewItem.swift */,
 				FC69CC802869ED3B0083DC63 /* AddNewItemViewModel.swift */,
+				FCC28C5B286B5D7D003E7B52 /* AddNewItemResponseModel.swift */,
 				FCEF5FAA286AC60100A01B58 /* HomesComingData.swift */,
 				FCB55AF8286C28090008569C /* FavoriteModel.swift */,
-				FCC28C5B286B5D7D003E7B52 /* AddNewItemResponseModel.swift */,
 			);
 			path = Pojo;
 			sourceTree = "<group>";

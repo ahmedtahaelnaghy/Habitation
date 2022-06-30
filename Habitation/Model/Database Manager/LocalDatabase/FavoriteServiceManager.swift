@@ -12,9 +12,7 @@ class FavoriteServiceManager {
     
     func uploadFavoriteDataToAlamofire(id: Int, completion: @escaping(Result<FavoriteId, Error>) -> (Void)) {
         
-        let userDefaults = UserDefaults.standard
-        
-        guard let comingToken = userDefaults.string(forKey: "token") else {return}
+        guard let comingToken = UserDefaults.standard.string(forKey: "token") else {return}
         
         let parameter = ["ad_id": id]
         
@@ -46,10 +44,7 @@ class FavoriteServiceManager {
     
     func fetchFavoriteDataFromAlamofire(completion: @escaping (Result<[FavoriteId], Error>) -> (Void)) {
         
-        let userDefaults = UserDefaults.standard
-        
-        guard let comingToken = userDefaults.string(forKey: "token") else {return}
-
+        guard let comingToken = UserDefaults.standard.string(forKey: "token") else {return}
         guard let url = URL(string: "http://13.93.33.202:8000/api/favourite/") else {return}
         
         let request = AF.request(url, method: .get, headers: [HTTPHeader(name: "Authorization", value: "token \(comingToken)")])
@@ -70,6 +65,25 @@ class FavoriteServiceManager {
                 completion(.success(comingData))
 
             case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func deleteDataFromAlamofire(id: Int, completion: @escaping(Result<FavoriteId, Error>) -> (Void)) {
+        
+        guard let comingToken = UserDefaults.standard.string(forKey: "token") else {return}
+        guard let url = URL(string: "http://13.93.33.202:8000/api/favourite/\(id)/") else {return}
+        
+        let request = AF.request(url, method: .delete, headers: [HTTPHeader(name: "Authorization", value: "token \(comingToken)")])
+        
+        request.response { dataResponse in
+            
+            if let data = dataResponse.data {
+                guard let comingData = try? JSONDecoder().decode(FavoriteId.self, from: data) else {return}
+                completion(.success(comingData))
+            }
+            if let error = dataResponse.error {
                 print(error.localizedDescription)
             }
         }
