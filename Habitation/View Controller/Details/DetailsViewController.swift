@@ -43,7 +43,7 @@ class DetailsViewController: UIViewController {
         showDetails()
         locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
-        mapView.showsUserLocation = true
+//        mapView.showsUserLocation = true
         
     }
     

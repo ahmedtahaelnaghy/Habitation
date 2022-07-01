@@ -9,6 +9,7 @@ import UIKit
 import Photos
 import BSImagePicker
 import MapKit
+import CoreLocation
 
 class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegate  {
     
@@ -24,19 +25,35 @@ class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var saveBtnShape: UIButton!
     @IBOutlet weak var cancelBtnShape: UIButton!
     @IBOutlet weak var openGalleryShape: UIButton!
-    @IBOutlet weak var map: MKMapView!
+    @IBOutlet weak var mapView: MKMapView!
     
     var imagesArray: [String] = []
     var selectedImages: [UIImage] = []
     let requestAPI = AddNewUnitRequest()
-    
+    var locationManager: CLLocationManager!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.hidesBackButton = true
         
+        locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
+//        mapView.showsUserLocation = true
+        
+        locationOnMap()
         editItems()
         textFieldShape()
+    }
+    
+    func locationOnMap() {
+        
+        let annotation1 = MKPointAnnotation()
+        annotation1.coordinate = CLLocationCoordinate2D(latitude: 31.05867, longitude: 31.38354)
+        annotation1.title = "Current Location"
+        annotation1.subtitle = ""
+        self.mapView.addAnnotation(annotation1)
+        
     }
     
     @IBAction func openGalleryBtn(_ sender: Any) {
@@ -64,7 +81,7 @@ class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegat
     func getAddItemFromData() -> AddNewItemViewModelProtocol{
 
         let avaiable: Bool = true
-        let location = [31.0549, 31.3802]
+        let location = [31.05867, 31.38354]
         
         return AddNewItemViewModel(
                                 name: unitNameTextField.text ?? "",
@@ -125,7 +142,7 @@ extension AddNewHomeViewController {
     
     func textFieldShape() {
         
-        let textFieldsArray = [unitNameTextField, descriptionTextField, unitPriceTextField, cashPercentageDiscountTextField, typeTextField, areaTextField, numberOfBathroomsTextField, numberOfBedroomsTextField, directionTextField, map]
+        let textFieldsArray = [unitNameTextField, descriptionTextField, unitPriceTextField, cashPercentageDiscountTextField, typeTextField, areaTextField, numberOfBathroomsTextField, numberOfBedroomsTextField, directionTextField, mapView]
 
         _ = textFieldsArray.map {
             
