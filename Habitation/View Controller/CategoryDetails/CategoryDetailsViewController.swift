@@ -23,7 +23,6 @@ class CategoryDetailsViewController: UIViewController {
         
         categoryDetailsCollectionView.delegate = self
         categoryDetailsCollectionView.dataSource = self
-        
         navigationItem.title = comingNavigationTitle
         addBtnToSearchTextField(textField: searchTextField)
         addImgToSearchTextField(textField: searchTextField, image: UIImage(named: "search")!)
@@ -179,7 +178,7 @@ extension CategoryDetailsViewController {
     func addBtnToSearchTextField(textField: UITextField) {
         
         let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: "search"), for: .normal)
+        button.setImage(UIImage(named: "search_button"), for: .normal)
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -45, bottom: 0, right: 0)
 //        button.frame = CGRect(x: CGFloat(textField.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
         button.addTarget(self, action: #selector(self.searchPressed), for: .touchUpInside)

@@ -8,6 +8,8 @@
 import UIKit
 import SDWebImage
 import CoreAudio
+import MapKit
+import CoreLocation
 
 class DetailsViewController: UIViewController {
     
@@ -23,12 +25,12 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var cashDiscountDetailsLbl: UILabel!
     @IBOutlet weak var callBtnShape: UIButton!
     @IBOutlet weak var favBtnShape: UIButton!
+    @IBOutlet weak var mapView: MKMapView!
     
-    var isfav: Bool = false
-    
+    var locationManager: CLLocationManager!
     var comingData: HomesComingData!
-    
-    var comingFavData: FavoriteModel!
+    var isFavorite: Bool = false
+//    var comingFavData: FavoriteModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,46 +41,28 @@ class DetailsViewController: UIViewController {
         setupUiForAllImagesCollectionView()
         editButtonsShape(button: callBtnShape)
         showDetails()
-        
-    }
-    
-    func showDetails() {
-        
-        SingleHomeDetailsImage.sd_setImage(with: URL(string: "http://13.93.33.202:8000\(comingData.images[0])"), placeholderImage: UIImage(systemName: "exclamationmark.triangle.fill"))
-        areaDetailsLbl.text = "\(comingData.area) sqrt"
-        numberOfRoomsDetailsLbl.text = "\(comingData.bedRoomsNo) rooms"
-        numberOfBathroomsDetailsLbl.text = "\(comingData.bathsNo) bathrooms"
-        directionDetailsLbl.text = comingData.diriction
-        priceDetailsLbl.text = "Rent: \(comingData.price) L.E/month"
-        cashDiscountDetailsLbl.text = "Cash Discount \(comingData.cashDiscount)"
-        descriptionDetailsText.text = "\(comingData.description)"
-        
-        switch comingData.isFav {
-        case true:
-            favBtnShape.imageView?.image = UIImage(named: "heart")
-        case false:
-            favBtnShape.imageView?.image = UIImage(named: "heart_like")
-        }
+        locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
+        mapView.showsUserLocation = true
         
     }
     
     @IBAction func favBtn(_ sender: Any) {
-        
-//        changeFavBtnImage()
+        changeFavBtnImage()
     }
     
-//    func changeFavBtnImage() {
-//
-//        if isfav {
-//                favBtnShape.setImage(UIImage(named: "heart_like"), for: .normal)
-//        }
-//        else {
-//            favBtnShape.setImage(UIImage(named: "heart"), for: .normal)
-//        }
-//
-//        isfav.toggle()
-//
-//    }
+    @IBAction func callPressed(_ sender: Any) {
+        callNumber(phoneNumber: "01017820973")
+    }
+    
+    private func callNumber(phoneNumber:String) {
+      if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
+        let application:UIApplication = UIApplication.shared
+        if (application.canOpenURL(phoneCallURL)) {
+            application.open(phoneCallURL, options: [:], completionHandler: nil)
+        }
+      }
+    }
     
 }
 
@@ -158,5 +142,71 @@ extension DetailsViewController {
 
     }
     
+}
+
+extension DetailsViewController {
+    
+    func changeFavBtnImage() {
+        
+        let setId = comingData.id
+        
+        if isFavorite {
+            FavoriteServiceManager().deleteDataFromAlamofire(id: 108) { result in
+                
+                switch result {
+                case .success(_):
+                    print("Sucess")
+                case .failure(_):
+                    print("Error")
+                }
+            }
+            favBtnShape.setImage(UIImage(named: "heart_like"), for: .normal)
+        }
+        else {
+            FavoriteServiceManager().uploadFavoriteDataToAlamofire(id: setId) { result in
+                
+                switch result {
+                case .success(_):
+                    print("Done")
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+            favBtnShape.setImage(UIImage(named: "heart"), for: .normal)
+        }
+        
+        isFavorite.toggle()
+    }
+    
+}
+
+
+extension DetailsViewController {
+    
+    func showDetails() {
+        
+        SingleHomeDetailsImage.sd_setImage(with: URL(string: "http://13.93.33.202:8000\(comingData.images[0])"), placeholderImage: UIImage(systemName: "exclamationmark.triangle.fill"))
+        areaDetailsLbl.text = "\(comingData.area) sqrt"
+        numberOfRoomsDetailsLbl.text = "\(comingData.bedRoomsNo) rooms"
+        numberOfBathroomsDetailsLbl.text = "\(comingData.bathsNo) bathrooms"
+        directionDetailsLbl.text = comingData.diriction
+        priceDetailsLbl.text = "Rent: \(comingData.price) L.E/month"
+        cashDiscountDetailsLbl.text = "Cash Discount \(comingData.cashDiscount)"
+        descriptionDetailsText.text = "\(comingData.description)"
+        
+        switch comingData.isFav {
+        case true:
+            favBtnShape.imageView?.image = UIImage(named: "heart")
+        case false:
+            favBtnShape.imageView?.image = UIImage(named: "heart_like")
+        }
+        
+        let annotation1 = MKPointAnnotation()
+        annotation1.coordinate = CLLocationCoordinate2D(latitude: comingData.location[0], longitude: comingData.location[1])
+        annotation1.title = "\(comingData.name)"
+        annotation1.subtitle = "\(comingData.type)"
+        self.mapView.addAnnotation(annotation1)
+        
+    }
 }
 

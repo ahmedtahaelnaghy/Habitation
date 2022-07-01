@@ -62,8 +62,10 @@ extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.numberOfRoomsLbl.text = "\(favHomesArray[indexPath.row].ad.bedRoomsNo) rooms"
         cell.numberOfBathroomsLbl.text = "\(favHomesArray[indexPath.row].ad.bathsNo) bathrooms"
         
+        cell.favId = favHomesArray[indexPath.row].id
+        
         editCollectionViewShape(collectioView: cell)
-            
+
         return cell
         
     }
@@ -71,7 +73,7 @@ extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if let vc = storyboard?.instantiateViewController(withIdentifier: "DetailsVC") as? DetailsViewController {
-            vc.comingFavData = favHomesArray[indexPath.row].ad
+            vc.comingData = favHomesArray[indexPath.row].ad
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -145,14 +147,12 @@ extension FavoritesViewController {
     func addBtnToSearchTextField(textField: UITextField) {
         
         let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: "search"), for: .normal)
+        button.setImage(UIImage(named: "search_button"), for: .normal)
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -45, bottom: 0, right: 0)
 //        button.frame = CGRect(x: CGFloat(textField.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
 //        button.addTarget(self, action: #selector(self.searchPressed), for: .touchUpInside)
         textField.rightView = button
         textField.rightViewMode = .always
-        
-        
         
     }
     

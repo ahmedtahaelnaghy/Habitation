@@ -2631,7 +2631,7 @@
                                                     <action selector="saveBtn:" destination="DeS-Ti-GxH" eventType="touchUpInside" id="cNy-4L-JXH"/>
                                                 </connections>
                                             </button>
-                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MF6-hg-pUH">
+                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MF6-hg-pUH">
                                                 <rect key="frame" x="30" y="1104" width="368" height="175"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="175" id="UOU-Tf-Bt5"/>
@@ -3029,7 +3029,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QvU-de-rZb">
+                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QvU-de-rZb">
                                                 <rect key="frame" x="20" y="599" width="388" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="6AU-t5-9eh"/>
@@ -3047,8 +3047,8 @@
                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nY3-e5-JBQ">
-                                                <rect key="frame" x="50" y="833.33333333333337" width="328" height="50"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nY3-e5-JBQ">
+                                                <rect key="frame" x="49" y="833.33333333333348" width="328" height="50"/>
                                                 <color key="backgroundColor" red="0.180649169" green="0.69965166170000004" blue="0.3150315347" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="b9S-8Z-B0u"/>
@@ -3058,6 +3058,9 @@
                                                     <imageReference key="image" image="phone.fill" catalog="system" symbolScale="large"/>
                                                     <color key="baseForegroundColor" red="0.93188831059999999" green="0.93188831059999999" blue="0.93188831059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="callPressed:" destination="HSz-1W-Mxv" eventType="touchUpInside" id="cGy-wV-UiC"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lq4-g9-Wgw">
                                                 <rect key="frame" x="10" y="519.33333333333337" width="408" height="18"/>
@@ -3151,6 +3154,7 @@
                         <outlet property="directionDetailsLbl" destination="92Z-Q4-4bD" id="3ys-Ze-9GM"/>
                         <outlet property="favBtnShape" destination="VtB-C7-xdT" id="ciK-pv-1MN"/>
                         <outlet property="locationDetailsLbl" destination="Ms4-4z-vhe" id="kRh-MH-u3y"/>
+                        <outlet property="mapView" destination="QvU-de-rZb" id="O2t-wl-rDX"/>
                         <outlet property="numberOfBathroomsDetailsLbl" destination="YGP-WU-IE8" id="cHv-m3-pi3"/>
                         <outlet property="numberOfRoomsDetailsLbl" destination="RxT-eB-BLj" id="ruc-sQ-zXc"/>
                         <outlet property="priceDetailsLbl" destination="shg-KA-9d4" id="yd4-Gz-A9A"/>

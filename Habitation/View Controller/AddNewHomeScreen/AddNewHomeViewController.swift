@@ -64,7 +64,7 @@ class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegat
     func getAddItemFromData() -> AddNewItemViewModelProtocol{
 
         let avaiable: Bool = true
-        let location = [500.5, 800.2]
+        let location = [31.0549, 31.3802]
         
         return AddNewItemViewModel(
                                 name: unitNameTextField.text ?? "",

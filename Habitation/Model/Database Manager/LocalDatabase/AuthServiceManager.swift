@@ -97,9 +97,7 @@ class AuthServiceManager {
     func tokenData(completion: @escaping (Result<SignUpInfo, Error>) -> (Void)) {
         
         let userDefaults = UserDefaults.standard
-        
         guard let comingToken = userDefaults.string(forKey: "token") else {return}
-        
         guard let url = URL(string: "http://13.93.33.202:8000/auth/users/me/") else {return}
         
         let request = AF.request(url, method: .get, headers: [HTTPHeader(name: "Authorization", value: "token \(comingToken)")])
