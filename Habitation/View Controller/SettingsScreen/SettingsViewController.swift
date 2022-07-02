@@ -13,6 +13,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var logOutBtnShape: UIButton!
     @IBOutlet weak var userImg: UIImageView!
     @IBOutlet weak var userDetails: UILabel!
+    @IBOutlet weak var phoneNumber: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,33 @@ class SettingsViewController: UIViewController {
         setUserDetailsOnLabel()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        ProfileServiceManager().fetchProfileDataFromAlamofire { [self] result in
+            
+            switch result {
+                
+                
+                
+            case .success(let model):
+                
+                phoneNumber.text = (model.userPhoneNumber == nil) || (model.userPhoneNumber == "") ? "Add Your Number" : model.userPhoneNumber
+                
+                guard let image = model.image else {return}
+                
+                userImg.sd_setImage(with: URL(string: "\(image)"), placeholderImage: UIImage(systemName: "exclamationmark.triangle.fill"))
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        
+        
+        
+        
+    }
+
         
     func setUserDetailsOnLabel() {
         

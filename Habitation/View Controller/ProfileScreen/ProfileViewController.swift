@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import Photos
+import BSImagePicker
+import SDWebImage
 
 class ProfileViewController: UIViewController {
 
@@ -17,6 +20,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var updateProfileBtnShape: UIButton!
     
     var delegate: AddUserImg?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +34,32 @@ class ProfileViewController: UIViewController {
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        ProfileServiceManager().fetchProfileDataFromAlamofire { [self] result in
+            
+            switch result {
+                
+                
+                
+            case .success(let model):
+                cityTextField.text = model.city
+                numberTextField.text = model.userPhoneNumber
+                
+                guard let image = model.image else {return}
+                
+                userImg.sd_setImage(with: URL(string: "\(image)"), placeholderImage: UIImage(systemName: "exclamationmark.triangle.fill"))
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        
+        
+        
+        
+    }
+    
     func setDataInFields() {
         
         let userDefaults = UserDefaults.standard
@@ -38,14 +68,31 @@ class ProfileViewController: UIViewController {
         
     }
     
-    
     @IBAction func openGalleryBtn(_ sender: Any) {
         getImgFromGallery()
     }
     
     @IBAction func updateProfileBtn(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        editProfile()
     }
+    
+    func editProfile() {
+        
+        guard let city = cityTextField.text else {return}
+        guard let phoneNumber = numberTextField.text else {return}
+            
+        ProfileServiceManager().editProfileFromAlamofire(city: city, phoneNumber: phoneNumber, image: [userImg.image!.converUIImgaeToData(withQuality: 0.7)!]) { result in
+
+            switch result {
+
+            case .success(_):
+                self.navigationController?.popViewController(animated: true)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
        
 }
 
@@ -59,17 +106,23 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
         
+        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
+
         if let galleryImage = info[.originalImage] as? UIImage {
-            
+
             userImg.image = galleryImage
+
+            print(galleryImage)
             
         }
         dismiss(animated: true, completion: nil)
     }
+    
+    
+    
     
 }
 

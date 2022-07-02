@@ -19,6 +19,8 @@ class FavoriteHomeCollectionViewCell: UICollectionViewCell {
     var isFavorite: Bool = true
     var favId: Int = 0
 
+    var viewController: FavoritesViewController!
+    
     @IBAction func favBtn(_ sender: Any) {
         changeFavBtnImage()
     }
@@ -31,7 +33,7 @@ class FavoriteHomeCollectionViewCell: UICollectionViewCell {
                 
                 switch result {
                 case .success(_):
-                    print("Sucess")
+                    self.viewController.fetchFavHomes()
                 case .failure(_):
                     print("Error")
                 }
@@ -39,7 +41,6 @@ class FavoriteHomeCollectionViewCell: UICollectionViewCell {
             }
             favBtnShape.setImage(UIImage(named: "heart_like"), for: .normal)
         }
-        
     }
     
 }

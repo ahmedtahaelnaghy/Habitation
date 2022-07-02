@@ -22,6 +22,9 @@
 		FC69CC812869ED3B0083DC63 /* AddNewItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC69CC802869ED3B0083DC63 /* AddNewItemViewModel.swift */; };
 		FC6A895E28698DDD007CABC3 /* CategoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6A895D28698DDD007CABC3 /* CategoryDetailsViewController.swift */; };
 		FC6A896028698E7A007CABC3 /* CategoryDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6A895F28698E7A007CABC3 /* CategoryDetailsCollectionViewCell.swift */; };
+		FC7FD6FD286F880300264ADB /* DeleteFavResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7FD6FC286F880300264ADB /* DeleteFavResponse.swift */; };
+		FC7FD6FF286F8EB300264ADB /* ActivityIndicatorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7FD6FE286F8EB300264ADB /* ActivityIndicatorExtension.swift */; };
+		FC7FD701286FA8B900264ADB /* ProfileServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7FD700286FA8B900264ADB /* ProfileServiceManager.swift */; };
 		FC8380DC2867C7C60028E5C6 /* ConvertImageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8380DB2867C7C60028E5C6 /* ConvertImageType.swift */; };
 		FC87530C285E054400AF4197 /* CheckYourEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC87530B285E054400AF4197 /* CheckYourEmailViewController.swift */; };
 		FC908C6228653D3200939C3E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC908C6128653D3200939C3E /* Model.swift */; };
@@ -58,6 +61,7 @@
 		FCEE874427DE5CC9005B5B70 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE874327DE5CC9005B5B70 /* SignUpViewController.swift */; };
 		FCEE874627DE6DCF005B5B70 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE874527DE6DCF005B5B70 /* ForgotPasswordViewController.swift */; };
 		FCEF5FAB286AC60100A01B58 /* HomesComingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF5FAA286AC60100A01B58 /* HomesComingData.swift */; };
+		FCF41322286FA95400D6BD51 /* ProfileComingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF41321286FA95400D6BD51 /* ProfileComingData.swift */; };
 		FCF905AD286B06FE007DD696 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF905AC286B06FE007DD696 /* DetailsViewController.swift */; };
 		FCF905AF286B0AF6007DD696 /* ImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF905AE286B0AF6007DD696 /* ImagesCollectionViewCell.swift */; };
 		FCF9D4E527F2743B00CCE0B9 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF9D4E427F2743B00CCE0B9 /* CategoryCollectionViewCell.swift */; };
@@ -99,6 +103,9 @@
 		FC69CC802869ED3B0083DC63 /* AddNewItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewItemViewModel.swift; sourceTree = "<group>"; };
 		FC6A895D28698DDD007CABC3 /* CategoryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailsViewController.swift; sourceTree = "<group>"; };
 		FC6A895F28698E7A007CABC3 /* CategoryDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC7FD6FC286F880300264ADB /* DeleteFavResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteFavResponse.swift; sourceTree = "<group>"; };
+		FC7FD6FE286F8EB300264ADB /* ActivityIndicatorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorExtension.swift; sourceTree = "<group>"; };
+		FC7FD700286FA8B900264ADB /* ProfileServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileServiceManager.swift; sourceTree = "<group>"; };
 		FC8380DB2867C7C60028E5C6 /* ConvertImageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertImageType.swift; sourceTree = "<group>"; };
 		FC87530B285E054400AF4197 /* CheckYourEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckYourEmailViewController.swift; sourceTree = "<group>"; };
 		FC908C6128653D3200939C3E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -139,6 +146,7 @@
 		FCEE874327DE5CC9005B5B70 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FCEE874527DE6DCF005B5B70 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		FCEF5FAA286AC60100A01B58 /* HomesComingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomesComingData.swift; sourceTree = "<group>"; };
+		FCF41321286FA95400D6BD51 /* ProfileComingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileComingData.swift; sourceTree = "<group>"; };
 		FCF905AC286B06FE007DD696 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		FCF905AE286B0AF6007DD696 /* ImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		FCF9D4E427F2743B00CCE0B9 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -397,6 +405,7 @@
 				FCEA6DE02818C59900BD1E77 /* UIView+Extensions.swift */,
 				FC8380DB2867C7C60028E5C6 /* ConvertImageType.swift */,
 				FC9C2A6A28688C1100CEA8D4 /* AddUserImg.swift */,
+				FC7FD6FE286F8EB300264ADB /* ActivityIndicatorExtension.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -423,6 +432,8 @@
 				FCC28C5B286B5D7D003E7B52 /* AddNewItemResponseModel.swift */,
 				FCEF5FAA286AC60100A01B58 /* HomesComingData.swift */,
 				FCB55AF8286C28090008569C /* FavoriteModel.swift */,
+				FC7FD6FC286F880300264ADB /* DeleteFavResponse.swift */,
+				FCF41321286FA95400D6BD51 /* ProfileComingData.swift */,
 			);
 			path = Pojo;
 			sourceTree = "<group>";
@@ -433,6 +444,7 @@
 				FCB7B09628630C55009BA034 /* AuthServiceManager.swift */,
 				FCBB06382867105D004C6A45 /* ComingHomeDataServiceManager.swift */,
 				FCB55AF6286C1DE10008569C /* FavoriteServiceManager.swift */,
+				FC7FD700286FA8B900264ADB /* ProfileServiceManager.swift */,
 			);
 			path = LocalDatabase;
 			sourceTree = "<group>";
@@ -641,6 +653,7 @@
 				FCEF5FAB286AC60100A01B58 /* HomesComingData.swift in Sources */,
 				FC87530C285E054400AF4197 /* CheckYourEmailViewController.swift in Sources */,
 				FC69CC812869ED3B0083DC63 /* AddNewItemViewModel.swift in Sources */,
+				FC7FD6FD286F880300264ADB /* DeleteFavResponse.swift in Sources */,
 				FCC28C5A286B5642003E7B52 /* AddNewUnitRequest.swift in Sources */,
 				FCEE874227DE2228005B5B70 /* LoginViewController.swift in Sources */,
 				FC45E8D3286445CD0016F668 /* SignUpInfo.swift in Sources */,
@@ -654,6 +667,8 @@
 				FCF9D4E527F2743B00CCE0B9 /* CategoryCollectionViewCell.swift in Sources */,
 				FCB55AF9286C28090008569C /* FavoriteModel.swift in Sources */,
 				FCEE874427DE5CC9005B5B70 /* SignUpViewController.swift in Sources */,
+				FCF41322286FA95400D6BD51 /* ProfileComingData.swift in Sources */,
+				FC7FD6FF286F8EB300264ADB /* ActivityIndicatorExtension.swift in Sources */,
 				FC44EB8928224E2700019723 /* FavoriteHomeCollectionViewCell.swift in Sources */,
 				FCC28C55286B51EF003E7B52 /* BaseAPI.swift in Sources */,
 				FCB55AF7286C1DE10008569C /* FavoriteServiceManager.swift in Sources */,
@@ -662,6 +677,7 @@
 				FC8380DC2867C7C60028E5C6 /* ConvertImageType.swift in Sources */,
 				FC9C2A6B28688C1100CEA8D4 /* AddUserImg.swift in Sources */,
 				FCC28C5C286B5D7D003E7B52 /* AddNewItemResponseModel.swift in Sources */,
+				FC7FD701286FA8B900264ADB /* ProfileServiceManager.swift in Sources */,
 				FCBB06392867105D004C6A45 /* ComingHomeDataServiceManager.swift in Sources */,
 				FCF905AD286B06FE007DD696 /* DetailsViewController.swift in Sources */,
 				FC18F7D22861B499001B85C5 /* HomeDetailsViewController.swift in Sources */,

@@ -70,7 +70,7 @@ class FavoriteServiceManager {
         }
     }
     
-    func deleteDataFromAlamofire(id: Int, completion: @escaping(Result<FavoriteId, Error>) -> (Void)) {
+    func deleteDataFromAlamofire(id: Int, completion: @escaping(Result<DeleteFavResponse, Error>) -> (Void)) {
         
         guard let comingToken = UserDefaults.standard.string(forKey: "token") else {return}
         guard let url = URL(string: "http://13.93.33.202:8000/api/favourite/\(id)/") else {return}
@@ -79,14 +79,12 @@ class FavoriteServiceManager {
         
         request.response { dataResponse in
             
-            if let data = dataResponse.data {
-                guard let comingData = try? JSONDecoder().decode(FavoriteId.self, from: data) else {return}
-                completion(.success(comingData))
-            }
             if let error = dataResponse.error {
                 print(error.localizedDescription)
                 completion(.failure(error))
+                return
             }
+            completion(.success(DeleteFavResponse()))
         }
     }
     

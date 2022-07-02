@@ -29,9 +29,17 @@ class FavoritesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        fetchFavHomes()
+    }
+    
+    func fetchFavHomes() {
+        
+        showActivityIndicator()
+        
         FavoriteServiceManager().fetchFavoriteDataFromAlamofire { result in
+            self.hideActivityIndicator()
             
-            switch result {   
+            switch result {
             case .success(let data):
                 
                 self.favHomesArray = data
@@ -54,6 +62,10 @@ extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! FavoriteHomeCollectionViewCell
+        
+        cell.favBtnShape.setImage(UIImage(named: "heart"), for: .normal)
+        
+        cell.viewController = self
         
         cell.homeImg.sd_setImage(with: URL(string: "http://13.93.33.202:8000\(favHomesArray[indexPath.row].ad.images[0])"), placeholderImage: UIImage(systemName: "exclamationmark.triangle.fill"))
         

@@ -39,8 +39,6 @@ class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegat
         
         locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
-//        mapView.showsUserLocation = true
-        
         locationOnMap()
         editItems()
         textFieldShape()
@@ -63,9 +61,8 @@ class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func saveBtn(_ sender: Any) {
         
         requestAPI.addNewUnit(model: AddNewItem(viewModel: getAddItemFromData())) { result in
-            print(result)
+            
             switch result {
-                
             case.success(_):
                 self.showAlert(message: "Sucess") { _ in
                     self.navigationController?.popViewController(animated: true)
