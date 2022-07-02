@@ -20,7 +20,7 @@ class CategoryDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.hideKeyboardWhenTappedAround()
         categoryDetailsCollectionView.delegate = self
         categoryDetailsCollectionView.dataSource = self
         navigationItem.title = comingNavigationTitle
@@ -32,9 +32,12 @@ class CategoryDetailsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+       
+        showActivityIndicator()
 
         ComingHomeDataServiceManager().fetchDataFromAlamofire(type: comingNavigationTitle, name: "") { [self] result in
-
+            
+            self.hideActivityIndicator()
             switch result {
 
             case .success(let data):
@@ -83,11 +86,12 @@ extension CategoryDetailsViewController: UICollectionViewDelegate, UICollectionV
  
         cell.homeImg.sd_setImage(with: URL(string: "http://13.93.33.202:8000\(homesArray[indexPath.row].images[0])"), placeholderImage: UIImage(systemName: "exclamationmark.triangle.fill"))
 
-        cell.priceLbl.text = "\(homesArray[indexPath.row].price) L.E/month"
+        cell.priceLbl.text = "\(homesArray[indexPath.row].price) L.E"
         cell.areaLbl.text = "\(homesArray[indexPath.row].area) sqrt"
         cell.numberOfRoomsLbl.text = "\(homesArray[indexPath.row].bedRoomsNo) rooms"
         cell.numberOfBathroomsLbl.text = "\(homesArray[indexPath.row].bathsNo) bathrooms"
         cell.setId = homesArray[indexPath.row].id
+        cell.homeName.text = homesArray[indexPath.row].name
         
         cell.isFavorite = homesArray[indexPath.row].isFav
         

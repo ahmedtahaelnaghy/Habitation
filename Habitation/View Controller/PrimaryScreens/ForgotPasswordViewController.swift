@@ -14,7 +14,7 @@ class ForgotPasswordViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.hideKeyboardWhenTappedAround()
         editItems(borderColor: UIColor.systemGray.cgColor, borderWidth: 1, curveRadius: 20)
         addImageToTextField(textField: emailTextField, image: UIImage(named: "email")!)
         

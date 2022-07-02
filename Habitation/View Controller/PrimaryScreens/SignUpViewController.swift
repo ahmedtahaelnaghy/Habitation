@@ -18,7 +18,7 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.hideKeyboardWhenTappedAround()
         editItems(borderColor: UIColor.systemGray.cgColor, borderWidth: 1, curveRadius: 20)
         addImageToTextField(textField: emailTextField, image: UIImage(named: "email")!)
         addImageToTextField(textField: nameTextField, image: UIImage(named: "profileName")!)
@@ -105,16 +105,3 @@ extension SignUpViewController {
     
 }
 
-//extension SignUpViewController {
-//    
-//    func showAlert(message: String) {
-//        
-//        let alertController = UIAlertController(title: "Alert!", message: message, preferredStyle: .alert)
-//        let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-//
-//        alertController.addAction(alertAction)
-//        present(alertController, animated: true, completion: nil)
-//        
-//    }
-//    
-//}

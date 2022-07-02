@@ -36,7 +36,7 @@ class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegat
         super.viewDidLoad()
         
         navigationItem.hidesBackButton = true
-        
+        self.hideKeyboardWhenTappedAround()
         locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
         locationOnMap()
@@ -78,7 +78,7 @@ class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegat
     func getAddItemFromData() -> AddNewItemViewModelProtocol{
 
         let avaiable: Bool = true
-        let location = [31.05867, 31.38354]
+        let location = [31.05879, 31.38347]
         
         return AddNewItemViewModel(
                                 name: unitNameTextField.text ?? "",

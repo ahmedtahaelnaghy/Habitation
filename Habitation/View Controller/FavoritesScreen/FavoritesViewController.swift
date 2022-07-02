@@ -17,7 +17,7 @@ class FavoritesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.hideKeyboardWhenTappedAround()
         FavoritesCollectionView.delegate = self
         FavoritesCollectionView.dataSource = self
         addBtnToSearchTextField(textField: searchTextField)
@@ -69,10 +69,11 @@ extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDat
         
         cell.homeImg.sd_setImage(with: URL(string: "http://13.93.33.202:8000\(favHomesArray[indexPath.row].ad.images[0])"), placeholderImage: UIImage(systemName: "exclamationmark.triangle.fill"))
         
-        cell.homePriceLbl.text = "\(favHomesArray[indexPath.row].ad.price) L.E/month"
+        cell.homePriceLbl.text = "\(favHomesArray[indexPath.row].ad.price) L.E"
         cell.areaLbl.text = "\(favHomesArray[indexPath.row].ad.area) sqrt"
         cell.numberOfRoomsLbl.text = "\(favHomesArray[indexPath.row].ad.bedRoomsNo) rooms"
         cell.numberOfBathroomsLbl.text = "\(favHomesArray[indexPath.row].ad.bathsNo) bathrooms"
+        cell.homeName.text = favHomesArray[indexPath.row].ad.name
         
         cell.favId = favHomesArray[indexPath.row].id
         

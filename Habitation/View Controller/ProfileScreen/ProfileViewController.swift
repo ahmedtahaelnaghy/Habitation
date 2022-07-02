@@ -26,7 +26,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
                 
         navigationItem.hidesBackButton = true
-        
+        self.hideKeyboardWhenTappedAround()
         editImageShape(image: userImg)
         editBtnShape(button: updateProfileBtnShape)
         editItems()

@@ -190,7 +190,7 @@ extension DetailsViewController {
         numberOfRoomsDetailsLbl.text = "\(comingData.bedRoomsNo) rooms"
         numberOfBathroomsDetailsLbl.text = "\(comingData.bathsNo) bathrooms"
         directionDetailsLbl.text = comingData.diriction
-        priceDetailsLbl.text = "Rent: \(comingData.price) L.E/month"
+        priceDetailsLbl.text = "Rent: \(comingData.price) L.E"
         cashDiscountDetailsLbl.text = "Cash Discount \(comingData.cashDiscount)"
         descriptionDetailsText.text = "\(comingData.description)"
         

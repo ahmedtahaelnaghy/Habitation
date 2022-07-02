@@ -16,7 +16,7 @@ class NearbyYourLocationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.hideKeyboardWhenTappedAround()
         nearbyCollectionView.delegate = self
         nearbyCollectionView.dataSource = self
         addBtnToSearchTextField(textField: searchTextField)
@@ -27,9 +27,9 @@ class NearbyYourLocationViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        showActivityIndicator()
         ComingHomeDataServiceManager().fetchDataFromAlamofire(type: "", name: "") { [self] result in
-            
+            self.hideActivityIndicator()
             switch result {
             case .success(let data):
                 
@@ -73,12 +73,13 @@ extension NearbyYourLocationViewController: UICollectionViewDelegate, UICollecti
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! NearbyYourLocationCollectionViewCell
         
         cell.homeImg.sd_setImage(with: URL(string: "http://13.93.33.202:8000\(homesArray[indexPath.row].images[0])"), placeholderImage: UIImage(systemName: "exclamationmark.triangle.fill"))
-        cell.homePrice.text = "\(homesArray[indexPath.row].price) L.E/month"
+        cell.homePrice.text = "\(homesArray[indexPath.row].price) L.E"
         cell.homeArea.text = "\(homesArray[indexPath.row].area) sqrt"
         cell.numberOfRooms.text = "\(homesArray[indexPath.row].bedRoomsNo) rooms"
         cell.numberOfBathrooms.text = "\(homesArray[indexPath.row].bathsNo) bathrooms"
         cell.setId = homesArray[indexPath.row].id
         cell.isFavorite = homesArray[indexPath.row].isFav
+        cell.homeName.text = homesArray[indexPath.row].name
         
         switch homesArray[indexPath.row].isFav {
         case true:

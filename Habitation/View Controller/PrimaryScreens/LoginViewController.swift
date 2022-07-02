@@ -20,8 +20,12 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.hideKeyboardWhenTappedAround()
+        
         editItems(borderColor: UIColor.systemGray.cgColor, borderWidth: 1, curveRadius: 20)
+        
         addImageToTextField(textField: emailTextField, image: UIImage(named: "email")!)
+        
         addImageToTextField(textField: passwordTextField, image: UIImage(named: "password")!)
         
     }
@@ -156,4 +160,15 @@ extension UIViewController {
         
     }
     
+}
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }

@@ -16,6 +16,7 @@ class CategoryDetailsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var numberOfBathroomsLbl: UILabel!
     @IBOutlet weak var availabilityBtn: UIButton!
     @IBOutlet weak var favBtnShape: UIButton!
+    @IBOutlet weak var homeName: UILabel!
     
     var isFavorite: Bool = false
     var setId: Int = 0

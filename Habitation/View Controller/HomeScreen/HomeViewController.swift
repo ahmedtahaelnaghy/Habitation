@@ -16,6 +16,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var welcomeLbl: UILabel!
     
+    
+    
     var categoriesArray: [Categories] = [
                                          Categories(image: "homeIcon", name: "Home"),
                                          Categories(image: "apartment", name: "Apartment"),
@@ -27,7 +29,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.hideKeyboardWhenTappedAround()
         navigationItem.hidesBackButton = true
         homeCollectionView.delegate = self
         homeCollectionView.dataSource = self
@@ -43,8 +45,9 @@ class HomeViewController: UIViewController {
         
         editGreetingLabel()
         
+        showActivityIndicator()
         ComingHomeDataServiceManager().fetchDataFromAlamofire(type: "", name: "") { [self] result in
-            
+            self.hideActivityIndicator()
             switch result {
 
             case .success(let data):
@@ -129,12 +132,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                         
             homeCell.homeImg.sd_setImage(with: URL(string: "http://13.93.33.202:8000\(homesArray[indexPath.row].images[0])"), placeholderImage: UIImage(systemName: "exclamationmark.triangle.fill"))
             
-            homeCell.homePriceLbl.text = "\(homesArray[indexPath.row].price) L.E/month"
+            homeCell.homePriceLbl.text = "\(homesArray[indexPath.row].price) L.E"
             homeCell.areaLbl.text = "\(homesArray[indexPath.row].area) sqrt"
             homeCell.numberOfRoomsLbl.text = "\(homesArray[indexPath.row].bedRoomsNo) rooms"
             homeCell.numberOfBathroomsLbl.text = "\(homesArray[indexPath.row].bathsNo) bathrooms"
             homeCell.setId = homesArray[indexPath.row].id
             homeCell.isFavorite = homesArray[indexPath.row].isFav
+            homeCell.homeName.text = homesArray[indexPath.row].name
+            
             
 //            homeCell.favId = favHomesArray[indexPath.row].id
             

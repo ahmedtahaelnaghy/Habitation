@@ -15,6 +15,7 @@ class FavoriteHomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var numberOfRoomsLbl: UILabel!
     @IBOutlet weak var numberOfBathroomsLbl: UILabel!
     @IBOutlet weak var favBtnShape: UIButton!
+    @IBOutlet weak var homeName: UILabel!
     
     var isFavorite: Bool = true
     var favId: Int = 0
