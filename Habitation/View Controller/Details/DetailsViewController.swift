@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SDWebImage
 import CoreAudio
 import MapKit
 import CoreLocation
@@ -27,19 +26,18 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var favBtnShape: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     
+    var collectionView: UICollectionViewCell!
     var locationManager: CLLocationManager!
     var comingData: HomesComingData!
     var isFavorite: Bool = false
-//    var comingFavData: FavoriteModel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         allImagesCollectionView.delegate = self
         allImagesCollectionView.dataSource = self
-        
-        setupUiForAllImagesCollectionView()
-        editButtonsShape(button: callBtnShape)
+        setupHorizontalCollectionViewUI(for: allImagesCollectionView, groupWidth: 0.3)
+        editItemsShape(for: [callBtnShape!], borderColor: .systemGray, borderWidth: 1, curveRadius: 24, shadowColor: .lightGray, shadowRadius: 1, shadowOffset: CGSize(width: 1.2, height: 1.2), shadowOpacity: 0.5, masksToBounds: true)
         showDetails()
         locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
@@ -63,7 +61,6 @@ class DetailsViewController: UIViewController {
         }
       }
     }
-    
 }
 
 extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -73,119 +70,32 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imagesCell", for: indexPath) as! ImagesCollectionViewCell
+        cell.homeImages.setImage(for: comingData.images[indexPath.row])
         
-        cell.homeImages.sd_setImage(with: URL(string: "http://13.93.33.202:8000\(comingData.images[indexPath.row])"), placeholderImage: UIImage(systemName: "exclamationmark.triangle.fill"))
-        
-        editCollectionViewShape(collectionView: cell)
-        
+        editItemsShape(for: [cell], borderColor: .lightGray, borderWidth: 0.5, curveRadius: 15, shadowColor: .lightGray, shadowRadius: 1, shadowOffset: CGSize(width: 2, height: 1), shadowOpacity: 0.5, masksToBounds: true)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        SingleHomeDetailsImage.sd_setImage(with: URL(string: "http://13.93.33.202:8000\(comingData.images[indexPath.row])"), placeholderImage: UIImage(systemName: "exclamationmark.triangle.fill"))
-        
+        SingleHomeDetailsImage.setImage(for: comingData.images[indexPath.row])
     }
-    
-}
-
-// Collection View design
-extension DetailsViewController {
-    
-    func setupUiForAllImagesCollectionView() {
-
-        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-
-        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
-        
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.3), heightDimension: .fractionalHeight(1)), subitem: item, count: 1)
-
-        let section = NSCollectionLayoutSection(group: group)
-
-        section.orthogonalScrollingBehavior = .continuous
-
-        let layout = UICollectionViewCompositionalLayout(section: section)
-
-        allImagesCollectionView?.collectionViewLayout = layout
-
-    }
-    
-}
-
-// Collection View and Button shape
-extension DetailsViewController {
-    
-    func editCollectionViewShape(collectionView: UICollectionViewCell) {
-        
-        collectionView.layer.cornerRadius = 15
-        collectionView.layer.borderWidth = 0.5
-        collectionView.layer.borderColor = UIColor.lightGray.cgColor
-        collectionView.layer.shadowOffset = CGSize(width: 2, height: 1)
-        collectionView.layer.shadowColor = UIColor.lightGray.cgColor
-        collectionView.layer.shadowOpacity = 0.5
-        collectionView.layer.shadowRadius = 1
-        collectionView.layer.masksToBounds = true
-        
-    }
-    
-    func editButtonsShape(button: UIButton) {
-            
-        button.layer.borderColor = UIColor.systemGray.cgColor
-        button.layer.borderWidth = 1
-        button.layer.cornerRadius = 24
-        button.layer.shadowColor = UIColor.lightGray.cgColor
-        button.layer.shadowOpacity = 0.5
-        button.layer.shadowRadius = 1
-        button.layer.shadowOffset = CGSize(width: 1.2, height: 1.2)
-        button.layer.masksToBounds = true
-
-    }
-    
 }
 
 extension DetailsViewController {
     
     func changeFavBtnImage() {
-        
         let setId = comingData.id
-        
-        if isFavorite {
-            FavoriteServiceManager().deleteDataFromAlamofire(id: 108) { result in
-                
-                switch result {
-                case .success(_):
-                    print("Sucess")
-                case .failure(_):
-                    print("Error")
-                }
-            }
-            favBtnShape.setImage(UIImage(named: "heart_like"), for: .normal)
-        }
-        else {
-            FavoriteServiceManager().uploadFavoriteDataToAlamofire(id: setId) { result in
-                
-                switch result {
-                case .success(_):
-                    print("Done")
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            }
-            favBtnShape.setImage(UIImage(named: "heart"), for: .normal)
-        }
-        
+        collectionView.changeFavBtnImage(for: favBtnShape, flag: &isFavorite, itemId: 108, favId: setId)
         isFavorite.toggle()
     }
-    
 }
-
 
 extension DetailsViewController {
     
     func showDetails() {
         
-        SingleHomeDetailsImage.sd_setImage(with: URL(string: "http://13.93.33.202:8000\(comingData.images[0])"), placeholderImage: UIImage(systemName: "exclamationmark.triangle.fill"))
+        SingleHomeDetailsImage.setImage(for: comingData.images[0])
         areaDetailsLbl.text = "\(comingData.area) sqrt"
         numberOfRoomsDetailsLbl.text = "\(comingData.bedRoomsNo) rooms"
         numberOfBathroomsDetailsLbl.text = "\(comingData.bathsNo) bathrooms"

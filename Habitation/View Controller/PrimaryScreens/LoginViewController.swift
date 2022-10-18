@@ -19,156 +19,90 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let itemsArray = [emailTextField, passwordTextField, login]
         self.hideKeyboardWhenTappedAround()
-        
-        editItems(borderColor: UIColor.systemGray.cgColor, borderWidth: 1, curveRadius: 20)
-        
-        addImageToTextField(textField: emailTextField, image: UIImage(named: "email")!)
-        
-        addImageToTextField(textField: passwordTextField, image: UIImage(named: "password")!)
+        editItemsShape(for: itemsArray as [Any], borderColor: .systemGray, borderWidth: 1, curveRadius: 20)
+        addImageToTextField(textField: emailTextField, imageName: "email", imageViewFrameX: 15)
+        addImageToTextField(textField: passwordTextField, imageName: "password", imageViewFrameX: 15)
         
     }
     
     @IBAction func forgotPasswordBtn(_ sender: Any) {
-       
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "ForgotPasswordVC") as? ForgotPasswordViewController {
-            
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        
+        goToForgetPasswordScreen()
     }
     
     @IBAction func rememberMeBtn(_ sender: Any) {
-        
         rememberMeBtnStatus()
-        
-    }
-    
-    func rememberMeBtnStatus() {
-        
-        if isActive {
-                rememberMe.setImage(UIImage(named: "emptySquare"), for: .normal)
-        }
-        else {
-            rememberMe.setImage(UIImage(named: "true"), for: .normal)
-        }
-        
-        isActive.toggle()
-        
     }
     
     @IBAction func loginBtn(_ sender: Any) {
-        
-        oldUserRegister()
-        
+        registerOldUser()
     }
+}
+
+extension LoginViewController {
     
-    func oldUserRegister() {
-        
+    // Change rememberMeBtn image when tapping in.
+    func rememberMeBtnStatus() {
+        switch isActive {
+        case true:
+            rememberMe.setImage(UIImage(named: "true"), for: .normal)
+        case false:
+            rememberMe.setImage(UIImage(named: "emptySquare"), for: .normal)
+        }
+        isActive.toggle()
+    }
+}
+
+extension LoginViewController {
+    
+    // Check all textFields and if all things right the app will login.
+    func registerOldUser() {
         guard let email = emailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
         
         if email.isEmpty || password.isEmpty {
-            
             showAlert(message: "All fields are required")
-            
+        } else {
+            loginRequestChecking(email: email, password: password)
         }
-        else {
-            
-            AuthServiceManager().fetchAuthDataFromAlamofire(email: email, password: password) { result in
-                
-                switch result {
-                    
-                case .success(_):
-                    
-                    AuthServiceManager().tokenData { result in
-                        switch result {
-                            
-                        case .success(_):
-                            
-                            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "tabBarC") as? TabBarViewController {
-                                
-                                self.navigationController?.pushViewController(vc, animated: true)
-                                
-                            }
-                            
-                        case .failure(let error):
-                            print(error.localizedDescription)
-                        }
-                    }
-                    
-                case .failure(_):
-                    
-                    self.showAlert(message: "Your email or password is wrong")
-                    
-                }
-                
+    }
+    
+    // Login user if have an account in application and if have not an account or add wrong info the alert will shown.
+    func loginRequestChecking(email: String, password: String) {
+        AuthServiceManager().fetchAuthDataFromAlamofire(email: email, password: password) { [weak self] result in
+            switch result {
+            case .success(_):
+                self?.checkUserToken()
+            case .failure(_):
+                self?.showAlert(message: "Your email or password is wrong")
             }
-            
         }
-        
     }
-     
-}
-
-// Code for textFields and buttons shape
-extension LoginViewController {
     
-    func editItems(borderColor: CGColor, borderWidth: CGFloat, curveRadius: CGFloat) {
-        
-        let itemsArray = [emailTextField, passwordTextField, login]
-        
-        _ = itemsArray.map {
-            
-            $0!.layer.borderColor = borderColor
-            $0!.layer.borderWidth = borderWidth
-            $0!.layer.cornerRadius = curveRadius
-
+    // Check the user token to show his data when login.
+    func checkUserToken() {
+        AuthServiceManager().tokenData { [weak self] result in
+            switch result {
+            case .success(_):
+                self?.goToNextScreen()
+            case .failure(_):
+                self?.showAlert(message: "Your email or password is wrong")
+            }
         }
-        
     }
     
-    // Method to add image in text field
-    func addImageToTextField(textField: UITextField, image: UIImage) {
-        
-        let imageView = UIImageView(frame: CGRect(x: 15, y: 0, width: image.size.width, height: image.size.height))
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: image.size.height))
-
-        imageView.image = image
-
-        view.addSubview(imageView)
-
-        textField.leftView = view
-                                
-        textField.leftViewMode = .always
-        
+    // push to next screen when all info right.
+    func goToNextScreen() {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "tabBarC") as? TabBarViewController {
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
-}
-
-// Showing Alert functions
-extension UIViewController {
-    
-    func showAlert(message: String , completion:((UIAlertAction) -> Void)? = nil) {
-        
-        let alertController = UIAlertController(title: "Alert!", message: message, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: completion)
-
-        alertController.addAction(alertAction)
-        present(alertController, animated: true, completion: nil)
-        
-    }
-    
-}
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
+    // push to forget password screen.
+    func goToForgetPasswordScreen() {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "ForgotPasswordVC") as? ForgotPasswordViewController {
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }

@@ -19,7 +19,7 @@ class NearbyYourLocationViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
         nearbyCollectionView.delegate = self
         nearbyCollectionView.dataSource = self
-        addBtnToSearchTextField(textField: searchTextField)
+        addBtnToSearchTextField(textField: searchTextField, action: #selector(self.searchPressed))
         addImgToSearchTextField(textField: searchTextField, image: UIImage(named: "search")!)
         editTextFieldShape(textField: searchTextField)
         setupUiForNearbyCollectionView()
@@ -32,7 +32,6 @@ class NearbyYourLocationViewController: UIViewController {
             self.hideActivityIndicator()
             switch result {
             case .success(let data):
-                
                 self.homesArray = data
                 self.nearbyCollectionView.reloadData()
 
@@ -164,13 +163,17 @@ extension NearbyYourLocationViewController {
         
     }
     
-    func addBtnToSearchTextField(textField: UITextField) {
+}
+
+extension UIViewController {
+    
+    func addBtnToSearchTextField(textField: UITextField, action: Selector) {
         
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "search_button"), for: .normal)
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -45, bottom: 0, right: 0)
 //        button.frame = CGRect(x: CGFloat(textField.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
-        button.addTarget(self, action: #selector(self.searchPressed), for: .touchUpInside)
+        button.addTarget(self, action: action, for: .touchUpInside)
         textField.rightView = button
         textField.rightViewMode = .always
          

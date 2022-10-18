@@ -17,88 +17,60 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        editItems()
+        setupItemsShape()
         setUserDetailsOnLabel()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        ProfileServiceManager().fetchProfileDataFromAlamofire { [self] result in
-            
-            switch result {
-                
-                
-                
-            case .success(let model):
-                
-                phoneNumber.text = (model.userPhoneNumber == nil) || (model.userPhoneNumber == "") ? "Add Your Number" : model.userPhoneNumber
-                
-                guard let image = model.image else {return}
-                
-                userImg.sd_setImage(with: URL(string: "\(image)"), placeholderImage: UIImage(systemName: "exclamationmark.triangle.fill"))
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-        
-        
-        
-        
-        
-    }
-
-        
-    func setUserDetailsOnLabel() {
-        
-        let userDfaults = UserDefaults.standard
-        userDetails.text = userDfaults.string(forKey: "name")
-        
+        fetchData()
     }
     
     @IBAction func userProfileBtn(_ sender: Any) {
-        
         if let vc = storyboard?.instantiateViewController(withIdentifier: "ProfileVC") as? ProfileViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        
     }
     
     @IBAction func logOutBtn(_ sender: Any) {
-        
+        logOut()
+    }
+}
+
+extension SettingsViewController {
+    
+    func setupItemsShape() {
+        let itemsArray = [userProfileView, logOutBtnShape]
+        editItemsShape(for: itemsArray as [Any], borderColor: .lightGray, borderWidth: 1, curveRadius: 30, shadowColor: .lightGray, shadowRadius: 1, shadowOffset: CGSize(width: 1.2, height: 1.2), shadowOpacity: 0.5, masksToBounds: false)
+    }
+    
+    func fetchData() {
+        ProfileServiceManager().fetchProfileDataFromAlamofire { [weak self] result in
+            switch result {
+            case .success(let model):
+                self?.setData(for: model)
+            case .failure(_):
+                self?.showAlert(message: "Something went wrong!")
+            }
+        }
+    }
+    
+    func setData(for model: ProfileComingData) {
+        guard let image = model.image else {return}
+        phoneNumber.text = (model.userPhoneNumber == nil) || (model.userPhoneNumber == "") ? "Add Your Number" : model.userPhoneNumber
+        userImg.setImage(for: image)
+    }
+    
+    func setUserDetailsOnLabel() {
+        let userDfaults = UserDefaults.standard
+        userDetails.text = userDfaults.string(forKey: "name")
+    }
+    
+    func logOut() {
         let userDefaults = UserDefaults.standard
-        
         userDefaults.set("", forKey: "name")
         userDefaults.set("", forKey: "email")
-        
         if let vc = storyboard?.instantiateViewController(withIdentifier: "rootVC") as? HomePageViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        
     }
-    
-}
-
-// Code for view and button shape
-extension SettingsViewController {
-    
-    func editItems() {
-        
-        let itemsArray = [userProfileView, logOutBtnShape]
-
-        _ = itemsArray.map {
-
-            $0!.layer.borderColor = UIColor.lightGray.cgColor
-            $0!.layer.borderWidth = 1
-            $0!.layer.cornerRadius = 30
-            $0!.layer.shadowColor = UIColor.lightGray.cgColor
-            $0!.layer.shadowOpacity = 0.5
-            $0!.layer.shadowRadius = 1
-            $0!.layer.shadowOffset = CGSize(width: 1.2, height: 1.2)
-            $0!.layer.masksToBounds = false
-
-        }
-    }
-    
 }

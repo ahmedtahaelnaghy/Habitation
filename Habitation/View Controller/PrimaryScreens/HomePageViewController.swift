@@ -14,53 +14,21 @@ class HomePageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let itemsArray = [login, signUp]
         navigationItem.hidesBackButton = true
         tabBarController?.tabBar.isHidden = true
-        
-        editItems()
-        
+        editItemsShape(for: itemsArray as [Any], borderColor: .systemGray, borderWidth: 1, curveRadius: 26)
     }
     
     @IBAction func loginBtn(_ sender: Any) {
-        
         if let vc = storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginViewController {
-            
             self.navigationController?.pushViewController(vc, animated: true)
-            
         }
     }
     
     @IBAction func signUpBtn(_ sender: Any) {
-        
         if let vc = storyboard?.instantiateViewController(withIdentifier: "SignUpVC") as? SignUpViewController {
-                 
             self.navigationController?.pushViewController(vc, animated: true)
-            
         }
     }
-    
-}
-
-// Code for buttons shape
-extension HomePageViewController {
-    
-    func editItems() {
-        
-        let itemsArray = [login, signUp]
-        
-        _ = itemsArray.map {
-            
-            $0!.layer.borderColor = UIColor.systemGray.cgColor
-            $0!.layer.borderWidth = 1
-            $0!.layer.cornerRadius = 26
-            $0!.layer.shadowColor = UIColor.lightGray.cgColor
-            $0!.layer.shadowOpacity = 0.5
-            $0!.layer.shadowRadius = 1
-            $0!.layer.shadowOffset = CGSize(width: 1.2, height: 1.2)
-            $0!.layer.masksToBounds = true
-
-        }
-    }
-    
 }

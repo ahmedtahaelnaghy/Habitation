@@ -17,91 +17,49 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let itemsArray = [emailTextField, nameTextField, passwordTextField, verifyPasswordTextField, signUp]
         self.hideKeyboardWhenTappedAround()
-        editItems(borderColor: UIColor.systemGray.cgColor, borderWidth: 1, curveRadius: 20)
-        addImageToTextField(textField: emailTextField, image: UIImage(named: "email")!)
-        addImageToTextField(textField: nameTextField, image: UIImage(named: "profileName")!)
-        addImageToTextField(textField: passwordTextField, image: UIImage(named: "password")!)
-        addImageToTextField(textField: verifyPasswordTextField, image: UIImage(named: "password")!)
-       
+        editItemsShape(for: itemsArray as [Any], borderColor: .systemGray, borderWidth: 1, curveRadius: 20)
+        addImageToTextField(textField: emailTextField, imageName: "email", imageViewFrameX: 15)
+        addImageToTextField(textField: nameTextField, imageName: "profileName", imageViewFrameX: 15)
+        addImageToTextField(textField: passwordTextField, imageName: "password", imageViewFrameX: 151)
+        addImageToTextField(textField: verifyPasswordTextField, imageName: "password", imageViewFrameX: 15)
     }
     
     @IBAction func signUpBtn(_ sender: Any) {
-        
-        newUserRegister()
-        
+        registerNewUser()
     }
-    
-    func newUserRegister() {
-        
-        guard let name = nameTextField.text else {return}
-        guard let email = emailTextField.text else {return}
-        guard let password = passwordTextField.text else {return}
-        guard let verifyPassword = verifyPasswordTextField.text else {return}
-        
-        if email.isEmpty || name.isEmpty || password.isEmpty || verifyPassword.isEmpty {
-            
-            showAlert(message: "All fields are required")
-             
-        }
-        else {
-                        
-            AuthServiceManager().addNewAcountInAlamofire(name: name, email: email, password: password, verifyPassword: verifyPassword) { result in
-                switch result {
-                        
-                case .success(_):
-                    
-                    if let vc = self.storyboard?.instantiateViewController(withIdentifier: "tabBarC") as? TabBarViewController {
-
-                        self.navigationController?.pushViewController(vc, animated: true)
-                        
-                    }
-                    
-                case .failure(_):
-                    
-                    self.showAlert(message: "Some thing wrong")
-                    
-                }
-                
-            }
-            
-        }
-        
-    }
-    
-    
 }
 
-// Code for textFields and buttons shape
 extension SignUpViewController {
     
-    func addImageToTextField(textField: UITextField, image: UIImage) {
+    func registerNewUser() {
+        guard let name = nameTextField.text else { return }
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        guard let verifyPassword = verifyPasswordTextField.text else { return }
         
-        let imageView = UIImageView(frame: CGRect(x: 15, y: 0, width: image.size.width, height: image.size.height))
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: image.size.height))
-        
-        view.addSubview(imageView)
-        imageView.image = image
-        
-        textField.leftView = view
-        textField.leftViewMode = .always
-        
-    }
-        
-    func editItems(borderColor: CGColor, borderWidth: CGFloat, curveRadius: CGFloat) {
-        
-        let itemsArray = [emailTextField, nameTextField, passwordTextField, verifyPasswordTextField, signUp]
-        
-        _ = itemsArray.map {
-            
-            $0!.layer.borderColor = borderColor
-            $0!.layer.borderWidth = borderWidth
-            $0!.layer.cornerRadius = curveRadius
-
+        if email.isEmpty || name.isEmpty || password.isEmpty || verifyPassword.isEmpty {
+            showAlert(message: "All fields are required")
+        } else {
+            AddNewUserAccountRequest(name: name, email: email, password: password, verifyPassword: verifyPassword)
         }
-        
     }
     
+    func AddNewUserAccountRequest(name: String, email: String, password: String, verifyPassword: String) {
+        AuthServiceManager().addNewAcountInAlamofire(name: name, email: email, password: password, verifyPassword: verifyPassword) { [weak self] result in
+            switch result {
+            case .success(_):
+                self?.goToTabBarScreen()
+            case .failure(_):
+                self?.showAlert(message: "Some thing wrong")
+            }
+        }
+    }
+    
+    func goToTabBarScreen() {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "tabBarC") as? TabBarViewController {
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
-

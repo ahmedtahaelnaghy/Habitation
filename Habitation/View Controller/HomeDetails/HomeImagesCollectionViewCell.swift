@@ -9,11 +9,7 @@ import UIKit
 
 class HomeImagesCollectionViewCell: UICollectionViewCell {
     
-    
     @IBOutlet weak var homeImages: UIImageView!
-    
     @IBOutlet weak var image: UIImageView!
-    
-    
     
 }

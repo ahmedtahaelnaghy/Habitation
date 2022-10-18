@@ -30,9 +30,7 @@ class AuthServiceManager {
             case .success(let data):
                 
                 if dataResponse.response!.statusCode > 299 {
-                    
                     completion(.failure(CustomError(title: "", description: "Your email or password incorrect", code: 100)))
-                    
                     return
                 }
                 

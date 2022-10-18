@@ -17,31 +17,25 @@ class FavoriteHomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var favBtnShape: UIButton!
     @IBOutlet weak var homeName: UILabel!
     
+    var viewController: FavoritesViewController!
     var isFavorite: Bool = true
     var favId: Int = 0
-
-    var viewController: FavoritesViewController!
     
     @IBAction func favBtn(_ sender: Any) {
         changeFavBtnImage()
     }
 
     func changeFavBtnImage() {
-        
         if isFavorite {
-            
             FavoriteServiceManager().deleteDataFromAlamofire(id: favId) { result in
-                
                 switch result {
                 case .success(_):
                     self.viewController.fetchFavHomes()
                 case .failure(_):
                     print("Error")
                 }
-                
             }
             favBtnShape.setImage(UIImage(named: "heart_like"), for: .normal)
         }
     }
-    
 }

@@ -34,20 +34,20 @@ class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let itemsArray = [saveBtnShape, cancelBtnShape, openGalleryShape]
+        let textFieldsArray = [unitNameTextField, descriptionTextField, unitPriceTextField, cashPercentageDiscountTextField, typeTextField, areaTextField, numberOfBathroomsTextField, numberOfBedroomsTextField, directionTextField, mapView]
         navigationItem.hidesBackButton = true
         self.hideKeyboardWhenTappedAround()
         locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
         locationOnMap()
-        editItems()
-        textFieldShape()
+        editItemsShape(for: itemsArray as [Any], borderColor: .systemGray, borderWidth: 1, curveRadius: 23, shadowColor: .lightGray, shadowRadius: 1, shadowOffset: CGSize(width: 1.2, height: 1.2), shadowOpacity: 0.5, masksToBounds: true)
+        editItemsShape(for: textFieldsArray as [Any], borderColor: .lightGray, borderWidth: 1, curveRadius: 0)
     }
     
     func locationOnMap() {
-        
         let annotation1 = MKPointAnnotation()
-        annotation1.coordinate = CLLocationCoordinate2D(latitude: 31.05867, longitude: 31.38354)
+        annotation1.coordinate = CLLocationCoordinate2D(latitude: 31.04215, longitude: 31.35944)
         annotation1.title = "Current Location"
         annotation1.subtitle = ""
         self.mapView.addAnnotation(annotation1)
@@ -106,45 +106,10 @@ class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegat
 extension AddNewHomeViewController {
     
     func uploadPhotosFromLibraryButtonPressed(){
-        
         let imagePicker = ImagePickerController()
-        
         presentImagePicker(imagePicker, select: nil, deselect: nil, cancel: nil) { assets in
             assets.forEach({self.selectedImages.append($0.uiImage)})
             print(self.selectedImages)
-        }
-    }
-}
-
-
-extension AddNewHomeViewController {
-    
-    func editItems() {
-        
-        let itemsArray = [saveBtnShape, cancelBtnShape, openGalleryShape]
-        
-        _ = itemsArray.map {
-            
-            $0!.layer.borderColor = UIColor.systemGray.cgColor
-            $0!.layer.borderWidth = 1
-            $0!.layer.cornerRadius = 23
-            $0!.layer.shadowColor = UIColor.lightGray.cgColor
-            $0!.layer.shadowOpacity = 0.5
-            $0!.layer.shadowRadius = 1
-            $0!.layer.shadowOffset = CGSize(width: 1.2, height: 1.2)
-            $0!.layer.masksToBounds = true
-
-        }
-    }
-    
-    func textFieldShape() {
-        
-        let textFieldsArray = [unitNameTextField, descriptionTextField, unitPriceTextField, cashPercentageDiscountTextField, typeTextField, areaTextField, numberOfBathroomsTextField, numberOfBedroomsTextField, directionTextField, mapView]
-
-        _ = textFieldsArray.map {
-            
-            $0!.layer.borderColor = UIColor.lightGray.cgColor
-            $0!.layer.borderWidth = 1
         }
     }
 }

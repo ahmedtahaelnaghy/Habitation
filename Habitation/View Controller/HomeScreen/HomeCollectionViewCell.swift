@@ -11,5 +11,5 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var categoryImg: UIImageView!
     @IBOutlet weak var categoryName: UILabel!
-    
+
 }

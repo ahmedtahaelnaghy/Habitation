@@ -12,9 +12,12 @@
 		FC06D0DC27E5255E00E65142 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06D0DB27E5255E00E65142 /* CategoriesViewController.swift */; };
 		FC06D0DE27E5259000E65142 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06D0DD27E5259000E65142 /* FavoritesViewController.swift */; };
 		FC06D0E027E525A800E65142 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06D0DF27E525A800E65142 /* SettingsViewController.swift */; };
+		FC0808E828FC0FB70058D74B /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0808E728FC0FB70058D74B /* UIViewController+Extensions.swift */; };
 		FC18F7D22861B499001B85C5 /* HomeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F7D12861B499001B85C5 /* HomeDetailsViewController.swift */; };
 		FC18F7D42861DDDB001B85C5 /* AllDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F7D32861DDDB001B85C5 /* AllDetailsTableViewCell.swift */; };
 		FC18F7D62861E29B001B85C5 /* HomeImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F7D52861E29B001B85C5 /* HomeImagesCollectionViewCell.swift */; };
+		FC21B29828FCADC80058CAAA /* UICollectionViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC21B29728FCADC80058CAAA /* UICollectionViewCell+Extensions.swift */; };
+		FC21B29C28FCB3170058CAAA /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC21B29B28FCB3170058CAAA /* UIImageView+Extensions.swift */; };
 		FC44EB8928224E2700019723 /* FavoriteHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC44EB8828224E2700019723 /* FavoriteHomeCollectionViewCell.swift */; };
 		FC45E8D3286445CD0016F668 /* SignUpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC45E8D2286445CD0016F668 /* SignUpInfo.swift */; };
 		FC4618D3285E195700703FCB /* AddNewHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4618D2285E195700703FCB /* AddNewHomeViewController.swift */; };
@@ -93,9 +96,12 @@
 		FC06D0DB27E5255E00E65142 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		FC06D0DD27E5259000E65142 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		FC06D0DF27E525A800E65142 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		FC0808E728FC0FB70058D74B /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		FC18F7D12861B499001B85C5 /* HomeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailsViewController.swift; sourceTree = "<group>"; };
 		FC18F7D32861DDDB001B85C5 /* AllDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		FC18F7D52861E29B001B85C5 /* HomeImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeImagesCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC21B29728FCADC80058CAAA /* UICollectionViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extensions.swift"; sourceTree = "<group>"; };
+		FC21B29B28FCB3170058CAAA /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		FC44EB8828224E2700019723 /* FavoriteHomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		FC45E8D2286445CD0016F668 /* SignUpInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfo.swift; sourceTree = "<group>"; };
 		FC4618D2285E195700703FCB /* AddNewHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHomeViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +200,16 @@
 				B5F374CB0C5D54B1AE1BAFD6 /* Pods-Habitation.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FC0808E928FC101F0058D74B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FC0808E728FC0FB70058D74B /* UIViewController+Extensions.swift */,
+				FC21B29728FCADC80058CAAA /* UICollectionViewCell+Extensions.swift */,
+				FC21B29B28FCB3170058CAAA /* UIImageView+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		FC18F7D02861B482001B85C5 /* HomeDetails */ = {
@@ -330,6 +346,7 @@
 		FCEE870127DDFEF0005B5B70 /* Habitation */ = {
 			isa = PBXGroup;
 			children = (
+				FC0808E928FC101F0058D74B /* Extensions */,
 				FCEE873827DDFF3D005B5B70 /* Protocols */,
 				FCEE873727DDFF12005B5B70 /* Model */,
 				FCEE873627DDFF08005B5B70 /* View Controller */,
@@ -337,7 +354,6 @@
 				FCEE870227DDFEF0005B5B70 /* AppDelegate.swift */,
 				FCEE870427DDFEF0005B5B70 /* SceneDelegate.swift */,
 				FCEE870E27DDFEF2005B5B70 /* Assets.xcassets */,
-				FCEE871027DDFEF2005B5B70 /* LaunchScreen.storyboard */,
 				FCEE871327DDFEF2005B5B70 /* Info.plist */,
 				FCEE870B27DDFEF0005B5B70 /* Habitation.xcdatamodeld */,
 			);
@@ -364,6 +380,7 @@
 		FCEE873527DDFF01005B5B70 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FCEE871027DDFEF2005B5B70 /* LaunchScreen.storyboard */,
 				FCEE870827DDFEF0005B5B70 /* Main.storyboard */,
 			);
 			path = View;
@@ -649,9 +666,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC0808E828FC0FB70058D74B /* UIViewController+Extensions.swift in Sources */,
 				FCEE874627DE6DCF005B5B70 /* ForgotPasswordViewController.swift in Sources */,
 				FCEF5FAB286AC60100A01B58 /* HomesComingData.swift in Sources */,
 				FC87530C285E054400AF4197 /* CheckYourEmailViewController.swift in Sources */,
+				FC21B29828FCADC80058CAAA /* UICollectionViewCell+Extensions.swift in Sources */,
 				FC69CC812869ED3B0083DC63 /* AddNewItemViewModel.swift in Sources */,
 				FC7FD6FD286F880300264ADB /* DeleteFavResponse.swift in Sources */,
 				FCC28C5A286B5642003E7B52 /* AddNewUnitRequest.swift in Sources */,
@@ -682,6 +701,7 @@
 				FCF905AD286B06FE007DD696 /* DetailsViewController.swift in Sources */,
 				FC18F7D22861B499001B85C5 /* HomeDetailsViewController.swift in Sources */,
 				FC06D0DA27E5251500E65142 /* HomeViewController.swift in Sources */,
+				FC21B29C28FCB3170058CAAA /* UIImageView+Extensions.swift in Sources */,
 				FCA51832281183100045A28C /* SingleHomeCollectionViewCell.swift in Sources */,
 				FC18F7D62861E29B001B85C5 /* HomeImagesCollectionViewCell.swift in Sources */,
 				FCA892C7285B9269004A4E6D /* NearbyYourLocationCollectionViewCell.swift in Sources */,

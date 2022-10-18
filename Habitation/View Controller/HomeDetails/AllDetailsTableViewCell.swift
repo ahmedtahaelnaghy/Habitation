@@ -12,11 +12,8 @@ import CoreLocation
 class AllDetailsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var imagesCollectionView: UICollectionView!
-    
     @IBOutlet weak var homeImagesCollectionView: UICollectionView!
-
     @IBOutlet weak var map: MKMapView!
-
     @IBOutlet weak var callBtn: UIButton!
     
     var imagesArray = ["", "", "", "", ""]
@@ -28,7 +25,7 @@ class AllDetailsTableViewCell: UITableViewCell {
         
         homeImagesCollectionView?.delegate = self
         homeImagesCollectionView?.dataSource = self
-        
+    
         imagesCollectionView?.dataSource = self
         imagesCollectionView?.dataSource = self
         
