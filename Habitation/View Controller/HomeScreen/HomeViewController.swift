@@ -28,11 +28,7 @@ class HomeViewController: UIViewController {
         navigationItem.hidesBackButton = true
         homeCollectionView.delegate = self
         homeCollectionView.dataSource = self
-        addBtnToSearchTextField(textField: searchTextField, action: #selector(self.searchPressed))
-        editItemsShape(for: [searchTextField as Any], borderColor: .lightGray, borderWidth: 0.6, curveRadius: 17, shadowColor: .black, shadowRadius: 4, shadowOffset: CGSize(width: 0.5, height: 0.5), shadowOpacity: 0.1, masksToBounds: true)
-        addImageToTextField(textField: searchTextField, imageName: "search", imageViewFrameX: 27)
-        setupHorizontalCollectionViewUI(for: categoriesCollectionView, groupWidth: 0.4)
-        setupHorizontalCollectionViewUI(for: homeCollectionView, groupWidth: 0.9)
+        setupViewControllerItemsDesign()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,6 +56,9 @@ class HomeViewController: UIViewController {
         guard let search = searchTextField.text else {return}
         fetchData(for: search)
     }
+}
+
+extension HomeViewController {
     
     func fetchData(for search: String) {
         showActivityIndicator()
@@ -75,9 +74,16 @@ class HomeViewController: UIViewController {
         }
     }
     
+    func setupViewControllerItemsDesign() {
+        setupHorizontalCollectionViewUI(for: categoriesCollectionView, groupWidth: 0.4)
+        setupHorizontalCollectionViewUI(for: homeCollectionView, groupWidth: 0.9)
+        addBtnToSearchTextField(textField: searchTextField, action: #selector(self.searchPressed))
+        addImageToTextField(textField: searchTextField, imageName: "search", imageViewFrameX: 27)
+        editItemsShape(for: [searchTextField as Any], borderColor: .lightGray, borderWidth: 0.6, curveRadius: 17, shadowColor: .black, shadowRadius: 4, shadowOffset: CGSize(width: 0.5, height: 0.5), shadowOpacity: 0.1, masksToBounds: true)
+    }
 }
 
-// MARK: Collection View implementation.
+// MARK: Collections View implementation.
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

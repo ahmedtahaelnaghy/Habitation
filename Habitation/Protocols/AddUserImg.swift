@@ -8,8 +8,5 @@
 import Foundation
 
 protocol AddUserImg {
-    
     func addImg(image: UserImg)
-    
 }
-

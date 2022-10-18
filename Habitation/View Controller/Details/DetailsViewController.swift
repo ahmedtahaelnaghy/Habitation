@@ -36,8 +36,7 @@ class DetailsViewController: UIViewController {
 
         allImagesCollectionView.delegate = self
         allImagesCollectionView.dataSource = self
-        setupHorizontalCollectionViewUI(for: allImagesCollectionView, groupWidth: 0.3)
-        editItemsShape(for: [callBtnShape!], borderColor: .systemGray, borderWidth: 1, curveRadius: 24, shadowColor: .lightGray, shadowRadius: 1, shadowOffset: CGSize(width: 1.2, height: 1.2), shadowOpacity: 0.5, masksToBounds: true)
+        setupViewControllerItemsDesign()
         showDetails()
         locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
@@ -53,13 +52,23 @@ class DetailsViewController: UIViewController {
         callNumber(phoneNumber: "01017820973")
     }
     
+
+}
+
+extension DetailsViewController {
+    
+    func setupViewControllerItemsDesign() {
+        setupHorizontalCollectionViewUI(for: allImagesCollectionView, groupWidth: 0.3)
+        editItemsShape(for: [callBtnShape!], borderColor: .systemGray, borderWidth: 1, curveRadius: 24, shadowColor: .lightGray, shadowRadius: 1, shadowOffset: CGSize(width: 1.2, height: 1.2), shadowOpacity: 0.5, masksToBounds: true)
+    }
+    
     private func callNumber(phoneNumber:String) {
-      if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
-        let application:UIApplication = UIApplication.shared
-        if (application.canOpenURL(phoneCallURL)) {
-            application.open(phoneCallURL, options: [:], completionHandler: nil)
+        if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
+            let application:UIApplication = UIApplication.shared
+            if (application.canOpenURL(phoneCallURL)) {
+                application.open(phoneCallURL, options: [:], completionHandler: nil)
+            }
         }
-      }
     }
 }
 

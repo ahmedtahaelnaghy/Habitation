@@ -64,7 +64,7 @@ extension UIViewController {
 }
 
     // Add view as space in left text field.
-func makeLeftSpaceForTF(for array: [UITextField?]) {
+    func makeLeftSpaceForTF(for array: [UITextField?]) {
         _ = array.map {
             let view = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 0))
             $0?.leftView = view
@@ -94,5 +94,53 @@ extension UIViewController {
         section.orthogonalScrollingBehavior = .continuous
         let layout = UICollectionViewCompositionalLayout(section: section)
         collectionView.collectionViewLayout = layout
+    }
+}
+
+//MARK: -> Add Button in text field
+extension UIViewController {
+    func addBtnToSearchTextField(textField: UITextField, action: Selector) {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "search_button"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -45, bottom: 0, right: 0)
+//        button.frame = CGRect(x: CGFloat(textField.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
+        button.addTarget(self, action: action, for: .touchUpInside)
+        textField.rightView = button
+        textField.rightViewMode = .always
+         
+    }
+}
+
+//MARK: -> Show and Hide the Activity Indicator.
+extension UIViewController {
+    
+    func showActivityIndicator() {
+        let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+//            activityIndicator.backgroundColor = UIColor(red:0.16, green:0.17, blue:0.21, alpha:1)
+        activityIndicator.layer.cornerRadius = 6
+        activityIndicator.center = view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.large
+        activityIndicator.startAnimating()
+        //UIApplication.shared.beginIgnoringInteractionEvents()
+        activityIndicator.tag = 100 // 100 for example
+        
+        // before adding it, you need to check if it is already has been added:
+        for subview in view.subviews {
+            if subview.tag == 100 {
+                print("already added")
+                return
+            }
+        }
+        view.addSubview(activityIndicator)
+    }
+    
+    func hideActivityIndicator() {
+        let activityIndicator = view.viewWithTag(100) as? UIActivityIndicatorView
+        activityIndicator?.stopAnimating()
+        
+        // I think you forgot to remove it?
+        activityIndicator?.removeFromSuperview()
+        //UIApplication.shared.endIgnoringInteractionEvents()
     }
 }

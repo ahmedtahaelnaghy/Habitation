@@ -37,7 +37,7 @@ class AddNewHomeViewController: UIViewController, UIImagePickerControllerDelegat
         let itemsArray = [saveBtnShape, cancelBtnShape, openGalleryShape]
         let textFieldsArray = [unitNameTextField, descriptionTextField, unitPriceTextField, cashPercentageDiscountTextField, typeTextField, areaTextField, numberOfBathroomsTextField, numberOfBedroomsTextField, directionTextField, mapView]
         navigationItem.hidesBackButton = true
-        self.hideKeyboardWhenTappedAround()
+        hideKeyboardWhenTappedAround()
         locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
         locationOnMap()

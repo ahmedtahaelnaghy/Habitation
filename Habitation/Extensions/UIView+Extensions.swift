@@ -5,7 +5,6 @@
 //  Created by Ahmed Taha on 27/04/2022.
 //
 
-import Foundation
 import UIKit
 
 @IBDesignable extension UIView {

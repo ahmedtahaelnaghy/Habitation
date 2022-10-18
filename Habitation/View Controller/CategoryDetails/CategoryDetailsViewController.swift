@@ -21,11 +21,7 @@ class CategoryDetailsViewController: UIViewController {
         categoryDetailsCollectionView.delegate = self
         categoryDetailsCollectionView.dataSource = self
         navigationItem.title = comingNavigationTitle
-        addBtnToSearchTextField(textField: searchTextField, action: #selector(self.searchPressed))
-        addImageToTextField(textField: searchTextField, imageName: "search", imageViewFrameX: 27)
-        editItemsShape(for: [searchTextField!], borderColor: .lightGray, borderWidth: 0.6, curveRadius: 17, shadowColor: .black, shadowRadius: 4, shadowOffset: CGSize(width: 0.5, height: 0.5), shadowOpacity: 0.1, masksToBounds: false)
-        setupVeticalCollectionViewUI(for: categoryDetailsCollectionView)
- 
+        setupViewControllerItemsDesign()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,6 +32,9 @@ class CategoryDetailsViewController: UIViewController {
         guard let search = searchTextField.text else {return}
         fetchData(type: comingNavigationTitle, name: search)
     }
+}
+
+extension CategoryDetailsViewController {
     
     func fetchData(type: String, name: String) {
         showActivityIndicator()
@@ -49,6 +48,13 @@ class CategoryDetailsViewController: UIViewController {
                 self?.showAlert(message: "Something wrong")
             }
         }
+    }
+    
+    func setupViewControllerItemsDesign() {
+        setupVeticalCollectionViewUI(for: categoryDetailsCollectionView)
+        addBtnToSearchTextField(textField: searchTextField, action: #selector(self.searchPressed))
+        addImageToTextField(textField: searchTextField, imageName: "search", imageViewFrameX: 27)
+        editItemsShape(for: [searchTextField!], borderColor: .lightGray, borderWidth: 0.6, curveRadius: 17, shadowColor: .black, shadowRadius: 4, shadowOffset: CGSize(width: 0.5, height: 0.5), shadowOpacity: 0.1, masksToBounds: false)
     }
 }
 

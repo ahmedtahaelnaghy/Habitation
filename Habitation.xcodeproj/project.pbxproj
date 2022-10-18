@@ -13,9 +13,6 @@
 		FC06D0DE27E5259000E65142 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06D0DD27E5259000E65142 /* FavoritesViewController.swift */; };
 		FC06D0E027E525A800E65142 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06D0DF27E525A800E65142 /* SettingsViewController.swift */; };
 		FC0808E828FC0FB70058D74B /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0808E728FC0FB70058D74B /* UIViewController+Extensions.swift */; };
-		FC18F7D22861B499001B85C5 /* HomeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F7D12861B499001B85C5 /* HomeDetailsViewController.swift */; };
-		FC18F7D42861DDDB001B85C5 /* AllDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F7D32861DDDB001B85C5 /* AllDetailsTableViewCell.swift */; };
-		FC18F7D62861E29B001B85C5 /* HomeImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F7D52861E29B001B85C5 /* HomeImagesCollectionViewCell.swift */; };
 		FC21B29828FCADC80058CAAA /* UICollectionViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC21B29728FCADC80058CAAA /* UICollectionViewCell+Extensions.swift */; };
 		FC21B29C28FCB3170058CAAA /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC21B29B28FCB3170058CAAA /* UIImageView+Extensions.swift */; };
 		FC44EB8928224E2700019723 /* FavoriteHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC44EB8828224E2700019723 /* FavoriteHomeCollectionViewCell.swift */; };
@@ -26,7 +23,6 @@
 		FC6A895E28698DDD007CABC3 /* CategoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6A895D28698DDD007CABC3 /* CategoryDetailsViewController.swift */; };
 		FC6A896028698E7A007CABC3 /* CategoryDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6A895F28698E7A007CABC3 /* CategoryDetailsCollectionViewCell.swift */; };
 		FC7FD6FD286F880300264ADB /* DeleteFavResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7FD6FC286F880300264ADB /* DeleteFavResponse.swift */; };
-		FC7FD6FF286F8EB300264ADB /* ActivityIndicatorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7FD6FE286F8EB300264ADB /* ActivityIndicatorExtension.swift */; };
 		FC7FD701286FA8B900264ADB /* ProfileServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7FD700286FA8B900264ADB /* ProfileServiceManager.swift */; };
 		FC8380DC2867C7C60028E5C6 /* ConvertImageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8380DB2867C7C60028E5C6 /* ConvertImageType.swift */; };
 		FC87530C285E054400AF4197 /* CheckYourEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC87530B285E054400AF4197 /* CheckYourEmailViewController.swift */; };
@@ -97,9 +93,6 @@
 		FC06D0DD27E5259000E65142 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		FC06D0DF27E525A800E65142 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		FC0808E728FC0FB70058D74B /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
-		FC18F7D12861B499001B85C5 /* HomeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailsViewController.swift; sourceTree = "<group>"; };
-		FC18F7D32861DDDB001B85C5 /* AllDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDetailsTableViewCell.swift; sourceTree = "<group>"; };
-		FC18F7D52861E29B001B85C5 /* HomeImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeImagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		FC21B29728FCADC80058CAAA /* UICollectionViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		FC21B29B28FCB3170058CAAA /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		FC44EB8828224E2700019723 /* FavoriteHomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHomeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -110,7 +103,6 @@
 		FC6A895D28698DDD007CABC3 /* CategoryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailsViewController.swift; sourceTree = "<group>"; };
 		FC6A895F28698E7A007CABC3 /* CategoryDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		FC7FD6FC286F880300264ADB /* DeleteFavResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteFavResponse.swift; sourceTree = "<group>"; };
-		FC7FD6FE286F8EB300264ADB /* ActivityIndicatorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorExtension.swift; sourceTree = "<group>"; };
 		FC7FD700286FA8B900264ADB /* ProfileServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileServiceManager.swift; sourceTree = "<group>"; };
 		FC8380DB2867C7C60028E5C6 /* ConvertImageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertImageType.swift; sourceTree = "<group>"; };
 		FC87530B285E054400AF4197 /* CheckYourEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckYourEmailViewController.swift; sourceTree = "<group>"; };
@@ -208,18 +200,9 @@
 				FC0808E728FC0FB70058D74B /* UIViewController+Extensions.swift */,
 				FC21B29728FCADC80058CAAA /* UICollectionViewCell+Extensions.swift */,
 				FC21B29B28FCB3170058CAAA /* UIImageView+Extensions.swift */,
+				FCEA6DE02818C59900BD1E77 /* UIView+Extensions.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		FC18F7D02861B482001B85C5 /* HomeDetails */ = {
-			isa = PBXGroup;
-			children = (
-				FC18F7D12861B499001B85C5 /* HomeDetailsViewController.swift */,
-				FC18F7D32861DDDB001B85C5 /* AllDetailsTableViewCell.swift */,
-				FC18F7D52861E29B001B85C5 /* HomeImagesCollectionViewCell.swift */,
-			);
-			path = HomeDetails;
 			sourceTree = "<group>";
 		};
 		FC29BAC9282226770017425C /* SettingsScreen */ = {
@@ -400,7 +383,6 @@
 				FCF9D4E127F2738000CCE0B9 /* CategoriesScreen */,
 				FC29BAC9282226770017425C /* SettingsScreen */,
 				FCA74580285F37B30006D499 /* ProfileScreen */,
-				FC18F7D02861B482001B85C5 /* HomeDetails */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -419,10 +401,8 @@
 		FCEE873827DDFF3D005B5B70 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				FCEA6DE02818C59900BD1E77 /* UIView+Extensions.swift */,
 				FC8380DB2867C7C60028E5C6 /* ConvertImageType.swift */,
 				FC9C2A6A28688C1100CEA8D4 /* AddUserImg.swift */,
-				FC7FD6FE286F8EB300264ADB /* ActivityIndicatorExtension.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -431,7 +411,6 @@
 			isa = PBXGroup;
 			children = (
 				FCEE873B27DDFFB7005B5B70 /* LocalDatabase */,
-				FCEE873C27DDFFCD005B5B70 /* RemoteDatabase */,
 			);
 			path = "Database Manager";
 			sourceTree = "<group>";
@@ -464,13 +443,6 @@
 				FC7FD700286FA8B900264ADB /* ProfileServiceManager.swift */,
 			);
 			path = LocalDatabase;
-			sourceTree = "<group>";
-		};
-		FCEE873C27DDFFCD005B5B70 /* RemoteDatabase */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = RemoteDatabase;
 			sourceTree = "<group>";
 		};
 		FCF905AB286B06DF007DD696 /* Details */ = {
@@ -687,7 +659,6 @@
 				FCB55AF9286C28090008569C /* FavoriteModel.swift in Sources */,
 				FCEE874427DE5CC9005B5B70 /* SignUpViewController.swift in Sources */,
 				FCF41322286FA95400D6BD51 /* ProfileComingData.swift in Sources */,
-				FC7FD6FF286F8EB300264ADB /* ActivityIndicatorExtension.swift in Sources */,
 				FC44EB8928224E2700019723 /* FavoriteHomeCollectionViewCell.swift in Sources */,
 				FCC28C55286B51EF003E7B52 /* BaseAPI.swift in Sources */,
 				FCB55AF7286C1DE10008569C /* FavoriteServiceManager.swift in Sources */,
@@ -699,11 +670,9 @@
 				FC7FD701286FA8B900264ADB /* ProfileServiceManager.swift in Sources */,
 				FCBB06392867105D004C6A45 /* ComingHomeDataServiceManager.swift in Sources */,
 				FCF905AD286B06FE007DD696 /* DetailsViewController.swift in Sources */,
-				FC18F7D22861B499001B85C5 /* HomeDetailsViewController.swift in Sources */,
 				FC06D0DA27E5251500E65142 /* HomeViewController.swift in Sources */,
 				FC21B29C28FCB3170058CAAA /* UIImageView+Extensions.swift in Sources */,
 				FCA51832281183100045A28C /* SingleHomeCollectionViewCell.swift in Sources */,
-				FC18F7D62861E29B001B85C5 /* HomeImagesCollectionViewCell.swift in Sources */,
 				FCA892C7285B9269004A4E6D /* NearbyYourLocationCollectionViewCell.swift in Sources */,
 				FCB1AD6727F481A600EBCABC /* HomeCollectionViewCell.swift in Sources */,
 				FC6A896028698E7A007CABC3 /* CategoryDetailsCollectionViewCell.swift in Sources */,
@@ -718,7 +687,6 @@
 				FCA892C5285B90BA004A4E6D /* NearbyYourLocationViewController.swift in Sources */,
 				FCF905AF286B0AF6007DD696 /* ImagesCollectionViewCell.swift in Sources */,
 				FCA74582285F37CA0006D499 /* ProfileViewController.swift in Sources */,
-				FC18F7D42861DDDB001B85C5 /* AllDetailsTableViewCell.swift in Sources */,
 				FCEE870527DDFEF0005B5B70 /* SceneDelegate.swift in Sources */,
 				FCF9D4E727F2757500CCE0B9 /* Categories.swift in Sources */,
 			);

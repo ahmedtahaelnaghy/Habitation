@@ -16,13 +16,10 @@ class FavoritesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
+        hideKeyboardWhenTappedAround()
         FavoritesCollectionView.delegate = self
         FavoritesCollectionView.dataSource = self
-        addBtnToSearchTextField(textField: searchTextField, action: #selector(self.searchPressed))
-        addImageToTextField(textField: searchTextField, imageName: "search", imageViewFrameX: 27)
-        setupVeticalCollectionViewUI(for: FavoritesCollectionView)
-        editItemsShape(for: [searchTextField!], borderColor: .lightGray, borderWidth: 0.6, curveRadius: 17, shadowColor: .black, shadowRadius: 4, shadowOffset: CGSize(width: 0.5, height: 0.5), shadowOpacity: 0.1, masksToBounds: false)        
+        setupViewControllerItemsDesign()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,6 +29,9 @@ class FavoritesViewController: UIViewController {
     @IBAction func searchPressed(_ sender: Any) {
         fetchFavHomes()
     }
+}
+
+extension FavoritesViewController {
     
     func fetchFavHomes() {
         showActivityIndicator()
@@ -45,6 +45,13 @@ class FavoritesViewController: UIViewController {
                 self?.showAlert(message: "Something wrong")
             }
         }
+    }
+    
+    func setupViewControllerItemsDesign() {
+        addBtnToSearchTextField(textField: searchTextField, action: #selector(self.searchPressed))
+        addImageToTextField(textField: searchTextField, imageName: "search", imageViewFrameX: 27)
+        setupVeticalCollectionViewUI(for: FavoritesCollectionView)
+        editItemsShape(for: [searchTextField!], borderColor: .lightGray, borderWidth: 0.6, curveRadius: 17, shadowColor: .black, shadowRadius: 4, shadowOffset: CGSize(width: 0.5, height: 0.5), shadowOpacity: 0.1, masksToBounds: false)
     }
 }
 
